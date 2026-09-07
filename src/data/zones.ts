@@ -1,23 +1,19 @@
-// Cada zona genera su propia landing en /zonas/<slug>/ para posicionamiento local.
-// REVISA la lista antes de publicar: quita las que no atiendas y añade las que falten.
+// Barrios y zonas de Navalcarnero. Cada entrada genera su landing en
+// /zonas/<slug>/ para posicionamiento local.
+// Solo Navalcarnero: no se añaden municipios de alrededor, para que la señal
+// geográfica que recibe Google no se diluya.
 export type Zone = {
   slug: string;
   name: string;
-  kind: "barrio" | "municipio";
 };
 
 export const zones: Zone[] = [
-  { slug: "centro", name: "Centro", kind: "barrio" },
-  { slug: "el-pinar", name: "El Pinar", kind: "barrio" },
-  { slug: "la-dehesa", name: "La Dehesa", kind: "barrio" },
-  { slug: "san-andres", name: "San Andrés", kind: "barrio" },
-  { slug: "san-isidro", name: "San Isidro", kind: "barrio" },
-  { slug: "la-vereda", name: "La Vereda", kind: "barrio" },
-  { slug: "navalcarnero-sur", name: "Navalcarnero Sur", kind: "barrio" },
-  { slug: "poligono-alparrache", name: "Polígono Alparrache", kind: "barrio" },
-  { slug: "arroyomolinos", name: "Arroyomolinos", kind: "municipio" },
-  { slug: "sevilla-la-nueva", name: "Sevilla la Nueva", kind: "municipio" },
-  { slug: "el-alamo", name: "El Álamo", kind: "municipio" },
-  { slug: "moraleja-de-enmedio", name: "Moraleja de Enmedio", kind: "municipio" },
-  { slug: "villamanta", name: "Villamanta", kind: "municipio" },
+  { slug: "centro", name: "Centro" },
+  { slug: "el-pinar", name: "El Pinar" },
+  { slug: "la-dehesa", name: "La Dehesa" },
+  { slug: "san-andres", name: "San Andrés" },
+  { slug: "san-isidro", name: "San Isidro" },
+  { slug: "la-vereda", name: "La Vereda" },
+  { slug: "navalcarnero-sur", name: "Navalcarnero Sur" },
+  { slug: "poligono-alparrache", name: "Polígono Alparrache" },
 ];

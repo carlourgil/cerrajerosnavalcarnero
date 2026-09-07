@@ -1,9 +1,6 @@
 ---
 import { zones } from "../data/zones";
 import { SITE } from "../lib/config";
-
-const barrios = zones.filter((z) => z.kind === "barrio");
-const municipios = zones.filter((z) => z.kind === "municipio");
 ---
 
 <section id="zonas" class="section band-muted">
@@ -16,26 +13,10 @@ const municipios = zones.filter((z) => z.kind === "municipio");
 
     <div class="coverage">
       <div class="coverage__list">
-        <p class="coverage__group">{SITE.location}</p>
+        <p class="coverage__group">Barrios de {SITE.location}</p>
         <div class="coverage__buttons">
           {
-            barrios.map((z) => (
-              <button
-                type="button"
-                class="coverage__zone"
-                data-zone={z.name}
-                data-href={`/zonas/${z.slug}/`}
-              >
-                {z.name}
-              </button>
-            ))
-          }
-        </div>
-
-        <p class="coverage__group">Municipios cercanos</p>
-        <div class="coverage__buttons">
-          {
-            municipios.map((z) => (
+            zones.map((z) => (
               <button
                 type="button"
                 class="coverage__zone"
