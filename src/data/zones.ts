@@ -1,6 +1,6 @@
 // Zonas de cobertura para páginas de SEO local.
-// REVISA esta lista antes de publicar: confirma los barrios y municipios que
-// realmente cubres y elimina los que no atiendas.
+// REVISA esta lista antes de publicar: confirma que atiendes todas estas zonas
+// y añade las que falten (cada entrada genera su propia página /zonas/<slug>/).
 export type Zone = {
   slug: string;
   name: string;
@@ -10,9 +10,12 @@ export type Zone = {
 
 export const zones: Zone[] = [
   { slug: "centro", name: "Centro", kind: "barrio" },
-  { slug: "casco-antiguo", name: "Casco Antiguo", kind: "barrio" },
-  { slug: "la-estacion", name: "La Estación", kind: "barrio" },
-  { slug: "el-comendador", name: "El Comendador", kind: "barrio" },
+  { slug: "el-pinar", name: "El Pinar", kind: "barrio" },
+  { slug: "la-dehesa", name: "La Dehesa", kind: "barrio" },
+  { slug: "san-andres", name: "San Andrés", kind: "barrio" },
+  { slug: "san-isidro", name: "San Isidro", kind: "barrio" },
+  { slug: "la-vereda", name: "La Vereda", kind: "barrio" },
+  { slug: "navalcarnero-sur", name: "Navalcarnero Sur", kind: "barrio" },
   { slug: "poligono-alparrache", name: "Polígono Alparrache", kind: "barrio" },
   { slug: "arroyomolinos", name: "Arroyomolinos", kind: "municipio" },
   { slug: "sevilla-la-nueva", name: "Sevilla la Nueva", kind: "municipio" },
