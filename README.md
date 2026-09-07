@@ -1,37 +1,49 @@
 # Cerrajeros Navalcarnero
 
-Web estática (Astro) para el servicio de cerrajería 24h en Navalcarnero.
-Dominio previsto: `cerrajerosnavalcarnero.madrid`
+Web estática de cerrajería 24 h en Navalcarnero, hecha con Astro y sin dependencias
+de UI. Dominio previsto: `cerrajerosnavalcarnero.madrid`.
+Despliegue: Vercel, conectado a este repositorio (cada push a `main` publica).
 
 ## Comandos
 
-| Comando           | Acción                                    |
-| ----------------- | ----------------------------------------- |
-| `npm install`     | Instala dependencias                      |
-| `npm run dev`     | Servidor de desarrollo en `localhost:4321` |
-| `npm run build`   | Genera la web en `./dist/`                |
-| `npm run preview` | Previsualiza el build local               |
+| Comando           | Qué hace                                    |
+| ----------------- | ------------------------------------------- |
+| `npm install`     | Instala dependencias                        |
+| `npm run dev`     | Servidor de desarrollo en `localhost:4321`  |
+| `npm run build`   | Genera la web estática en `dist/`           |
+| `npm run preview` | Sirve el resultado del build                |
 
-## Pendiente antes de publicar
+## Antes de publicar
 
-Los siguientes datos aparecen como `[PENDIENTE: ...]` y se muestran tal cual en la web.
-Todos viven en `src/lib/config.ts`:
+Todo lo que ponga `[PENDIENTE]` sale tal cual en la web, a propósito. Está en
+`src/lib/config.ts`:
 
-- Teléfono, WhatsApp
-- Dirección física (o retirar la sección si solo se atiende a domicilio)
-- Razón social, NIF, domicilio social y datos registrales (necesarios para el aviso legal)
+- Teléfono y WhatsApp
+- Dirección (o quitar la sección si solo se trabaja a domicilio)
+- Precio de referencia y años de experiencia
+- Razón social, NIF, domicilio social y datos registrales (obligatorio para el aviso legal)
 - Enlace a la ficha de Google Business
 
 Además:
 
-- `src/data/zones.ts` — revisar barrios y municipios cubiertos antes de publicar.
-- `src/data/testimonials.ts` — está vacío a propósito. Añadir solo opiniones reales.
-- `public/` — falta el logo y las imágenes propias. Hay marcadores `[PENDIENTE]` en
-  `WhyUs.astro` (foto del equipo) y `LocationSection.astro` (mapa).
+- `public/robots.txt` bloquea la indexación mientras haya datos pendientes. **Bórralo
+  antes del lanzamiento** o Google no indexará la web.
+- `src/data/testimonials.ts` está vacío a propósito: solo opiniones reales.
+- `src/data/zones.ts` genera una landing por zona. Revisa la lista.
+- Faltan las fotos propias: hay marcadores en `WhyUs.astro` (foto del técnico) y
+  `LocationSection.astro` (mapa).
 
 ## Estructura
 
-- `src/lib/config.ts` — datos del negocio, fuente única para toda la web.
-- `src/data/` — servicios, zonas y testimonios.
-- `src/pages/servicios/[slug].astro` y `src/pages/zonas/[slug].astro` — landings de SEO local.
-- `src/styles/global.css` — sistema de estilos (sin framework CSS).
+```
+src/
+  lib/config.ts        Datos del negocio. Fuente única de toda la web.
+  data/                Servicios, zonas y opiniones.
+  styles/global.css    Sistema visual completo (tokens, tipografía, componentes).
+  layouts/Layout.astro Cabecera, pie, barra fija móvil y metadatos.
+  components/          Secciones de la home.
+  pages/               Home, servicios, zonas, contacto y páginas legales.
+```
+
+Las landings de servicio y de zona se generan solas a partir de `src/data/`:
+añadir una entrada crea su página.

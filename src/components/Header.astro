@@ -5,7 +5,7 @@ import { SITE } from "../lib/config";
 <header class="header">
   <div class="container header__inner">
     <a href="/" class="wordmark">
-      <span class="wordmark__text">CERRA<span class="accent">NEXO</span></span>
+      <span class="wordmark__text">{SITE.brandFirst}<span class="accent">{SITE.brandLast}</span></span>
       <span class="wordmark__meta">
         <span class="wordmark__title">Cerrajeros {SITE.location}</span>
         <span class="wordmark__sub">24 h</span>
@@ -23,7 +23,7 @@ import { SITE } from "../lib/config";
 
     <div class="header__actions">
       <div class="header__price">
-        <span class="header__price-value"><span>Desde</span>[PENDIENTE]</span>
+        <span class="header__price-value"><span>Desde</span>{SITE.priceFrom}</span>
         <span class="header__price-label">Tarifa apertura</span>
       </div>
 

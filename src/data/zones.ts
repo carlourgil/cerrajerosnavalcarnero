@@ -1,10 +1,8 @@
-// Zonas de cobertura para páginas de SEO local.
-// REVISA esta lista antes de publicar: confirma que atiendes todas estas zonas
-// y añade las que falten (cada entrada genera su propia página /zonas/<slug>/).
+// Cada zona genera su propia landing en /zonas/<slug>/ para posicionamiento local.
+// REVISA la lista antes de publicar: quita las que no atiendas y añade las que falten.
 export type Zone = {
   slug: string;
   name: string;
-  // "barrio" = zona dentro de Navalcarnero. "municipio" = localidad cercana.
   kind: "barrio" | "municipio";
 };
 

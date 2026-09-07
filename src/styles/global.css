@@ -454,6 +454,30 @@ a:hover { color: var(--c-orange); }
 .hero__card-arrow { margin-left: auto; color: #4B5563; transition: color var(--ease); }
 .hero__card:hover .hero__card-arrow { color: var(--c-white); }
 
+/* ---------- 6b. CABECERA DE PÁGINA INTERIOR ---------- */
+.page-hero {
+  background: var(--c-navy);
+  color: var(--c-white);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.page-hero--sm { padding-block: clamp(3rem, 5vw, 4.5rem); }
+.page-hero h1 { color: var(--c-white); margin-bottom: 1.5rem; }
+.page-hero .subhead { color: #CBD5E1; }
+.btn--on-dark { --btn-fg: var(--c-white); border-color: rgba(255, 255, 255, .25); }
+
+/* ---------- 6c. PÁGINAS LEGALES ---------- */
+.legal { max-width: 46rem; }
+.legal h2 {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: var(--c-navy);
+}
+.legal h2:first-child { margin-top: 0; }
+.legal p { color: var(--c-gray-600); }
+.legal a { color: var(--c-orange); font-weight: 600; text-decoration: underline; }
+.legal .ticks { margin-bottom: 1rem; }
+
 /* ---------- 7. TARJETAS ---------- */
 .grid {
   display: grid;

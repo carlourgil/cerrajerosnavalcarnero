@@ -1,22 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LocationSection from "../components/LocationSection.astro";
+import CTA from "../components/CTA.astro";
 import { SITE } from "../lib/config";
 ---
 
-<Layout title={`Contacto | ${SITE.businessName}`}>
+<Layout
+  title={`Contacto | ${SITE.businessName}`}
+  description={`Teléfono, WhatsApp y zona de servicio de ${SITE.businessName}. Urgencias de cerrajería 24 h en ${SITE.serviceArea}.`}
+>
   <main>
-    <section class="section band-dark text-center">
-      <div class="container" style="max-width: 680px;">
-        <h1>Contacta con nosotros</h1>
-        <p class="subhead">Para urgencias, llámanos directamente: es más rápido que un formulario.</p>
-        <a href={`tel:${SITE.phone}`} class="btn btn--accent">📞 {SITE.phoneDisplay}</a>
-        <p style="margin-top: 1.5rem;">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Estamos de guardia</span>
+        <h1>Contacto</h1>
+        <p class="subhead measure">
+          Si es una urgencia, llama directamente: es más rápido que cualquier formulario.
+        </p>
+
+        <div class="contact-actions">
+          <a href={`tel:${SITE.phone}`} class="btn btn--accent">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
+            </svg>
+            <span class="btn__stack">
+              <span class="btn__eyebrow">Llama ahora</span>
+              <span>{SITE.phoneDisplay}</span>
+            </span>
+          </a>
+
+          <a href={`https://wa.me/${SITE.whatsapp}`} class="btn btn--ghost btn--on-dark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z"></path>
+            </svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+
+        <p class="contact-mail">
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
         </p>
       </div>
     </section>
 
     <LocationSection />
+    <CTA />
   </main>
 </Layout>
+
+<style>
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .contact-mail { margin-top: 2rem; font-weight: var(--fw-bold); color: #CBD5E1; }
+</style>

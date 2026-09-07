@@ -1,11 +1,26 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Services from "../../components/Services.astro";
+import CTA from "../../components/CTA.astro";
 import { SITE } from "../../lib/config";
 ---
 
-<Layout title={`Servicios de cerrajería en ${SITE.location} | ${SITE.businessName}`}>
+<Layout
+  title={`Servicios de cerrajería en ${SITE.location} | ${SITE.businessName}`}
+  description={`Todos los servicios de cerrajería que hacemos en ${SITE.serviceArea}: aperturas, cambio de cerraduras, bombines antibumping, amaestramientos y urgencias 24 h.`}
+>
   <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">{SITE.location} · 24 horas</span>
+        <h1>Servicios</h1>
+        <p class="subhead measure">
+          Lo que hacemos en {SITE.serviceArea}, con precio cerrado por teléfono antes de desplazarnos.
+        </p>
+      </div>
+    </section>
+
     <Services />
+    <CTA />
   </main>
 </Layout>

@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "cerrajeros-navalcarnero",
-      "runtimeExecutable": "C:\\Users\\carlo\\Web Navalcarnero cerrajeros\\.claude\\dev-with-path.cmd",
+      "runtimeExecutable": "C:\\Users\\carlo\\Web Navalcarnero cerrajeros\\.claude\\dev.cmd",
       "runtimeArgs": [],
       "port": 4321
     }

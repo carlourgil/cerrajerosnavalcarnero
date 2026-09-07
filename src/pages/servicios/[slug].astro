@@ -12,28 +12,102 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
+const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 ---
 
-<Layout title={`${service.title} en ${SITE.location} | ${SITE.businessName}`} description={service.description}>
+<Layout
+  title={`${service.title} en ${SITE.location} | ${SITE.businessName}`}
+  description={service.description}
+>
   <main>
-    <section class="section band-dark text-center">
-      <div class="container" style="max-width: 760px;">
-        <span class="eyebrow">{SITE.location}</span>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">{SITE.location} · 24 horas</span>
         <h1>{service.title}</h1>
-        <p class="subhead">{service.description}</p>
-        <a href={`tel:${SITE.phone}`} class="btn btn--accent">📞 Llamar ahora: {SITE.phoneDisplay}</a>
+        <p class="subhead measure">{service.description}</p>
+        <a href={`tel:${SITE.phone}`} class="btn btn--accent">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
+          </svg>
+          <span class="btn__stack">
+            <span class="btn__eyebrow">Llama ahora</span>
+            <span>{SITE.phoneDisplay}</span>
+          </span>
+        </a>
       </div>
     </section>
 
     <section class="section band-light">
-      <div class="container" style="max-width: 760px;">
-        <h2>¿Qué incluye este servicio?</h2>
-        <ul class="ticks stack">
-          {service.bullets.map((b: string) => <li>{b}</li>)}
+      <div class="container">
+        <div class="section-head">
+          <h2>Qué incluye <span class="accent">el servicio</span></h2>
+        </div>
+        <ul class="detail-list">
+          {
+            service.bullets.map((b) => (
+              <li>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12.5l5 5L20 6.5"></path>
+                </svg>
+                {b}
+              </li>
+            ))
+          }
         </ul>
+      </div>
+    </section>
+
+    <section class="section band-muted">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Más servicios</span>
+          <h2>También hacemos</h2>
+        </div>
+        <div class="grid">
+          {
+            others.map((s) => (
+              <a href={`/servicios/${s.slug}/`} class="card">
+                <div class="card__body">
+                  <h4>{s.title}</h4>
+                  <p>{s.short}</p>
+                  <span class="card__link">
+                    Ver detalles
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M13 6l6 6-6 6"></path>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
       </div>
     </section>
 
     <CTA />
   </main>
 </Layout>
+
+<style>
+  .detail-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 52rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .detail-list li {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-lg);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--c-navy);
+  }
+  .detail-list svg { color: var(--c-orange); flex-shrink: 0; }
+</style>

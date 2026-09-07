@@ -1,11 +1,27 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Zones from "../../components/Zones.astro";
+import CTA from "../../components/CTA.astro";
 import { SITE } from "../../lib/config";
 ---
 
-<Layout title={`Zonas de servicio en ${SITE.location} | ${SITE.businessName}`}>
+<Layout
+  title={`Zonas de servicio en ${SITE.location} | ${SITE.businessName}`}
+  description={`Barrios de ${SITE.location} y municipios cercanos donde atendemos avisos de cerrajería 24 h.`}
+>
   <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Cobertura</span>
+        <h1>Dónde llegamos</h1>
+        <p class="subhead measure">
+          Cubrimos todos los barrios de {SITE.location} y los municipios de alrededor. Elige el tuyo para
+          ver el tiempo de llegada.
+        </p>
+      </div>
+    </section>
+
     <Zones />
+    <CTA />
   </main>
 </Layout>
