@@ -8,7 +8,7 @@ export const SITE = {
   brandLast: "NEXO",
   tagline: "Cerrajeros 24h en Navalcarnero",
   description:
-    "¿No puedes entrar en casa? Con CerraNexo, en 20 minutos estás dentro. Tus cerrajeros en Navalcarnero 24 horas. Sin daños, sin sorpresas.",
+    "Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegamos en 20-30 minutos.",
 
   location: "Navalcarnero",
   serviceArea: "Navalcarnero y alrededores",
@@ -26,7 +26,7 @@ export const SITE = {
   address: "[PENDIENTE: calle y número], 28600 Navalcarnero, Madrid",
 
   hours: "24 horas, todos los días",
-  arrivalTime: "20 minutos",
+  arrivalTime: "20-30 minutos",
   priceFrom: "[PENDIENTE: precio]",
   yearsActive: "[PENDIENTE: años]",
 
