@@ -1,11 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { SITE } from "../lib/config";
+
+const browsers = [
+  { name: "Google Chrome", url: "https://support.google.com/chrome/answer/95647" },
+  {
+    name: "Mozilla Firefox",
+    url: "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web",
+  },
+  { name: "Safari", url: "https://support.apple.com/es-es/guide/safari/sfri11471/mac" },
+  { name: "Internet Explorer", url: "https://support.microsoft.com/es-es/help/278835" },
+];
+
+const types = [
+  { name: "Cookies técnicas", desc: "permiten la navegación y el uso de servicios básicos del sitio web." },
+  {
+    name: "Cookies de personalización",
+    desc: "permiten acceder con características personalizadas, como el idioma.",
+  },
+  { name: "Cookies de seguridad", desc: "ayudan a prevenir o dificultar ataques contra la web." },
+  {
+    name: "Cookies de análisis",
+    desc: "permiten analizar el comportamiento de los usuarios en el sitio web.",
+  },
+  { name: "Cookies publicitarias", desc: "permiten gestionar los espacios publicitarios." },
+  {
+    name: "Cookies de publicidad comportamental",
+    desc: "permiten mostrar publicidad personalizada en función del comportamiento del usuario.",
+  },
+  {
+    name: "Cookies de redes sociales",
+    desc: "permiten compartir contenidos en redes sociales mediante plugins.",
+  },
+  {
+    name: "Cookies de geolocalización",
+    desc: "permiten conocer la ubicación del usuario para ofrecer servicios adaptados.",
+  },
+];
 ---
 
 <Layout
   title={`Política de cookies | ${SITE.businessName}`}
-  description={`Uso de cookies en ${SITE.domain}.`}
+  description={`Cookies que utiliza ${SITE.domain} y cómo configurarlas.`}
 >
   <main>
     <section class="page-hero page-hero--sm">
@@ -17,49 +53,104 @@ import { SITE } from "../lib/config";
 
     <section class="section band-light">
       <div class="container legal">
-        <h2>Qué son las cookies</h2>
         <p>
-          Una cookie es un pequeño archivo que una web guarda en tu navegador cuando la visitas. Sirve, por
-          ejemplo, para recordar tus preferencias o para medir cuánta gente entra en la página.
+          En cumplimiento con el deber de información recogido en el artículo 22.2 de la Ley 34/2002, de 11
+          de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la
+          presente Política de Cookies tiene por finalidad informarle de manera clara y precisa sobre las
+          cookies que se utilizan en la página web de {SITE.legalName}.
         </p>
 
-        <h2>Qué cookies usa esta web</h2>
+        <h2>¿Qué son las cookies?</h2>
         <p>
-          Esta web es estática: no tiene área de usuario, ni carrito, ni formularios que guarden datos. Por
-          eso <strong>no instala cookies propias de análisis ni de publicidad</strong>.
-        </p>
-        <p>
-          El alojamiento puede utilizar cookies estrictamente técnicas, necesarias para servir la página y
-          mantener su seguridad. Estas cookies están exentas de consentimiento según el artículo 22.2 de la
-          LSSI, porque sin ellas el sitio no puede funcionar.
+          Una cookie es un fichero de pequeño tamaño que los sitios web envían al navegador y se descargan
+          en su dispositivo. Las cookies permiten que la página web almacene y recupere información sobre
+          su visita, como su idioma preferido y otras opciones, con el fin de mejorar los servicios
+          ofrecidos y facilitar una mejor experiencia de navegación para el usuario.
         </p>
 
-        <h2>Si en el futuro añadimos analítica</h2>
+        <h2>Autorización para el uso de cookies</h2>
         <p>
-          Si más adelante instalamos herramientas de medición o publicidad (por ejemplo, analítica web),
-          actualizaremos esta página y pediremos tu consentimiento mediante un aviso antes de activarlas.
+          De conformidad con el aviso de cookies que aparece en el sitio web, el usuario acepta que, al
+          navegar por el mismo, consiente expresamente el uso de cookies según la descripción que se
+          detalla a continuación, sin perjuicio de que pueda modificar la configuración de su navegador
+          para rechazar su uso.
         </p>
 
-        <h2>Cómo controlar las cookies</h2>
-        <p>
-          Puedes bloquear o borrar las cookies desde la configuración de tu navegador. Ten en cuenta que
-          desactivar las técnicas puede impedir que algunas páginas se muestren correctamente. Aquí tienes
-          la ayuda de los navegadores más habituales:
-        </p>
+        <h2>Cookies utilizadas en la web</h2>
+        <p>En el sitio web se utilizan diferentes tipos de cookies con distintas finalidades:</p>
+
+        <h3>En función de la entidad que las gestione</h3>
         <ul class="ticks">
-          <li>Chrome: Configuración → Privacidad y seguridad → Cookies</li>
-          <li>Firefox: Ajustes → Privacidad y seguridad</li>
-          <li>Safari: Preferencias → Privacidad</li>
-          <li>Edge: Configuración → Cookies y permisos del sitio</li>
+          <li>
+            <strong>Cookies propias:</strong> enviadas desde un dominio gestionado por el propio titular de
+            la web.
+          </li>
+          <li><strong>Cookies de terceros:</strong> enviadas desde un dominio gestionado por otra entidad.</li>
         </ul>
 
-        <h2>Más información</h2>
+        <h3>En función del tiempo que permanecen activas</h3>
+        <ul class="ticks">
+          <li><strong>Cookies de sesión:</strong> se eliminan al cerrar el navegador.</li>
+          <li><strong>Cookies persistentes:</strong> permanecen almacenadas durante un periodo determinado.</li>
+        </ul>
+
+        <h3>En función de su finalidad</h3>
+        <ul class="ticks">
+          {types.map((t) => (
+            <li>
+              <strong>{t.name}:</strong> {t.desc}
+            </li>
+          ))}
+        </ul>
+
+        <h2>Cookies concretas utilizadas</h2>
         <p>
-          Para saber cómo tratamos tus datos personales, consulta la
-          {" "}<a href="/politica-privacidad/">política de privacidad</a>. Si tienes dudas, escríbenos a
-          {" "}<a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+          Este sitio web puede utilizar servicios de terceros que recopilan información con fines
+          estadísticos y de uso de la web por parte del usuario, tales como:
+        </p>
+        <ul class="ticks">
+          <li>Google Analytics (análisis del tráfico web)</li>
+          <li>Google Ads (publicidad)</li>
+        </ul>
+        <p>
+          Estas herramientas pueden instalar cookies que permiten analizar el comportamiento de los
+          usuarios en la web.
+        </p>
+
+        <h2>Cómo modificar la configuración de las cookies</h2>
+        <p>
+          El usuario puede restringir, bloquear o eliminar las cookies mediante la configuración de su
+          navegador. A continuación, se facilitan enlaces con información para los principales navegadores:
+        </p>
+        <ul class="ticks">
+          {
+            browsers.map((b) => (
+              <li>
+                <strong>{b.name}:</strong>{" "}
+                <a href={b.url} target="_blank" rel="noopener noreferrer">
+                  {b.url}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p>La desactivación de cookies puede afectar al correcto funcionamiento del sitio web.</p>
+
+        <h2>Modificación de la política de cookies</h2>
+        <p>
+          {SITE.legalName} se reserva el derecho a modificar la presente Política de Cookies en cualquier
+          momento. Se recomienda al usuario revisar esta política periódicamente.
         </p>
       </div>
     </section>
   </main>
 </Layout>
+
+<style>
+  .legal h3 {
+    margin: 2rem 0 .75rem;
+    font-size: 1.125rem;
+    color: var(--c-navy);
+  }
+  .legal .ticks a { word-break: break-all; }
+</style>
