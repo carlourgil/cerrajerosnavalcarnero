@@ -2,54 +2,127 @@
 import { SITE } from "../lib/config";
 ---
 
-<header class="header header--sticky">
+<header class="header">
   <div class="container header__inner">
-    <a href="/" class="header__logo">
-      <span class="header__logo-mark">CerraNexo</span>
-      <span class="header__logo-city">{SITE.location}</span>
+    <a href="/" class="wordmark">
+      <span class="wordmark__text">CERRA<span class="accent">NEXO</span></span>
+      <span class="wordmark__meta">
+        <span class="wordmark__title">Cerrajeros {SITE.location}</span>
+        <span class="wordmark__sub">24 h</span>
+      </span>
     </a>
 
-    <ul class="nav">
-      <li><a href="/servicios/">Servicios</a></li>
-      <li><a href="/zonas/">Zonas</a></li>
-      <li><a href="/contacto/">Contacto</a></li>
-    </ul>
+    <nav>
+      <ul class="nav">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/servicios/">Servicios</a></li>
+        <li><a href="/zonas/">Zonas</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+      </ul>
+    </nav>
 
-    <a href={`tel:${SITE.phone}`} class="btn">📞 {SITE.phoneDisplay}</a>
+    <div class="header__actions">
+      <div class="header__price">
+        <span class="header__price-value"><span>Desde</span>[PENDIENTE]</span>
+        <span class="header__price-label">Tarifa apertura</span>
+      </div>
+
+      <a href={`tel:${SITE.phone}`} class="btn btn--phone" aria-label={`Llamar a ${SITE.businessName}`}>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
+        </svg>
+        {SITE.phoneDisplay}
+      </a>
+
+      <button class="header__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" data-mobile-menu hidden>
+    <div class="container mobile-menu__inner">
+      <p class="mobile-menu__label">Navegación</p>
+      <a href="/">Inicio</a>
+      <a href="/servicios/">Servicios</a>
+      <a href="/zonas/">Zonas</a>
+      <a href="/contacto/">Contacto</a>
+
+      <div class="mobile-menu__cta">
+        <p class="mobile-menu__cta-label">Urgencias 24 h</p>
+        <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar ahora</a>
+      </div>
+    </div>
   </div>
 </header>
 
 <style>
-  .header--sticky {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 1px solid var(--c-grey-200);
+  .header__toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    color: var(--c-navy);
+    cursor: pointer;
   }
-  .header__logo {
-    display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    text-decoration: none;
+  .mobile-menu {
+    border-top: 1px solid var(--c-gray-100);
+    background: rgba(255, 255, 255, .97);
+    backdrop-filter: blur(14px);
   }
-  .header__logo-mark {
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-style: italic;
+  .mobile-menu__inner { display: flex; flex-direction: column; gap: .5rem; padding-block: 1.5rem 2rem; }
+  .mobile-menu__label {
+    margin: 0 0 .5rem;
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-black);
     text-transform: uppercase;
-    font-size: 1.4rem;
-    color: var(--c-ink);
+    letter-spacing: .3em;
+    color: var(--c-orange);
   }
-  .header__logo-city {
+  .mobile-menu__inner > a {
+    padding: .875rem 1rem;
+    border-radius: var(--r-xs);
+    background: var(--c-gray-50);
+    border: 1px solid var(--c-gray-100);
+    font-weight: var(--fw-bold);
+    color: var(--c-navy);
+  }
+  .mobile-menu__cta {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: var(--r-lg);
+    background: var(--c-navy);
+    color: var(--c-white);
+  }
+  .mobile-menu__cta-label {
+    margin: 0 0 .75rem;
     font-size: var(--fs-xs);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-black);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--c-red);
+    letter-spacing: .2em;
+    color: var(--c-orange);
   }
-  @media (max-width: 767px) {
-    .nav {
-      display: none;
-    }
+  @media (max-width: 1023px) {
+    .header__toggle { display: inline-flex; }
+  }
+  @media (min-width: 1024px) {
+    .mobile-menu { display: none; }
   }
 </style>
+
+<script>
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+
+  toggle?.addEventListener("click", () => {
+    const open = menu.hidden;
+    menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+</script>

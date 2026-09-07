@@ -2,31 +2,77 @@
 import { SITE } from "../lib/config";
 
 const faqs = [
-  { q: `¿Llegáis rápido a cualquier zona de ${SITE.location}?`, a: `Sí, trabajamos en ${SITE.serviceArea}. La llegada media es de ${SITE.arrivalTime}.` },
-  { q: "¿Cuánto cuesta la apertura de puertas?", a: "Te damos un precio cerrado por teléfono antes de desplazarnos, para evitar sorpresas." },
-  { q: "¿Hacéis cambios de bombín antibumping?", a: "Sí, instalamos bombines de alta seguridad certificados contra bumping, ganzuado y taladro." },
-  { q: "¿Atendéis urgencias fuera de horario?", a: `Sí, nuestro servicio de urgencias está disponible ${SITE.hours}.` },
+  {
+    q: `¿Llegáis rápido a cualquier zona de ${SITE.location}?`,
+    a: `Sí. Trabajamos en ${SITE.serviceArea} y la llegada media es de ${SITE.arrivalTime}, festivos incluidos.`,
+  },
+  {
+    q: "¿Cuánto cuesta la apertura de puertas?",
+    a: "Te damos un precio cerrado por teléfono antes de desplazarnos, para que no haya sorpresas al llegar.",
+  },
+  {
+    q: "¿Hacéis cambios de bombín antibumping?",
+    a: "Es de lo que más hacemos. Instalamos bombines certificados contra bumping, ganzuado y taladro.",
+  },
+  {
+    q: "¿Atendéis urgencias de madrugada?",
+    a: `Sí, el servicio de urgencias está disponible ${SITE.hours}.`,
+  },
 ];
 ---
 
-<section id="faq" class="section band-light">
+<section id="faq" class="section band-muted">
   <div class="container">
-    <div class="text-center stack" style="max-width: 640px; margin: 0 auto 3rem;">
-      <h2>Preguntas Frecuentes</h2>
+    <div class="section-head">
+      <h2>Preguntas <span class="accent">frecuentes</span></h2>
+      <p class="subhead">Todo lo que necesitas saber antes de llamar a tu cerrajero en {SITE.location}.</p>
     </div>
 
-    <div class="grid">
+    <div class="faq-grid">
       {
         faqs.map((f, i) => (
-          <div class="card">
-            <div class="card__body">
-              <span class="eyebrow">{String(i + 1).padStart(2, "0")}</span>
-              <h4>{f.q}</h4>
-              <p>{f.a}</p>
-            </div>
+          <div class="faq-card">
+            <span class="faq-card__num">{i + 1}</span>
+            <h3 class="faq-card__q">{f.q}</h3>
+            <p class="faq-card__a">{f.a}</p>
           </div>
         ))
       }
     </div>
   </div>
 </section>
+
+<style>
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 64rem;
+    margin-inline: auto;
+  }
+  .faq-card {
+    padding: 2.5rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-sm);
+    transition: box-shadow var(--ease);
+  }
+  .faq-card:hover { box-shadow: var(--sh-float); }
+  .faq-card__num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    border-radius: var(--r-xs);
+    background: var(--c-gray-100);
+    color: var(--c-gray-500);
+    font-weight: var(--fw-black);
+    transition: background var(--ease), color var(--ease);
+  }
+  .faq-card:hover .faq-card__num { background: var(--c-orange); color: var(--c-white); }
+  .faq-card__q { margin: 0 0 1rem; font-size: 1.5rem; color: var(--c-navy); }
+  .faq-card__a { margin: 0; color: var(--c-gray-500); font-weight: 500; }
+</style>

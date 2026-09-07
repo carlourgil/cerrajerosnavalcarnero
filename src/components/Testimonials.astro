@@ -7,60 +7,53 @@ const count = testimonials.length;
 const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0) / count : 0;
 ---
 
-<section class="section band-muted">
+<section id="opiniones" class="section band-light">
   <div class="container">
-    <div class="text-center" style="max-width: 720px; margin: 0 auto 3rem;">
+    <div class="section-head">
       <span class="eyebrow">Lo que dicen nuestros vecinos</span>
-      <h2>
-        Opiniones <span style="color: var(--c-red);">reales</span>
-      </h2>
+      <h2>Opiniones <span class="accent">reales</span></h2>
       {
         count > 0 ? (
           <p class="subhead">
             {count} {count === 1 ? "opinión" : "opiniones"} de clientes en {SITE.location}
           </p>
         ) : (
-          <p class="subhead">Empezamos a construir nuestra reputación en {SITE.location}</p>
+          <p class="subhead">Estamos empezando a construir nuestra reputación en {SITE.location}</p>
         )
       }
     </div>
 
     {
       count > 0 && (
-        <div class="rating-summary">
-          <div class="rating-summary__score">
-            <span class="rating-summary__number">{avgRating.toFixed(1)}</span>
+        <div class="rating">
+          <div class="rating__score">
+            <span class="rating__number">{avgRating.toFixed(1)}</span>
             <div>
-              <div class="rating-summary__stars" aria-hidden="true">
+              <div class="rating__stars" aria-hidden="true">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill={i < Math.round(avgRating) ? "currentColor" : "none"} stroke="currentColor" stroke-width="1.5">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill={i < Math.round(avgRating) ? "currentColor" : "none"} stroke="currentColor" stroke-width="1.5">
                     <path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6-5.9-3.3-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.7z" />
                   </svg>
                 ))}
               </div>
-              <span class="rating-summary__label">Media de clientes</span>
+              <span class="rating__label">Media de clientes</span>
             </div>
-          </div>
-          <div class="rating-summary__divider" />
-          <div class="rating-summary__count">
-            <p class="rating-summary__number" style="font-size: 1.5rem;">{count}</p>
-            <span class="rating-summary__label">{count === 1 ? "Opinión" : "Opiniones"}</span>
           </div>
         </div>
       )
     }
 
-    <div class="reviews-grid">
+    <div class="reviews">
       {
         count > 0 ? (
           testimonials.map((t) => (
-            <div class="review-card">
-              <div class="review-card__header">
+            <div class="review">
+              <div class="review__header">
                 <div>
-                  <h4 class="review-card__name">{t.name}</h4>
-                  <span class="review-card__zone">{t.zone}</span>
+                  <h4 class="review__name">{t.name}</h4>
+                  <span class="review__zone">{t.zone}</span>
                 </div>
-                <div class="review-card__stars" aria-hidden="true">
+                <div class="review__stars" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg width="14" height="14" viewBox="0 0 24 24" fill={i < t.rating ? "currentColor" : "none"} stroke="currentColor" stroke-width="1.5">
                       <path d="M12 2.5l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6-5.9-3.3-5.9 3.3 1.3-6.6-4.9-4.5 6.6-.7z" />
@@ -68,17 +61,17 @@ const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0)
                   ))}
                 </div>
               </div>
-              <span class="review-card__service">{t.service}</span>
-              <p class="review-card__text">"{t.text}"</p>
-              <p class="review-card__date">{t.date}</p>
+              <span class="review__service">{t.service}</span>
+              <p class="review__text">«{t.text}»</p>
+              <p class="review__date">{t.date}</p>
             </div>
           ))
         ) : (
-          <div class="review-card review-card--empty">
-            <p class="review-card__name" style="margin-bottom: 0.75rem;">Sé de los primeros en darnos tu opinión</p>
-            <p class="review-card__text">
-              Si te atendemos, cuéntanos qué tal fue el servicio — nos ayuda a mejorar y ayuda a tus vecinos a
-              decidir.
+          <div class="review review--empty">
+            <h4 class="review__name">Sé de los primeros en opinar</h4>
+            <p class="review__text">
+              Cuando te atendamos, cuéntanos qué tal fue. Publicamos solo opiniones reales de clientes de
+              {" "}{SITE.location}.
             </p>
           </div>
         )
@@ -88,13 +81,9 @@ const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0)
     <div class="text-center" style="margin-top: 3rem;">
       {
         hasGmb ? (
-          <a href={SITE.gmbUrl} class="btn btn--ghost">
-            Ver todas las opiniones en Google →
-          </a>
+          <a href={SITE.gmbUrl} class="btn btn--ghost">Ver todas las opiniones en Google</a>
         ) : (
-          <a href={`tel:${SITE.phone}`} class="btn btn--ghost">
-            Llámanos y cuéntanos tu experiencia →
-          </a>
+          <a href={`tel:${SITE.phone}`} class="btn btn--ghost">Llámanos y cuéntanos tu experiencia</a>
         )
       }
     </div>
@@ -102,116 +91,67 @@ const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0)
 </section>
 
 <style>
-  .rating-summary {
+  .rating {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 2rem;
-    background: var(--c-white);
-    border: 1px solid var(--c-grey-200);
-    border-radius: var(--r-md);
-    box-shadow: var(--sh-card);
-    padding: 1.5rem 2rem;
-    max-width: 420px;
-    margin: 0 auto 3rem;
+    margin-bottom: 3rem;
   }
-  .rating-summary__score {
+  .rating__score {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-  }
-  .rating-summary__number {
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-size: 2.25rem;
-    color: var(--c-ink);
-    line-height: 1;
-  }
-  .rating-summary__stars {
-    display: flex;
-    gap: 2px;
-    color: var(--c-red);
-    margin-bottom: 2px;
-  }
-  .rating-summary__label {
-    font-size: var(--fs-xs);
-    color: var(--c-grey-400);
-  }
-  .rating-summary__divider {
-    width: 1px;
-    height: 40px;
-    background: var(--c-grey-200);
-  }
-  .rating-summary__count {
-    text-align: center;
-  }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  .review-card {
+    gap: 1rem;
+    padding: 1.5rem 2.5rem;
     background: var(--c-white);
-    border: 1px solid var(--c-grey-200);
-    border-radius: var(--r-md);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-lg);
     box-shadow: var(--sh-card);
-    padding: 1.75rem;
-    transition: box-shadow var(--ease), transform var(--ease);
   }
-  .review-card:hover {
-    box-shadow: var(--sh-float);
-    transform: translateY(-4px);
+  .rating__number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: var(--fw-black);
+    font-style: italic;
+    line-height: 1;
+    color: var(--c-navy);
   }
-  .review-card__header {
+  .rating__stars { display: flex; gap: 2px; color: var(--c-orange); }
+  .rating__label { font-size: var(--fs-xs); color: var(--c-gray-500); }
+
+  .reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .review {
+    padding: 2.5rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-card);
+    transition: transform var(--ease), box-shadow var(--ease);
+  }
+  .review:hover { transform: translateY(-6px); box-shadow: var(--sh-float); }
+  .review__header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
-  .review-card__name {
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    text-transform: uppercase;
-    font-size: 1rem;
-    color: var(--c-ink);
-    margin: 0;
-  }
-  .review-card__zone {
-    font-size: var(--fs-xs);
-    color: var(--c-grey-400);
-  }
-  .review-card__stars {
-    display: flex;
-    gap: 1px;
-    color: var(--c-red);
-    flex-shrink: 0;
-  }
-  .review-card__service {
+  .review__name { margin: 0; font-size: 1.125rem; color: var(--c-navy); }
+  .review__zone { font-size: var(--fs-xs); color: var(--c-gray-400); }
+  .review__stars { display: flex; gap: 1px; color: var(--c-orange); flex-shrink: 0; }
+  .review__service {
     display: inline-block;
-    background: var(--c-red-light);
-    color: var(--c-red-dark);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-bold);
-    padding: 0.25rem 0.75rem;
+    margin-bottom: 1rem;
+    padding: .25rem .875rem;
+    background: rgba(238, 108, 77, .1);
+    color: var(--c-orange);
     border-radius: var(--r-pill);
-    margin-bottom: 0.75rem;
-  }
-  .review-card__text {
-    color: var(--c-grey-700);
-    font-size: var(--fs-sm);
-    margin-bottom: 0.75rem;
-  }
-  .review-card__date {
     font-size: var(--fs-xs);
-    color: var(--c-grey-400);
-    margin: 0;
+    font-weight: var(--fw-black);
   }
-  .review-card--empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    max-width: 520px;
-    margin-inline: auto;
-  }
+  .review__text { color: var(--c-gray-500); font-weight: 500; margin-bottom: .75rem; }
+  .review__date { margin: 0; font-size: var(--fs-xs); color: var(--c-gray-400); }
+  .review--empty { grid-column: 1 / -1; max-width: 34rem; margin-inline: auto; text-align: center; }
 </style>

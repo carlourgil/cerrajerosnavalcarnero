@@ -2,28 +2,53 @@
 import { SITE } from "../lib/config";
 
 const features = [
-  { title: "Presupuesto cerrado", desc: "Te damos el precio final por teléfono, antes de que el técnico se desplace. Sin sorpresas." },
-  { title: "Apertura sin daños", desc: "Técnicas profesionales de ganzuado para que tu puerta quede intacta." },
+  {
+    title: "Presupuesto cerrado",
+    desc: "Te damos el precio final por teléfono. Sin sorpresas, sin abusos.",
+    icon: "check",
+  },
+  {
+    title: "Apertura sin daños",
+    desc: "Expertos en ganzuado y técnicas limpias. Tu puerta quedará perfecta.",
+    icon: "shield",
+  },
 ];
 ---
 
-<section class="section band-light">
+<section id="ventajas" class="section band-light">
   <div class="container">
     <div class="zigzag">
       <div>
         <h2>
-          Tu vecino en<br />
-          <span style="color: var(--c-red);">{SITE.location}</span>
+          Tu vecino en la<br />
+          <span class="accent">Plaza de Segovia</span>
         </h2>
-        <p class="subhead">
-          En {SITE.businessName} no somos una centralita fría de internet. Somos cerrajeros que trabajan en {SITE.serviceArea}.
+        <p class="subhead measure">
+          En <strong>{SITE.businessName}</strong> no somos una centralita fría de internet. Somos cerrajeros
+          que trabajan en <strong class="whyus__mark">{SITE.location}</strong>.
         </p>
-        <div class="whyus__cards">
+
+        <div class="whyus__list">
           {
             features.map((f) => (
               <div class="whyus__card">
-                <h4>{f.title}</h4>
-                <p>{f.desc}</p>
+                <span class="whyus__icon">
+                  {f.icon === "check" && (
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M8.5 12.5l2.5 2.5 4.5-5"></path>
+                    </svg>
+                  )}
+                  {f.icon === "shield" && (
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3l7 3v5c0 4.4-2.9 8.3-7 9.5C7.9 19.3 5 15.4 5 11V6l7-3z"></path>
+                    </svg>
+                  )}
+                </span>
+                <div>
+                  <h3 class="whyus__title">{f.title}</h3>
+                  <p class="whyus__desc">{f.desc}</p>
+                </div>
               </div>
             ))
           }
@@ -31,12 +56,11 @@ const features = [
       </div>
 
       <div class="whyus__media">
-        <div class="whyus__media-placeholder">
-          <p>[PENDIENTE: foto del equipo o de un técnico trabajando]</p>
-        </div>
+        <div class="whyus__photo">[PENDIENTE: foto del técnico trabajando en {SITE.location}]</div>
         <div class="whyus__badge">
-          <p class="eyebrow" style="margin-bottom: 4px;">Confianza local</p>
-          <p class="whyus__badge-title">Cerrajeros de tu barrio</p>
+          <span class="whyus__badge-eyebrow">Confianza local</span>
+          <span class="whyus__badge-value">[PENDIENTE] años</span>
+          <span class="whyus__badge-sub">Abriendo {SITE.location}</span>
         </div>
       </div>
     </div>
@@ -44,63 +68,99 @@ const features = [
 </section>
 
 <style>
-  .whyus__cards {
-    display: grid;
-    gap: 1rem;
-    margin-top: 2.5rem;
+  .whyus__mark {
+    color: var(--c-navy);
+    font-weight: var(--fw-black);
+    text-decoration: underline;
+    text-decoration-color: var(--c-orange);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 4px;
   }
+  .whyus__list { display: grid; gap: 2rem; margin-top: 3rem; }
   .whyus__card {
-    background: var(--c-grey-200);
-    border-radius: var(--r-md);
-    padding: 1.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-xl);
+    transition: background var(--ease), box-shadow var(--ease);
   }
-  .whyus__card h4 {
-    margin-bottom: 0.4rem;
+  .whyus__card:hover { background: var(--c-white); box-shadow: var(--sh-float); }
+  .whyus__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: var(--r-sm);
+    background: rgba(238, 108, 77, .1);
+    color: var(--c-orange);
+    transition: background var(--ease), color var(--ease);
   }
-  .whyus__card p {
-    margin: 0;
-    color: var(--c-grey-700);
+  .whyus__card:hover .whyus__icon { background: var(--c-orange); color: var(--c-white); }
+  .whyus__title {
+    margin: 0 0 .25rem;
+    font-size: 1.5rem;
+    color: var(--c-navy);
   }
-  .whyus__media {
-    position: relative;
-  }
-  .whyus__media-placeholder {
-    aspect-ratio: 4 / 5;
-    border-radius: var(--r-md);
-    background: var(--c-grey-200);
+  .whyus__desc { margin: 0; color: var(--c-gray-500); font-weight: 500; }
+
+  .whyus__media { position: relative; }
+  .whyus__photo {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    aspect-ratio: 4 / 5;
     padding: 2rem;
-    color: var(--c-grey-700);
-    box-shadow: var(--sh-float);
+    border: 8px solid var(--c-white);
+    border-radius: var(--r-2xl);
+    background: var(--c-gray-100);
+    box-shadow: var(--sh-2xl);
+    color: var(--c-gray-500);
+    font-weight: var(--fw-bold);
   }
   .whyus__badge {
     position: absolute;
-    bottom: -1.5rem;
     right: -1rem;
-    background: var(--c-black);
+    bottom: -2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    padding: 2rem;
+    background: var(--c-navy);
     color: var(--c-white);
-    padding: 1.5rem 2rem;
-    border-radius: var(--r-sm);
-    border: 3px solid var(--c-red);
+    border: 4px solid var(--c-orange);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-2xl);
     transform: rotate(3deg);
-    box-shadow: var(--sh-float);
   }
-  .whyus__badge-title {
+  .whyus__badge-eyebrow {
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-black);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: var(--c-orange);
+  }
+  .whyus__badge-value {
     font-family: var(--font-display);
-    font-weight: var(--fw-bold);
+    font-size: 1.75rem;
+    font-weight: var(--fw-black);
     font-style: italic;
     text-transform: uppercase;
-    font-size: 1.15rem;
-    margin: 0;
+    line-height: 1;
   }
-  @media (max-width: 600px) {
-    .whyus__badge {
-      position: static;
-      transform: none;
-      margin-top: 1rem;
-    }
+  .whyus__badge-sub {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    color: var(--c-gray-400);
+  }
+  @media (max-width: 767px) {
+    .whyus__badge { position: static; transform: none; margin-top: 1.5rem; }
   }
 </style>

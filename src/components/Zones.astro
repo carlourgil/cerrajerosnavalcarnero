@@ -6,51 +6,184 @@ const barrios = zones.filter((z) => z.kind === "barrio");
 const municipios = zones.filter((z) => z.kind === "municipio");
 ---
 
-<section class="section band-light">
+<section id="zonas" class="section band-muted">
   <div class="container">
-    <div class="text-center stack" style="margin-bottom: 3rem;">
-      <span class="eyebrow">Zona de cobertura</span>
-      <h2>Llegamos a todo {SITE.location}</h2>
+    <div class="section-head">
+      <span class="eyebrow">Mapa de cobertura</span>
+      <h2>¿En qué zona <span class="accent">estás</span>?</h2>
+      <p class="subhead">Elige tu barrio y te decimos cuánto tardamos en llegar.</p>
     </div>
 
-    <div class="grid zones-grid">
-      {
-        barrios.map((z) => (
-          <a href={`/zonas/${z.slug}/`} class="btn btn--ghost btn--block zone-link">
-            {z.name}
-          </a>
-        ))
-      }
-    </div>
-
-    {
-      municipios.length > 0 && (
-        <>
-          <div class="text-center stack zones-subhead">
-            <h3>También en municipios cercanos</h3>
-          </div>
-          <div class="grid zones-grid">
-            {municipios.map((z) => (
-              <a href={`/zonas/${z.slug}/`} class="btn btn--ghost btn--block zone-link">
+    <div class="coverage">
+      <div class="coverage__list">
+        <p class="coverage__group">{SITE.location}</p>
+        <div class="coverage__buttons">
+          {
+            barrios.map((z) => (
+              <button
+                type="button"
+                class="coverage__zone"
+                data-zone={z.name}
+                data-href={`/zonas/${z.slug}/`}
+              >
                 {z.name}
-              </a>
-            ))}
+              </button>
+            ))
+          }
+        </div>
+
+        <p class="coverage__group">Municipios cercanos</p>
+        <div class="coverage__buttons">
+          {
+            municipios.map((z) => (
+              <button
+                type="button"
+                class="coverage__zone"
+                data-zone={z.name}
+                data-href={`/zonas/${z.slug}/`}
+              >
+                {z.name}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="coverage__panel">
+        <div class="coverage__empty" data-coverage-empty>
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <p>Selecciona tu zona para ver el tiempo de llegada</p>
+        </div>
+
+        <div class="coverage__result" data-coverage-result hidden>
+          <span class="coverage__result-label">Cerrajero en</span>
+          <h3 class="coverage__result-zone" data-coverage-zone></h3>
+          <div class="coverage__time">
+            <span class="ping ping--green"></span>
+            Llegada estimada: <strong>{SITE.arrivalTime}</strong>
           </div>
-        </>
-      )
-    }
+          <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar ahora</a>
+          <a class="coverage__link" href="/zonas/" data-coverage-link>Ver la página de esta zona</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-  .zones-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  .coverage {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2rem;
+    align-items: start;
   }
-  .zone-link {
-    border-color: var(--c-grey-200);
-    color: var(--c-ink);
+  @media (max-width: 900px) { .coverage { grid-template-columns: 1fr; } }
+
+  .coverage__list {
+    padding: 2.5rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-card);
   }
-  .zones-subhead {
-    margin: 3rem 0 1.5rem;
+  .coverage__group {
+    margin: 0 0 1rem;
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-black);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: var(--c-orange);
+  }
+  .coverage__group + .coverage__buttons { margin-bottom: 2rem; }
+  .coverage__buttons { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; }
+  .coverage__buttons:last-child { margin-bottom: 0; }
+
+  .coverage__zone {
+    min-height: 48px;
+    padding: 0 1.25rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--c-gray-200);
+    border-radius: var(--r-pill);
+    font: inherit;
+    font-weight: var(--fw-bold);
+    color: var(--c-navy);
+    cursor: pointer;
+    transition: background var(--ease), color var(--ease), border-color var(--ease), transform var(--ease);
+  }
+  .coverage__zone:hover { border-color: var(--c-orange); color: var(--c-orange); transform: translateY(-2px); }
+  .coverage__zone[aria-pressed="true"] {
+    background: var(--c-orange);
+    border-color: var(--c-orange);
+    color: var(--c-white);
+  }
+
+  .coverage__panel {
+    padding: 2.5rem;
+    background: var(--c-navy);
+    color: var(--c-white);
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-2xl);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .coverage__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    color: var(--c-gray-400);
+  }
+  .coverage__empty p { margin: 0; font-weight: var(--fw-bold); }
+
+  .coverage__result-label {
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-black);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: var(--c-orange);
+  }
+  .coverage__result-zone { margin: .5rem 0 1.5rem; color: var(--c-white); font-size: 2.25rem; }
+  .coverage__time {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 2rem;
+    font-weight: var(--fw-bold);
+    color: #CBD5E1;
+  }
+  .coverage__time strong { color: var(--c-white); }
+  .coverage__link {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--c-gray-400);
   }
 </style>
+
+<script>
+  const buttons = document.querySelectorAll(".coverage__zone");
+  const empty = document.querySelector("[data-coverage-empty]");
+  const result = document.querySelector("[data-coverage-result]");
+  const zoneName = document.querySelector("[data-coverage-zone]");
+  const zoneLink = document.querySelector("[data-coverage-link]");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((b) => b.setAttribute("aria-pressed", "false"));
+      button.setAttribute("aria-pressed", "true");
+
+      zoneName.textContent = button.dataset.zone;
+      zoneLink.setAttribute("href", button.dataset.href);
+      empty.hidden = true;
+      result.hidden = false;
+    });
+  });
+</script>

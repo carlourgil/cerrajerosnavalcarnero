@@ -1,23 +1,62 @@
 ---
 import { services } from "../data/services";
+import { SITE } from "../lib/config";
 ---
 
-<section class="section band-light">
+<section id="servicios" class="section band-light">
   <div class="container">
-    <div class="text-center stack" style="margin-bottom: 3rem;">
+    <div class="section-head">
       <span class="eyebrow">Nuestros servicios</span>
-      <h2>Todo lo que necesita tu cerradura</h2>
+      <h2>Servicios de cerrajería en <span class="accent">{SITE.location}</span></h2>
+      <p class="subhead">Soluciones profesionales para tu hogar o negocio. Calidad garantizada.</p>
     </div>
 
     <div class="grid">
       {
         services.map((s) => (
-          <a href={`/servicios/${s.slug}/`} class="card" style="padding: 0; text-decoration: none;">
+          <a href={`/servicios/${s.slug}/`} class="card">
             <div class="card__body">
-              <span class="eyebrow">{s.short}</span>
+              <span class="card__icon">
+                {s.slug === "apertura-de-puertas" && (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 21V5a2 2 0 012-2h9a2 2 0 012 2v16"></path>
+                    <path d="M3 21h18"></path>
+                    <circle cx="14" cy="12" r="1"></circle>
+                  </svg>
+                )}
+                {s.slug === "cambio-de-bombin" && (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="12" r="5"></circle>
+                    <path d="M14 12h7M18 12v4"></path>
+                  </svg>
+                )}
+                {s.slug === "cambio-de-cerraduras" && (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="10" width="16" height="11" rx="2"></rect>
+                    <path d="M8 10V7a4 4 0 018 0v3"></path>
+                  </svg>
+                )}
+                {s.slug === "amaestramiento" && (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="9" r="4"></circle>
+                    <path d="M11 11l8 8M16 16l2 2M14 14l2 2"></path>
+                  </svg>
+                )}
+                {s.slug === "urgencias-24h" && (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"></path>
+                  </svg>
+                )}
+              </span>
+
               <h4>{s.title}</h4>
               <p>{s.description}</p>
-              <span class="card__link">Ver más →</span>
+              <span class="card__link">
+                Ver detalles
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+              </span>
             </div>
           </a>
         ))
