@@ -15,9 +15,11 @@ export const SITE = {
   landmark: "Plaza de Segovia",
   postalCode: "28600",
 
-  phone: "[PENDIENTE: teléfono]",
-  phoneDisplay: "[PENDIENTE: teléfono]",
-  whatsapp: "[PENDIENTE: WhatsApp con prefijo, ej. 34600000000]",
+  phone: "919932895",
+  phoneDisplay: "919 93 28 95",
+  // Con prefijo y sin espacios (ej. 34600000000). Mientras esté pendiente, los
+  // botones de WhatsApp no se muestran, para no dejar enlaces muertos.
+  whatsapp: "[PENDIENTE: WhatsApp con prefijo]",
   email: "info@cerrajerosnavalcarnero.madrid",
   domain: "cerrajerosnavalcarnero.madrid",
 

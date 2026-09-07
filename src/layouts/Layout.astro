@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description = SITE.description } = Astro.props;
+const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 ---
 
 <!doctype html>
@@ -58,8 +59,9 @@ const { title, description = SITE.description } = Astro.props;
     <Footer />
 
     <div class="sticky-bar">
-      <a class="btn btn--dark" href={`tel:${SITE.phone}`}>Llamar</a>
-      <a class="btn" href={`https://wa.me/${SITE.whatsapp}`}>WhatsApp</a>
+      {hasWhatsapp && <a class="btn btn--dark" href={`tel:${SITE.phone}`}>Llamar</a>}
+      {hasWhatsapp && <a class="btn" href={`https://wa.me/${SITE.whatsapp}`}>WhatsApp</a>}
+      {!hasWhatsapp && <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar {SITE.phoneDisplay}</a>}
     </div>
   </body>
 </html>

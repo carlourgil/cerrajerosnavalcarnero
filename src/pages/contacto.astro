@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import LocationSection from "../components/LocationSection.astro";
 import CTA from "../components/CTA.astro";
 import { SITE } from "../lib/config";
+
+const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 ---
 
 <Layout
@@ -29,12 +31,16 @@ import { SITE } from "../lib/config";
             </span>
           </a>
 
-          <a href={`https://wa.me/${SITE.whatsapp}`} class="btn btn--ghost btn--on-dark">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z"></path>
-            </svg>
-            Escribir por WhatsApp
-          </a>
+          {
+            hasWhatsapp && (
+              <a href={`https://wa.me/${SITE.whatsapp}`} class="btn btn--ghost btn--on-dark">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z"></path>
+                </svg>
+                Escribir por WhatsApp
+              </a>
+            )
+          }
         </div>
 
         <p class="contact-mail">
