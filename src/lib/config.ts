@@ -18,7 +18,7 @@ export const SITE = {
   phone: "[PENDIENTE: teléfono]",
   phoneDisplay: "[PENDIENTE: teléfono]",
   whatsapp: "[PENDIENTE: WhatsApp con prefijo, ej. 34600000000]",
-  email: "info@cerrajerosnavalcarnero.madrid",
+  email: "info@urgil24cerrajeros.es",
   domain: "cerrajerosnavalcarnero.madrid",
 
   addressStreet: "[PENDIENTE: calle y número]",
@@ -33,8 +33,10 @@ export const SITE = {
   gmbUrl: "[PENDIENTE: enlace a tu ficha de Google Business]",
 
   // Datos fiscales para el aviso legal y la política de privacidad.
-  legalName: "[PENDIENTE: razón social]",
-  nif: "[PENDIENTE: NIF]",
-  legalAddress: "[PENDIENTE: domicilio social]",
-  legalRegistry: "[PENDIENTE: datos registrales]",
+  legalName: "Urgil 24 SL",
+  nif: "B86864147",
+  legalAddress:
+    "Calle General Álvarez de Castro, 41, Esc. Izqda, Planta 1, Oficina 10, 28010 Madrid",
+  legalRegistry:
+    "Inscrita en el Registro Mercantil de Madrid, al Tomo 31698, Folio 176, Sección 8, Hoja M-570410, Inscripción 1ª.",
 } as const;
