@@ -11,7 +11,7 @@ export const SITE = {
     "Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegamos en 20-30 minutos.",
 
   location: "Navalcarnero",
-  serviceArea: "Navalcarnero y alrededores",
+  serviceArea: "todo Navalcarnero",
   landmark: "Plaza de Segovia",
   postalCode: "28600",
 
