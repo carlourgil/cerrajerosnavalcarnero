@@ -18,7 +18,7 @@ export const SITE = {
   phone: "[PENDIENTE: teléfono]",
   phoneDisplay: "[PENDIENTE: teléfono]",
   whatsapp: "[PENDIENTE: WhatsApp con prefijo, ej. 34600000000]",
-  email: "info@urgil24cerrajeros.es",
+  email: "info@cerrajerosnavalcarnero.madrid",
   domain: "cerrajerosnavalcarnero.madrid",
 
   addressStreet: "[PENDIENTE: calle y número]",
