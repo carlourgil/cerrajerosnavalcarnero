@@ -29,7 +29,12 @@ export const SITE = {
 
   hours: "24 horas, todos los días",
   arrivalTime: "20-30 minutos",
-  priceFrom: "[PENDIENTE: precio]",
+  // Tarifa de apertura de puertas. El precio mostrado cambia según la hora
+  // (hora de Madrid), calculado en el navegador.
+  priceDay: 79,
+  priceNight: 109,
+  dayStart: 9,
+  dayEnd: 20,
   yearsActive: "[PENDIENTE: años]",
 
   gmbUrl: "[PENDIENTE: enlace a tu ficha de Google Business]",

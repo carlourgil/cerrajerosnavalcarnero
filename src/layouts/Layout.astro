@@ -63,5 +63,31 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
       {hasWhatsapp && <a class="btn" href={`https://wa.me/${SITE.whatsapp}`}>WhatsApp</a>}
       {!hasWhatsapp && <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar {SITE.phoneDisplay}</a>}
     </div>
+    <script
+      is:inline
+      define:vars={{
+        day: SITE.priceDay,
+        night: SITE.priceNight,
+        start: SITE.dayStart,
+        end: SITE.dayEnd,
+      }}
+    >
+      // La web es estática: sin esto el precio se congelaría en la hora del build.
+      const hour = Number(
+        new Intl.DateTimeFormat("es-ES", {
+          timeZone: "Europe/Madrid",
+          hour: "numeric",
+          hour12: false,
+        }).format(new Date())
+      );
+      const isDayRate = hour >= start && hour < end;
+
+      document.querySelectorAll("[data-price]").forEach((el) => {
+        el.textContent = (isDayRate ? day : night) + "€";
+      });
+      document.querySelectorAll("[data-tariff]").forEach((el) => {
+        el.textContent = isDayRate ? "Tarifa comercial" : "Tarifa urgencias";
+      });
+    </script>
   </body>
 </html>

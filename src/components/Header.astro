@@ -23,8 +23,8 @@ import { SITE } from "../lib/config";
 
     <div class="header__actions">
       <div class="header__price">
-        <span class="header__price-value"><span>Desde</span>{SITE.priceFrom}</span>
-        <span class="header__price-label">Tarifa apertura</span>
+        <span class="header__price-value"><span>Desde</span><span data-price>{SITE.priceDay}€</span></span>
+        <span class="header__price-label" data-tariff>Tarifa comercial</span>
       </div>
 
       <a href={`tel:${SITE.phone}`} class="btn btn--phone" aria-label={`Llamar a ${SITE.businessName}`}>

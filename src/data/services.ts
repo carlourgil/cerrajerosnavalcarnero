@@ -15,6 +15,7 @@ export const services: Service[] = [
       "¿Te has dejado las llaves dentro o se ha roto una en la cerradura? Abrimos la puerta sin destrozarla, con ganzúa o descarrile según el tipo de bombín.",
     bullets: [
       "La cerradura sigue funcionando después de abrir",
+      "79 € de 9:00 a 20:00 y 109 € en el resto de horas",
       "Precio cerrado por teléfono antes de salir",
       "También puertas blindadas y acorazadas",
       "Disponibles a cualquier hora del día",
