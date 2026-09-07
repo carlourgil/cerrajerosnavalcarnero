@@ -35,7 +35,7 @@ export const SITE = {
   priceNight: 109,
   dayStart: 9,
   dayEnd: 20,
-  yearsActive: "[PENDIENTE: años]",
+  foundedYear: 2000,
 
   gmbUrl: "[PENDIENTE: enlace a tu ficha de Google Business]",
 

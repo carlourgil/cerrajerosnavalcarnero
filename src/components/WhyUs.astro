@@ -1,6 +1,10 @@
 ---
 import { SITE } from "../lib/config";
 
+// Redondeado a la baja a múltiplos de 5: el cliente dio el año aproximado,
+// así que la cifra se queda corta antes que exagerada.
+const yearsRounded = Math.floor((new Date().getFullYear() - SITE.foundedYear) / 5) * 5;
+
 const features = [
   {
     title: "Presupuesto cerrado",
@@ -59,8 +63,8 @@ const features = [
         <div class="whyus__photo">[PENDIENTE: foto del técnico trabajando en {SITE.location}]</div>
         <div class="whyus__badge">
           <span class="whyus__badge-eyebrow">Confianza local</span>
-          <span class="whyus__badge-value">{SITE.yearsActive} años</span>
-          <span class="whyus__badge-sub">Abriendo {SITE.location}</span>
+          <span class="whyus__badge-value">+{yearsRounded} años</span>
+          <span class="whyus__badge-sub">Cerrajeros desde {SITE.foundedYear}</span>
         </div>
       </div>
     </div>
