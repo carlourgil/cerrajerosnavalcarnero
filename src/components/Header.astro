@@ -1,0 +1,55 @@
+---
+import { SITE } from "../lib/config";
+---
+
+<header class="header header--sticky">
+  <div class="container header__inner">
+    <a href="/" class="header__logo">
+      <span class="header__logo-mark">CerraNexo</span>
+      <span class="header__logo-city">{SITE.location}</span>
+    </a>
+
+    <ul class="nav">
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/zonas/">Zonas</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+
+    <a href={`tel:${SITE.phone}`} class="btn">📞 {SITE.phoneDisplay}</a>
+  </div>
+</header>
+
+<style>
+  .header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--c-grey-200);
+  }
+  .header__logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    text-decoration: none;
+  }
+  .header__logo-mark {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: var(--c-ink);
+  }
+  .header__logo-city {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--c-red);
+  }
+  @media (max-width: 767px) {
+    .nav {
+      display: none;
+    }
+  }
+</style>

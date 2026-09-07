@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../lib/config";
+---
+
+<Layout title={`Aviso Legal | ${SITE.businessName}`}>
+  <main class="section band-light">
+    <div class="container" style="max-width: 720px;">
+      <h1>Aviso Legal</h1>
+
+      <div class="stack">
+        <section>
+          <p>
+            En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de
+            julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se informa
+            que el sitio web <a href={`https://${SITE.domain}/`}>https://{SITE.domain}/</a> (en adelante, el
+            "Sitio Web") es titularidad de:
+          </p>
+          <ul class="ticks">
+            <li>Titular: {SITE.legalName}</li>
+            <li>NIF: {SITE.nif}</li>
+            <li>Dirección: {SITE.legalAddress}</li>
+            <li>Correo electrónico: {SITE.email}</li>
+            <li>Datos Registrales: {SITE.legalRegistry}</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Ley aplicable y jurisdicción</h3>
+          <p>
+            Con carácter general, las relaciones entre {SITE.legalName} y los usuarios de sus servicios telemáticos
+            se encuentran sometidas a la legislación y jurisdicción españolas.
+          </p>
+          <p>
+            Las partes se someten expresamente a los Juzgados y Tribunales de Madrid para resolver cualquier
+            controversia que pudiera surgir en la interpretación o ejecución de las presentes condiciones.
+          </p>
+        </section>
+
+        <section>
+          <h3>Aceptación del usuario</h3>
+          <p>
+            El acceso y utilización del Sitio Web atribuye la condición de usuario, implicando la aceptación plena
+            de todas las condiciones incluidas en el presente Aviso Legal.
+          </p>
+          <p>El acceso a este sitio web no supone, en ningún caso, el inicio de una relación comercial.</p>
+          <p>Si el usuario no está de acuerdo con estas condiciones, deberá abstenerse de utilizar el sitio web.</p>
+        </section>
+
+        <section>
+          <h3>Acceso a la web</h3>
+          <p>El acceso al sitio web es gratuito. Algunos servicios pueden requerir contratación previa.</p>
+          <p>
+            En caso de recogida de datos personales, estos se tratarán conforme a la normativa vigente en materia
+            de protección de datos. Para más información, consulte la{" "}
+            <a href="/politica-privacidad/">Política de Privacidad</a>.
+          </p>
+        </section>
+
+        <section>
+          <h3>Contenido y uso</h3>
+          <p>
+            El usuario se compromete a utilizar el sitio web de conformidad con la ley, la buena fe y el presente
+            Aviso Legal.
+          </p>
+          <p>
+            Queda prohibido el uso del sitio web con fines ilícitos o que puedan causar perjuicios al titular o a
+            terceros.
+          </p>
+          <p>
+            {SITE.legalName} se reserva el derecho de modificar, en cualquier momento y sin previo aviso, los
+            contenidos y servicios del sitio web.
+          </p>
+        </section>
+
+        <section>
+          <h3>Propiedad intelectual e industrial</h3>
+          <p>
+            Todos los contenidos del sitio web (textos, imágenes, diseño, código, etc.) son titularidad de{" "}
+            {SITE.legalName} o de terceros autorizados.
+          </p>
+          <p>Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+          <p>El acceso al sitio web no implica cesión de derechos de propiedad intelectual o industrial.</p>
+        </section>
+
+        <section>
+          <h3>Responsabilidad</h3>
+          <p>{SITE.legalName} no garantiza:</p>
+          <ul class="ticks">
+            <li>La disponibilidad continua del sitio web</li>
+            <li>La ausencia de errores</li>
+            <li>La ausencia de virus o elementos dañinos</li>
+          </ul>
+          <p>Tampoco se responsabiliza de:</p>
+          <ul class="ticks">
+            <li>El uso indebido del sitio web por parte de los usuarios</li>
+            <li>Los contenidos de terceros accesibles mediante enlaces</li>
+            <li>Los daños derivados de fallos técnicos o de seguridad</li>
+          </ul>
+          <p>{SITE.legalName} podrá suspender el acceso al sitio web por motivos técnicos o de mantenimiento.</p>
+        </section>
+
+        <section>
+          <h3>Uso por menores</h3>
+          <p>
+            Los servicios no están dirigidos a menores de edad. En caso de uso por menores, será responsabilidad
+            de sus padres o tutores.
+          </p>
+        </section>
+
+        <section>
+          <h3>Cookies</h3>
+          <p>
+            Este sitio web utiliza cookies para mejorar la experiencia de usuario. Para más información, consulte
+            la <a href="/politica-cookies/">Política de Cookies</a>.
+          </p>
+        </section>
+
+        <section>
+          <h3>Enlaces a terceros</h3>
+          <p>
+            El sitio web puede contener enlaces a páginas externas. {SITE.legalName} no se responsabiliza del
+            contenido ni del funcionamiento de dichos sitios.
+          </p>
+        </section>
+
+        <section>
+          <h3>Modificación del aviso legal</h3>
+          <p>
+            {SITE.legalName} se reserva el derecho a modificar el presente Aviso Legal en cualquier momento. Se
+            recomienda al usuario revisarlo periódicamente.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>

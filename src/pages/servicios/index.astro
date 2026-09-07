@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Services from "../../components/Services.astro";
+import { SITE } from "../../lib/config";
+---
+
+<Layout title={`Servicios de cerrajería en ${SITE.location} | ${SITE.businessName}`}>
+  <main>
+    <Services />
+  </main>
+</Layout>

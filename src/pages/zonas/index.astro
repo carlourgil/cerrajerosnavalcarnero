@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Zones from "../../components/Zones.astro";
+import { SITE } from "../../lib/config";
+---
+
+<Layout title={`Zonas de servicio en ${SITE.location} | ${SITE.businessName}`}>
+  <main>
+    <Zones />
+  </main>
+</Layout>

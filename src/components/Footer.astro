@@ -1,0 +1,52 @@
+---
+import { SITE } from "../lib/config";
+import { services } from "../data/services";
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cols">
+      <div>
+        <h4 class="display">{SITE.businessName}</h4>
+        <p class="measure">{SITE.description}</p>
+      </div>
+
+      <div>
+        <h4 class="display">Servicios</h4>
+        <ul>
+          {
+            services.map((s) => (
+              <li>
+                <a href={`/servicios/${s.slug}/`}>{s.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="display">Contacto</h4>
+        <ul>
+          <li>{SITE.businessName}</li>
+          <li>{SITE.addressStreet}</li>
+          <li>{SITE.addressCity}</li>
+          <li>Teléfono / WhatsApp: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="display">Legal</h4>
+        <ul>
+          <li><a href="/aviso-legal/">Aviso Legal</a></li>
+          <li><a href="/politica-privacidad/">Política de Privacidad</a></li>
+          <li><a href="/politica-cookies/">Política de Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      © {new Date().getFullYear()} {SITE.businessName}. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>

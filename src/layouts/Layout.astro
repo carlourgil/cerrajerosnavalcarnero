@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../lib/config";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" sizes="any" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <div class="topbar">
+      <a href={`tel:${SITE.phone}`}>🚨 Urgencias 24h en {SITE.location} — {SITE.phoneDisplay}</a>
+    </div>
+    <Header />
+    <slot />
+    <Footer />
+    <div class="sticky-bar">
+      <a class="btn btn--dark" href={`tel:${SITE.phone}`}>📞 Llamar</a>
+      <a class="btn btn--accent" href={`https://wa.me/${SITE.whatsapp}`}>WhatsApp</a>
+    </div>
+  </body>
+</html>

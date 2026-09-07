@@ -1,0 +1,32 @@
+---
+import { SITE } from "../lib/config";
+
+const faqs = [
+  { q: `¿Llegáis rápido a cualquier zona de ${SITE.location}?`, a: `Sí, trabajamos en ${SITE.serviceArea}. La llegada media es de ${SITE.arrivalTime}.` },
+  { q: "¿Cuánto cuesta la apertura de puertas?", a: "Te damos un precio cerrado por teléfono antes de desplazarnos, para evitar sorpresas." },
+  { q: "¿Hacéis cambios de bombín antibumping?", a: "Sí, instalamos bombines de alta seguridad certificados contra bumping, ganzuado y taladro." },
+  { q: "¿Atendéis urgencias fuera de horario?", a: `Sí, nuestro servicio de urgencias está disponible ${SITE.hours}.` },
+];
+---
+
+<section id="faq" class="section band-light">
+  <div class="container">
+    <div class="text-center stack" style="max-width: 640px; margin: 0 auto 3rem;">
+      <h2>Preguntas Frecuentes</h2>
+    </div>
+
+    <div class="grid">
+      {
+        faqs.map((f, i) => (
+          <div class="card">
+            <div class="card__body">
+              <span class="eyebrow">{String(i + 1).padStart(2, "0")}</span>
+              <h4>{f.q}</h4>
+              <p>{f.a}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+import { SITE } from "../lib/config";
+
+const features = [
+  { title: "Presupuesto cerrado", desc: "Te damos el precio final por teléfono, antes de que el técnico se desplace. Sin sorpresas." },
+  { title: "Apertura sin daños", desc: "Técnicas profesionales de ganzuado para que tu puerta quede intacta." },
+];
+---
+
+<section class="section band-light">
+  <div class="container">
+    <div class="zigzag">
+      <div>
+        <h2>
+          Tu vecino en<br />
+          <span style="color: var(--c-red);">{SITE.location}</span>
+        </h2>
+        <p class="subhead">
+          En {SITE.businessName} no somos una centralita fría de internet. Somos cerrajeros que trabajan en {SITE.serviceArea}.
+        </p>
+        <div class="whyus__cards">
+          {
+            features.map((f) => (
+              <div class="whyus__card">
+                <h4>{f.title}</h4>
+                <p>{f.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="whyus__media">
+        <div class="whyus__media-placeholder">
+          <p>[PENDIENTE: foto del equipo o de un técnico trabajando]</p>
+        </div>
+        <div class="whyus__badge">
+          <p class="eyebrow" style="margin-bottom: 4px;">Confianza local</p>
+          <p class="whyus__badge-title">Cerrajeros de tu barrio</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .whyus__cards {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .whyus__card {
+    background: var(--c-grey-200);
+    border-radius: var(--r-md);
+    padding: 1.75rem;
+  }
+  .whyus__card h4 {
+    margin-bottom: 0.4rem;
+  }
+  .whyus__card p {
+    margin: 0;
+    color: var(--c-grey-700);
+  }
+  .whyus__media {
+    position: relative;
+  }
+  .whyus__media-placeholder {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--r-md);
+    background: var(--c-grey-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: var(--c-grey-700);
+    box-shadow: var(--sh-float);
+  }
+  .whyus__badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1rem;
+    background: var(--c-black);
+    color: var(--c-white);
+    padding: 1.5rem 2rem;
+    border-radius: var(--r-sm);
+    border: 3px solid var(--c-red);
+    transform: rotate(3deg);
+    box-shadow: var(--sh-float);
+  }
+  .whyus__badge-title {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .whyus__badge {
+      position: static;
+      transform: none;
+      margin-top: 1rem;
+    }
+  }
+</style>

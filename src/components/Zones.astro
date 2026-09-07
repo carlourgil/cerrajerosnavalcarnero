@@ -1,0 +1,56 @@
+---
+import { zones } from "../data/zones";
+import { SITE } from "../lib/config";
+
+const barrios = zones.filter((z) => z.kind === "barrio");
+const municipios = zones.filter((z) => z.kind === "municipio");
+---
+
+<section class="section band-light">
+  <div class="container">
+    <div class="text-center stack" style="margin-bottom: 3rem;">
+      <span class="eyebrow">Zona de cobertura</span>
+      <h2>Llegamos a todo {SITE.location}</h2>
+    </div>
+
+    <div class="grid zones-grid">
+      {
+        barrios.map((z) => (
+          <a href={`/zonas/${z.slug}/`} class="btn btn--ghost btn--block zone-link">
+            {z.name}
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      municipios.length > 0 && (
+        <>
+          <div class="text-center stack zones-subhead">
+            <h3>También en municipios cercanos</h3>
+          </div>
+          <div class="grid zones-grid">
+            {municipios.map((z) => (
+              <a href={`/zonas/${z.slug}/`} class="btn btn--ghost btn--block zone-link">
+                {z.name}
+              </a>
+            ))}
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .zones-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .zone-link {
+    border-color: var(--c-grey-200);
+    color: var(--c-ink);
+  }
+  .zones-subhead {
+    margin: 3rem 0 1.5rem;
+  }
+</style>

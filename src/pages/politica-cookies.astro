@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../lib/config";
+---
+
+<Layout title={`Política de Cookies | ${SITE.businessName}`}>
+  <main class="section band-light">
+    <div class="container" style="max-width: 720px;">
+      <h1>Política de Cookies</h1>
+
+      <div class="stack">
+        <section>
+          <p>
+            En cumplimiento con el deber de información recogido en el artículo 22.2 de la Ley 34/2002, de 11 de
+            julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la presente
+            Política de Cookies tiene por finalidad informarle de manera clara y precisa sobre las cookies que se
+            utilizan en la página web de {SITE.legalName}.
+          </p>
+        </section>
+
+        <section>
+          <h3>¿Qué son las cookies?</h3>
+          <p>
+            Una cookie es un fichero de pequeño tamaño que los sitios web envían al navegador y se descargan en su
+            dispositivo. Las cookies permiten que la página web almacene y recupere información sobre su visita,
+            como su idioma preferido y otras opciones, con el fin de mejorar los servicios ofrecidos y facilitar
+            una mejor experiencia de navegación para el usuario.
+          </p>
+        </section>
+
+        <section>
+          <h3>Autorización para el uso de cookies</h3>
+          <p>
+            De conformidad con el aviso de cookies que aparece en el sitio web, el usuario acepta que, al navegar
+            por el mismo, consiente expresamente el uso de cookies según la descripción que se detalla a
+            continuación, sin perjuicio de que pueda modificar la configuración de su navegador para rechazar su
+            uso.
+          </p>
+        </section>
+
+        <section>
+          <h3>Cookies utilizadas en la web</h3>
+          <p>En el sitio web se utilizan diferentes tipos de cookies con distintas finalidades:</p>
+
+          <p><strong>En función de la entidad que las gestione:</strong></p>
+          <ul class="ticks">
+            <li>Cookies propias: enviadas desde un dominio gestionado por el propio titular de la web.</li>
+            <li>Cookies de terceros: enviadas desde un dominio gestionado por otra entidad.</li>
+          </ul>
+
+          <p><strong>En función del tiempo que permanecen activas:</strong></p>
+          <ul class="ticks">
+            <li>Cookies de sesión: se eliminan al cerrar el navegador.</li>
+            <li>Cookies persistentes: permanecen almacenadas durante un periodo determinado.</li>
+          </ul>
+
+          <p><strong>En función de su finalidad:</strong></p>
+          <ul class="ticks">
+            <li>Cookies técnicas: permiten la navegación y el uso de servicios básicos del sitio web.</li>
+            <li>Cookies de personalización: permiten acceder con características personalizadas, como el idioma.</li>
+            <li>Cookies de seguridad: ayudan a prevenir o dificultar ataques contra la web.</li>
+            <li>Cookies de análisis: permiten analizar el comportamiento de los usuarios en el sitio web.</li>
+            <li>Cookies publicitarias: permiten gestionar los espacios publicitarios.</li>
+            <li>
+              Cookies de publicidad comportamental: permiten mostrar publicidad personalizada en función del
+              comportamiento del usuario.
+            </li>
+            <li>Cookies de redes sociales: permiten compartir contenidos en redes sociales mediante plugins.</li>
+            <li>
+              Cookies de geolocalización: permiten conocer la ubicación del usuario para ofrecer servicios
+              adaptados.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Cookies concretas utilizadas</h3>
+          <p>
+            Este sitio web puede utilizar servicios de terceros que recopilan información con fines estadísticos y
+            de uso de la web por parte del usuario, tales como:
+          </p>
+          <ul class="ticks">
+            <li>Google Analytics (análisis del tráfico web)</li>
+            <li>Google Ads (publicidad)</li>
+          </ul>
+          <p>Estas herramientas pueden instalar cookies que permiten analizar el comportamiento de los usuarios en la web.</p>
+        </section>
+
+        <section>
+          <h3>Cómo modificar la configuración de las cookies</h3>
+          <p>
+            El usuario puede restringir, bloquear o eliminar las cookies mediante la configuración de su
+            navegador. A continuación, se facilitan enlaces con información para los principales navegadores:
+          </p>
+          <ul class="ticks">
+            <li>
+              Google Chrome:{" "}
+              <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">
+                support.google.com/chrome/answer/95647
+              </a>
+            </li>
+            <li>
+              Mozilla Firefox:{" "}
+              <a
+                href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web
+              </a>
+            </li>
+            <li>
+              Safari:{" "}
+              <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">
+                support.apple.com/es-es/guide/safari/sfri11471/mac
+              </a>
+            </li>
+            <li>
+              Internet Explorer:{" "}
+              <a href="https://support.microsoft.com/es-es/help/278835" target="_blank" rel="noopener noreferrer">
+                support.microsoft.com/es-es/help/278835
+              </a>
+            </li>
+          </ul>
+          <p>La desactivación de cookies puede afectar al correcto funcionamiento del sitio web.</p>
+        </section>
+
+        <section>
+          <h3>Modificación de la política de cookies</h3>
+          <p>
+            {SITE.legalName} se reserva el derecho a modificar la presente Política de Cookies en cualquier
+            momento. Se recomienda al usuario revisar esta política periódicamente. Para cualquier duda, puede
+            escribirnos a {SITE.email}.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>

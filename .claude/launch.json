@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cerrajeros-navalcarnero",
+      "runtimeExecutable": "C:\\Users\\carlo\\Web Navalcarnero cerrajeros\\.claude\\dev-with-path.cmd",
+      "runtimeArgs": [],
+      "port": 4321
+    }
+  ]
+}

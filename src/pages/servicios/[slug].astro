@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CTA from "../../components/CTA.astro";
+import { services } from "../../data/services";
+import { SITE } from "../../lib/config";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout title={`${service.title} en ${SITE.location} | ${SITE.businessName}`} description={service.description}>
+  <main>
+    <section class="section band-dark text-center">
+      <div class="container" style="max-width: 760px;">
+        <span class="eyebrow">{SITE.location}</span>
+        <h1>{service.title}</h1>
+        <p class="subhead">{service.description}</p>
+        <a href={`tel:${SITE.phone}`} class="btn btn--accent">📞 Llamar ahora: {SITE.phoneDisplay}</a>
+      </div>
+    </section>
+
+    <section class="section band-light">
+      <div class="container" style="max-width: 760px;">
+        <h2>¿Qué incluye este servicio?</h2>
+        <ul class="ticks stack">
+          {service.bullets.map((b: string) => <li>{b}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+</Layout>

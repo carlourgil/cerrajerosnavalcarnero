@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LocationSection from "../components/LocationSection.astro";
+import { SITE } from "../lib/config";
+---
+
+<Layout title={`Contacto | ${SITE.businessName}`}>
+  <main>
+    <section class="section band-dark text-center">
+      <div class="container" style="max-width: 680px;">
+        <h1>Contacta con nosotros</h1>
+        <p class="subhead">Para urgencias, llámanos directamente: es más rápido que un formulario.</p>
+        <a href={`tel:${SITE.phone}`} class="btn btn--accent">📞 {SITE.phoneDisplay}</a>
+        <p style="margin-top: 1.5rem;">
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+      </div>
+    </section>
+
+    <LocationSection />
+  </main>
+</Layout>

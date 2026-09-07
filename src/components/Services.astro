@@ -1,0 +1,27 @@
+---
+import { services } from "../data/services";
+---
+
+<section class="section band-light">
+  <div class="container">
+    <div class="text-center stack" style="margin-bottom: 3rem;">
+      <span class="eyebrow">Nuestros servicios</span>
+      <h2>Todo lo que necesita tu cerradura</h2>
+    </div>
+
+    <div class="grid">
+      {
+        services.map((s) => (
+          <a href={`/servicios/${s.slug}/`} class="card" style="padding: 0; text-decoration: none;">
+            <div class="card__body">
+              <span class="eyebrow">{s.short}</span>
+              <h4>{s.title}</h4>
+              <p>{s.description}</p>
+              <span class="card__link">Ver más →</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
