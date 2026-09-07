@@ -1,0 +1,4 @@
+# TEMPORAL: la web aún tiene datos [PENDIENTE] (teléfono, dirección, datos legales).
+# BORRA este bloqueo antes del lanzamiento real, o Google no indexará la web.
+User-agent: *
+Disallow: /
