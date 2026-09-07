@@ -28,7 +28,7 @@ export const services: Service[] = [
       "Quedarse fuera no entiende de horarios. Atendemos avisos urgentes en Navalcarnero de madrugada, en fin de semana y en festivos, los 365 días del año.",
     bullets: [
       "Atención a cualquier hora, también de madrugada",
-      "Llegada media de 20-30 minutos",
+      "Llegada media de 20 minutos",
       "Un técnico de guardia, no una centralita",
       "Festivos y agosto incluidos",
     ],
