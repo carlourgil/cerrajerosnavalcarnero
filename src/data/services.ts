@@ -34,6 +34,32 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "apertura-de-coches",
+    title: "Apertura de coches",
+    short: "Llaves dentro del vehículo",
+    description:
+      "Te has dejado las llaves puestas dentro o has perdido la única que tenías. Abrimos el coche sin forzar la cerradura ni dañar la junta de la puerta.",
+    bullets: [
+      "Sin dañar la puerta, la junta ni la cerradura",
+      "También furgonetas y vehículos comerciales",
+      "Extracción de llaves partidas en el bombín",
+      "Hay que acreditar que el vehículo es tuyo",
+    ],
+  },
+  {
+    slug: "apertura-de-cajas-fuertes",
+    title: "Apertura de cajas fuertes",
+    short: "Sin destruir el contenido",
+    description:
+      "¿Combinación olvidada, llave perdida o el teclado no responde? Abrimos la caja intentando siempre la manipulación antes que el taladro, para que puedas seguir usándola.",
+    bullets: [
+      "Primero manipulación; taladro solo si no hay alternativa",
+      "Cajas de pared, empotradas y de hotel",
+      "Cambio de combinación después de abrirla",
+      "Hay que acreditar la propiedad de la caja",
+    ],
+  },
+  {
     slug: "cambio-de-cerraduras",
     title: "Cambio de cerraduras",
     short: "Instalación y sustitución",
