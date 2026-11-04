@@ -84,6 +84,9 @@ import { SITE } from "../lib/config";
   }
   .tarifa__tag--night { background: var(--t-violet); color: var(--t-violet-ink); }
   .tarifa__tag--quote { background: var(--c-gray-100); color: var(--c-gray-600); }
+  /* Sin esto el display de la clase gana al [hidden] del navegador y la
+     etiqueta sale en las dos tarjetas a la vez. */
+  .tarifa__now[hidden] { display: none; }
   .tarifa__now {
     display: inline-flex;
     align-items: center;
