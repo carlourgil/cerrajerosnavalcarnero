@@ -63,9 +63,10 @@ export const SITE = {
     "12-08", // Inmaculada
     "12-25", // Navidad
   ],
-  // Fiestas locales de Navalcarnero y festivos trasladados de un año concreto,
-  // en formato YYYY-MM-DD (ej.: "2027-03-19"). Vacío hasta confirmarlos: un
-  // festivo inventado hace que la web cobre 120 € un día normal.
+  // Hueco para fiestas locales de Navalcarnero o festivos trasladados de un año
+  // concreto, en formato YYYY-MM-DD (ej.: "2027-03-19"). Se deja vacío a
+  // propósito: esos días se cobran como laborables. Si algún día interesa
+  // cobrarlos como urgencia, basta con añadir aquí las fechas.
   localHolidays: [],
   foundedYear: 2000,
   technicianName: "Carlos",
