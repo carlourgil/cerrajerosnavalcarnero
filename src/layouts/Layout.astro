@@ -4,12 +4,14 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Schema from "../components/Schema.astro";
 import { SITE } from "../lib/config";
+import type { Service } from "../data/services";
 
 interface Props {
   title: string;
   description?: string;
   schemaPage?: "home" | "inner";
   breadcrumbs?: { name: string; path: string }[];
+  service?: Service;
 }
 
 const {
@@ -17,6 +19,7 @@ const {
   description = SITE.description,
   schemaPage = "inner",
   breadcrumbs = [],
+  service,
 } = Astro.props;
 const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 ---
@@ -41,7 +44,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&display=swap"
     />
-    <Schema page={schemaPage} breadcrumbs={breadcrumbs} />
+    <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} />
   </head>
   <body>
     <div class="topbar">

@@ -1,14 +1,16 @@
 ---
 import { SITE } from "../lib/config";
-import { services } from "../data/services";
+import { services, type Service } from "../data/services";
+import { zones } from "../data/zones";
 import { faqs } from "../data/faqs";
 
 interface Props {
   page?: "home" | "inner";
   breadcrumbs?: { name: string; path: string }[];
+  service?: Service;
 }
 
-const { page = "inner", breadcrumbs = [] } = Astro.props;
+const { page = "inner", breadcrumbs = [], service } = Astro.props;
 
 const site = Astro.site?.toString().replace(/\/$/, "") ?? `https://${SITE.domain}`;
 const businessId = `${site}/#cerrajeria`;
@@ -25,15 +27,45 @@ const business: Record<string, unknown> = {
   priceRange: `${SITE.priceDay}€-${SITE.priceNight}€`,
   foundingDate: String(SITE.foundedYear),
   currenciesAccepted: "EUR",
-  areaServed: {
-    "@type": "City",
-    name: SITE.location,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: SITE.location,
-      postalCode: SITE.postalCode,
-      addressRegion: "Madrid",
-      addressCountry: "ES",
+  // El municipio primero y luego cada barrio: es la señal de que se cubre
+  // Navalcarnero entero, que es justo lo que se quiere posicionar.
+  areaServed: [
+    {
+      "@type": "City",
+      name: SITE.location,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: SITE.location,
+        postalCode: SITE.postalCode,
+        addressRegion: "Madrid",
+        addressCountry: "ES",
+      },
+    },
+    ...zones.map((z) => ({
+      "@type": "Place",
+      name: `${z.name}, ${SITE.location}`,
+    })),
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: `+34${SITE.phone}`,
+    email: SITE.email,
+    areaServed: "ES",
+    availableLanguage: "Spanish",
+    hoursAvailable: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
     },
   },
   // Navalcarnero, centro del municipio. Ajustar al local cuando haya dirección.
@@ -107,6 +139,39 @@ if (page === "home") {
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
+  });
+}
+
+// En la página de un servicio, ese servicio es la entidad principal, no solo
+// una entrada del catálogo de la empresa.
+if (service) {
+  graph.push({
+    "@type": "Service",
+    "@id": `${site}/servicios/${service.slug}/#servicio`,
+    name: `${service.title} en ${SITE.location}`,
+    description: service.description,
+    serviceType: service.title,
+    url: `${site}/servicios/${service.slug}/`,
+    provider: { "@id": businessId },
+    areaServed: { "@type": "City", name: SITE.location },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: service.title,
+      itemListElement: service.bullets.map((b) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: b },
+      })),
+    },
+    ...(service.slug === "apertura-de-puertas"
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: String(SITE.priceDay),
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+          },
+        }
+      : {}),
   });
 }
 

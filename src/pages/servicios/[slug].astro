@@ -22,6 +22,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
     { name: "Servicios", path: "/servicios/" },
     { name: service.title, path: `/servicios/${service.slug}/` },
   ]}
+  service={service}
 >
   <main>
     <section class="page-hero">
