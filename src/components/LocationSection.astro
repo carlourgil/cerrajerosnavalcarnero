@@ -2,20 +2,34 @@
 import { SITE } from "../lib/config";
 ---
 
-<section class="section band-light">
+<section id="zona" class="section band-light">
   <div class="container">
     <div class="zigzag">
       <div>
-        <span class="eyebrow">Dónde estamos</span>
-        <h2>{SITE.businessName}</h2>
+        <span class="eyebrow">Dónde trabajamos</span>
+        <h2>Zona de servicio: <span class="accent">{SITE.location}</span></h2>
+        <p class="subhead measure">
+          Vamos a tu puerta. No tenemos tienda abierta al público: el taller va en la furgoneta,
+          así que el trabajo se hace en tu portal o en tu casa, a cualquier hora y en
+          {" "}{SITE.serviceArea}.
+        </p>
+
         <ul class="ticks">
-          <li><strong>Dirección:</strong> {SITE.address}</li>
-          <li><strong>Teléfono:</strong> {SITE.phoneDisplay}</li>
-          <li><strong>Email:</strong> {SITE.email}</li>
+          <li><strong>Zona:</strong> {SITE.serviceArea} y sus barrios ({SITE.postalCode})</li>
+          <li><strong>Referencia:</strong> salimos desde la zona de {SITE.landmark}</li>
+          <li><strong>Llegada media:</strong> {SITE.arrivalTime}</li>
           <li><strong>Horario:</strong> {SITE.hours}</li>
-          <li><strong>Zona de servicio:</strong> {SITE.serviceArea}</li>
+          <li><strong>Teléfono:</strong> <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+          <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${SITE.whatsapp}`}>{SITE.whatsappDisplay}</a></li>
+          <li><strong>Email:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
         </ul>
+
+        <p class="zona__nota">
+          Si buscas una dirección física para recoger una llave o una cerradura, dínoslo al
+          llamar y lo resolvemos sin que te muevas de casa.
+        </p>
       </div>
+
       <iframe
         class="map"
         src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.location}, Madrid`)}&output=embed`}
@@ -28,8 +42,8 @@ import { SITE } from "../lib/config";
 </section>
 
 <style>
-  /* Mapa del municipio mientras no haya local propio: en cuanto exista la
-     ficha de Google Business, se cambia por su mapa. */
+  /* Mapa del municipio: al ser servicio a domicilio no hay local que señalar,
+     lo que se marca es la zona que se cubre. */
   .map {
     display: block;
     width: 100%;
@@ -37,5 +51,13 @@ import { SITE } from "../lib/config";
     border: 1px solid var(--c-gray-200);
     border-radius: var(--r-lg);
     box-shadow: var(--sh-card);
+  }
+  .zona__nota {
+    margin-top: 1.75rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--c-orange);
+    font-size: var(--fs-sm);
+    color: var(--c-gray-600);
+    max-width: 44ch;
   }
 </style>

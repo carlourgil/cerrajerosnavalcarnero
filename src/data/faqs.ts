@@ -26,6 +26,10 @@ export const faqs: Faq[] = [
     a: `Sí, el servicio de urgencias está disponible ${SITE.hours}. De noche y en festivos se aplica la tarifa de urgencias, que también te decimos por teléfono antes de ir.`,
   },
   {
+    q: `¿Tenéis tienda abierta en ${SITE.location}?`,
+    a: `No, y es a propósito: trabajamos solo a domicilio en ${SITE.serviceArea}. El taller va en la furgoneta, así que en lugar de pedirte que te acerques a un local con la puerta bloqueada, vamos nosotros a tu portal. Si hace falta una cerradura o un bombín concreto, lo llevamos al aviso.`,
+  },
+  {
     q: "¿Trabajáis con comunidades y con naves del Polígono Alparrache?",
     a: `Sí. Además de viviendas, atendemos comunidades de propietarios, locales y naves industriales de ${SITE.location}: amaestramientos, cierrapuertas y mantenimiento de las cerraduras del portal y del garaje.`,
   },

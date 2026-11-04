@@ -24,9 +24,13 @@ export const SITE = {
   email: "info@cerrajerosnavalcarnero.madrid",
   domain: "cerrajerosnavalcarnero.madrid",
 
-  addressStreet: "[PENDIENTE: calle y número]",
+  // Negocio que trabaja solo a domicilio: no hay local abierto al público, así
+  // que no se publica calle ni número. Google lo llama "negocio con área de
+  // servicio" (SAB) y la ficha de Google Business hay que crearla igual, con
+  // Navalcarnero como zona y la dirección oculta. Poner una calle que no sea
+  // una tienda real es motivo de suspensión de la ficha.
   addressCity: "28600 Navalcarnero, Madrid",
-  address: "[PENDIENTE: calle y número], 28600 Navalcarnero, Madrid",
+  addressNote: "Servicio a domicilio en todo Navalcarnero. Sin tienda abierta al público.",
 
   hours: "24 horas, todos los días",
   arrivalTime: "20-30 minutos",

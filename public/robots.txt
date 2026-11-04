@@ -1,10 +1,4 @@
-# ───────────────────────────────────────────────────────────────
-# TEMPORAL: la web aún tiene datos [PENDIENTE] (dirección, foto, WhatsApp).
-#
-# PARA LANZAR: borra las dos líneas "User-agent" y "Disallow" de abajo y
-# deja solo el Sitemap. Mientras sigan ahí, Google NO indexará la web.
-# ───────────────────────────────────────────────────────────────
 User-agent: *
-Disallow: /
+Allow: /
 
 Sitemap: https://cerrajerosnavalcarnero.madrid/sitemap-index.xml

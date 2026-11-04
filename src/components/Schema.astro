@@ -14,7 +14,6 @@ const { page = "inner", breadcrumbs = [], service } = Astro.props;
 
 const site = Astro.site?.toString().replace(/\/$/, "") ?? `https://${SITE.domain}`;
 const businessId = `${site}/#cerrajeria`;
-const pending = (value: string) => value.startsWith("[PENDIENTE");
 
 const business: Record<string, unknown> = {
   "@type": "Locksmith",
@@ -68,8 +67,23 @@ const business: Record<string, unknown> = {
       closes: "23:59",
     },
   },
-  // Navalcarnero, centro del municipio. Ajustar al local cuando haya dirección.
+  // Negocio a domicilio: la dirección se declara a nivel de municipio, sin
+  // calle. Es lo que Google espera de un negocio con área de servicio y deja
+  // igual de claro que la localidad es Navalcarnero.
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: SITE.location,
+    postalCode: SITE.postalCode,
+    addressRegion: "Madrid",
+    addressCountry: "ES",
+  },
+  // Centro de Navalcarnero: el punto desde el que se mide la zona de servicio.
   geo: { "@type": "GeoCoordinates", latitude: 40.2876, longitude: -4.0122 },
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: { "@type": "GeoCoordinates", latitude: 40.2876, longitude: -4.0122 },
+    geoRadius: "8000",
+  },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: [
@@ -104,19 +118,6 @@ const business: Record<string, unknown> = {
     })),
   },
 };
-
-// Solo se publica la dirección cuando es real: una dirección a medias en el
-// schema es peor que ninguna, porque Google la cruza con la ficha de negocio.
-if (!pending(SITE.addressStreet)) {
-  business.address = {
-    "@type": "PostalAddress",
-    streetAddress: SITE.addressStreet,
-    addressLocality: SITE.location,
-    postalCode: SITE.postalCode,
-    addressRegion: "Madrid",
-    addressCountry: "ES",
-  };
-}
 
 const graph: Record<string, unknown>[] = [
   business,
