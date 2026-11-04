@@ -32,8 +32,8 @@ export const SITE = {
   arrivalTime: "20-30 minutos",
   // Tarifa de apertura de puertas. El precio mostrado cambia según la hora
   // (hora de Madrid), calculado en el navegador.
-  priceDay: 79,
-  priceNight: 109,
+  priceDay: 80,
+  priceNight: 120,
   dayStart: 9,
   dayEnd: 20,
   foundedYear: 2000,

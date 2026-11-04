@@ -120,7 +120,18 @@ const features = [
   }
   .whyus__desc { margin: 0; color: var(--c-gray-500); font-weight: 500; }
 
+  /* Bloque naranja desplazado detrás de la foto: aporta profundidad y color
+     sin recargar la sección. */
   .whyus__media { position: relative; }
+  .whyus__media::before {
+    content: "";
+    position: absolute;
+    inset: 1.75rem -1.75rem -1.75rem 1.75rem;
+    border-radius: var(--r-lg);
+    background: var(--t-orange);
+    z-index: 0;
+  }
+  .whyus__media > * { position: relative; z-index: 1; }
   .whyus__photo {
     display: block;
     width: 100%;

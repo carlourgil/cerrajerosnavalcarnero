@@ -1,14 +1,26 @@
 /* ---------- 1. TOKENS ---------- */
 :root {
-  /* Paleta clara. El azul marino queda solo para el pie y algún detalle:
-     usado en bandas enteras apagaba la página. */
-  --c-navy:       #16293D;
+  /* Azul marino profundo para las bandas oscuras y naranja vivo de acento.
+     La gracia está en alternar bandas oscuras y claras, no en elegir una. */
+  --c-navy:       #0C1C2E;
+  --c-navy-800:   #112640;
+  --c-navy-700:   #17324F;
   --c-navy-soft:  #2F5173;
-  --c-orange:     #EA580C;   /* naranja vivo, para botones y acentos */
-  --c-orange-700: #C2410C;   /* para texto pequeño sobre blanco: contraste AA */
+  --c-orange:     #F97316;
+  --c-orange-600: #EA580C;
+  --c-orange-700: #C2410C;   /* texto pequeño sobre blanco: contraste AA */
   --c-orange-50:  #FFF3EC;
   --c-brick:      #C2410C;
   --c-white:      #FFFFFF;
+
+  /* Tintes para las pastillas de icono: dan color sin ensuciar la paleta. */
+  --t-orange:     #FFF1E6;
+  --t-blue:       #E8F0FE;
+  --t-blue-ink:   #2563EB;
+  --t-violet:     #F0EBFE;
+  --t-violet-ink: #7C3AED;
+  --t-green:      #E6F7EE;
+  --t-green-ink:  #15803D;
 
   --c-gray-50:    #F7F8FA;
   --c-gray-100:   #EEF1F5;
@@ -148,7 +160,14 @@ a:hover { color: var(--c-orange); }
 .band-muted { background: var(--bg-muted); color: var(--c-ink); }
 .band-light { background: var(--c-white);  color: var(--c-ink); }
 
-.band-dark .subhead { color: #CBD5E1; }
+.band-dark .subhead { color: #AEBDCD; }
+/* Los titulares llevan color de tinta fijo, así que en banda oscura hay que
+   devolverlos a blanco o desaparecen sobre el azul. */
+.band-dark h1,
+.band-dark h2,
+.band-dark h3,
+.band-dark h4,
+.band-dark .display { color: var(--c-white); }
 
 .eyebrow {
   display: block;
@@ -325,55 +344,97 @@ a:hover { color: var(--c-orange); }
 }
 .btn--phone:hover { --btn-bg: var(--c-orange); --btn-fg: var(--c-white); }
 
-/* ---------- 6. HERO (claro) ---------- */
+/* ---------- 6. HERO ---------- */
 .hero {
   position: relative;
-  background:
-    radial-gradient(900px 420px at 88% 8%, var(--c-orange-50), transparent 70%),
-    linear-gradient(180deg, var(--c-white) 0%, var(--c-gray-50) 100%);
-  border-bottom: 1px solid var(--c-gray-100);
+  background: var(--c-navy);
+  color: var(--c-white);
   overflow: hidden;
+  isolation: isolate;
 }
-.hero__grid {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: clamp(2rem, 4vw, 4.5rem);
-  padding-block: clamp(3rem, 6vw, 5.5rem);
+/* Foto a sangre ocupando la mitad derecha, fundida hacia el azul por la
+   izquierda: es lo que da profundidad y evita el fondo plano. */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.hero__bg img {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 62%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--c-navy) 0%, var(--c-navy) 30%, rgba(12, 28, 46, .88) 45%, rgba(12, 28, 46, .35) 72%, rgba(12, 28, 46, .55) 100%),
+    radial-gradient(640px 320px at 18% 20%, rgba(249, 115, 22, .16), transparent 70%);
 }
 @media (max-width: 979px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__figure { order: -1; }
+  .hero__bg img { width: 100%; }
+  .hero__bg::after {
+    background:
+      linear-gradient(180deg, rgba(12, 28, 46, .82) 0%, rgba(12, 28, 46, .95) 55%, var(--c-navy) 100%),
+      radial-gradient(500px 260px at 20% 10%, rgba(249, 115, 22, .18), transparent 70%);
+  }
 }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+@media (max-width: 979px) { .hero__grid { grid-template-columns: 1fr; } }
 
 .hero__badge {
   display: inline-flex;
   align-items: center;
   gap: .6rem;
-  padding: .45rem 1rem;
+  padding: .45rem 1.1rem;
   margin-bottom: 1.5rem;
   border-radius: var(--r-pill);
-  background: var(--c-orange-50);
-  border: 1px solid #FBD5C0;
-  color: var(--c-orange-700);
+  background: rgba(249, 115, 22, .14);
+  border: 1px solid rgba(249, 115, 22, .4);
+  color: #FFC89B;
   font-size: var(--fs-xs);
   font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
-.hero h1 { font-size: var(--fs-h1); margin-bottom: 1.25rem; }
-.hero .subhead { max-width: 34rem; color: var(--c-gray-600); }
-.hero .subhead strong { color: var(--c-ink); font-weight: 700; }
+.hero h1 {
+  font-size: clamp(2.6rem, 1.6rem + 4.6vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  color: var(--c-white);
+  margin-bottom: 1.25rem;
+}
+.hero h1 .accent { color: var(--c-orange); }
+.hero .subhead {
+  max-width: 32rem;
+  color: #AEBDCD;
+  margin-bottom: 2.25rem;
+}
+.hero .subhead strong { color: var(--c-white); font-weight: 700; }
+.hero .subhead .accent { color: var(--c-orange); font-weight: 700; }
 
-.hero__cta { display: flex; flex-wrap: wrap; gap: .875rem; margin-top: 2rem; }
-.btn--wa {
-  --btn-bg: var(--c-white);
-  --btn-fg: var(--c-ink);
-  min-height: 84px;
-  padding-inline: 28px;
-  border: 2px solid var(--c-gray-200);
-  border-radius: var(--r-sm);
-  font-size: 1.05rem;
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 2rem; }
+.hero__trust { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: #C7D3DF;
 }
-.btn--wa:hover { --btn-bg: var(--c-gray-50); --btn-fg: var(--c-ink); border-color: var(--c-gray-300); }
+.hero__trust svg { color: var(--c-orange); flex-shrink: 0; }
 
 .hero__facts {
   display: flex;
@@ -382,46 +443,55 @@ a:hover { color: var(--c-orange); }
   list-style: none;
   margin: 2.5rem 0 0;
   padding: 1.75rem 0 0;
-  border-top: 1px solid var(--c-gray-200);
+  border-top: 1px solid rgba(255, 255, 255, .12);
 }
 .hero__facts li { display: flex; flex-direction: column; gap: .15rem; }
 .hero__facts strong {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   letter-spacing: -.02em;
-  color: var(--c-ink);
+  color: var(--c-white);
 }
-.hero__facts span { font-size: var(--fs-sm); color: var(--c-gray-500); }
+.hero__facts span { font-size: var(--fs-sm); color: #93A3B5; }
 
-.hero__figure { position: relative; }
-.hero__figure img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--r-lg);
-  box-shadow: 0 30px 60px -25px rgba(17, 26, 36, .35);
-}
-.hero__stamp {
-  position: absolute;
-  left: -1rem;
-  bottom: -1.5rem;
-  max-width: 17rem;
+/* Tarjetas de cristal sobre la foto */
+.hero__cards { display: grid; gap: .875rem; }
+.hero__card {
   display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  padding: 1rem 1.25rem;
-  background: var(--c-white);
-  border: 1px solid var(--c-gray-100);
-  border-left: 4px solid var(--c-orange);
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--r-sm);
+  background: rgba(17, 38, 64, .72);
+  border: 1px solid rgba(255, 255, 255, .12);
+  backdrop-filter: blur(14px);
+  transition: background var(--ease), transform var(--ease), border-color var(--ease);
+}
+.hero__card:hover {
+  background: rgba(23, 50, 79, .85);
+  border-color: rgba(249, 115, 22, .5);
+  transform: translateX(6px);
+}
+.hero__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
   border-radius: var(--r-xs);
-  box-shadow: var(--sh-float);
+  color: var(--c-white);
 }
-.hero__stamp strong { font-size: 1.0625rem; font-weight: 800; color: var(--c-ink); }
-.hero__stamp span { font-size: var(--fs-sm); color: var(--c-gray-500); line-height: 1.35; }
-@media (max-width: 639px) {
-  .hero__stamp { position: static; margin-top: 1rem; max-width: none; }
+.hero__card-title {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--c-white);
+  letter-spacing: -.01em;
 }
+.hero__card-sub { display: block; font-size: var(--fs-sm); color: #93A3B5; }
+.hero__card-arrow { margin-left: auto; color: #54697F; transition: color var(--ease), transform var(--ease); }
+.hero__card:hover .hero__card-arrow { color: var(--c-orange); transform: translateX(3px); }
 
 /* ---------- 6b. CABECERA DE PÁGINA INTERIOR ---------- */
 .page-hero {

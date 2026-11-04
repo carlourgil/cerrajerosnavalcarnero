@@ -1,23 +1,58 @@
 ---
 import { SITE } from "../lib/config";
+
+const cards = [
+  {
+    title: "Apertura de puertas",
+    sub: `Sin daños · llegada en ${SITE.arrivalTime}`,
+    href: "/servicios/apertura-de-puertas/",
+    bg: "var(--c-orange)",
+    icon: "door",
+  },
+  {
+    title: "Cambio de cerraduras",
+    sub: "Alta seguridad · antibumping",
+    href: "/servicios/cambio-de-cerraduras/",
+    bg: "var(--t-blue-ink)",
+    icon: "lock",
+  },
+  {
+    title: "Urgencias 24 horas",
+    sub: "Noches, festivos y fines de semana",
+    href: "/servicios/urgencias-24h/",
+    bg: "var(--t-violet-ink)",
+    icon: "bolt",
+  },
+];
 ---
 
 <section class="hero">
+  <div class="hero__bg">
+    <img
+      src="/images/apertura-de-puertas-1536.webp"
+      alt={`Cerrajero abriendo una puerta en ${SITE.location}`}
+      width="1439"
+      height="959"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </div>
+
   <div class="container hero__grid">
-    <div class="hero__copy">
+    <div>
       <div class="hero__badge">
         <span class="ping"></span>
-        Técnico de guardia ahora mismo en {SITE.location}
+        Servicio urgente 24 h
       </div>
 
       <h1>
-        Cerrajero en {SITE.location},<br />
-        <span class="accent">a cualquier hora</span>
+        Cerrajeros <span class="accent">{SITE.location}</span><br />
+        Urgencias 24h
       </h1>
 
       <p class="subhead">
-        Te has quedado fuera, se ha roto la llave o han forzado la cerradura. Llegamos en{" "}
-        <strong>{SITE.arrivalTime}</strong> y te decimos el precio antes de salir.
+        Cerrajeros en <strong>{SITE.location}</strong>. Llegamos en
+        {" "}<span class="accent">{SITE.arrivalTime}</span>. Sin daños, sin sorpresas.
       </p>
 
       <div class="hero__cta">
@@ -26,17 +61,27 @@ import { SITE } from "../lib/config";
             <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
           </svg>
           <span class="btn__stack">
-            <span class="btn__eyebrow">Llama ahora</span>
+            <span class="btn__eyebrow">Llamar ahora</span>
             <span>{SITE.phoneDisplay}</span>
           </span>
         </a>
 
-        <a href={`https://wa.me/${SITE.whatsapp}`} class="btn btn--wa">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z"></path>
-          </svg>
-          WhatsApp
-        </a>
+        <ul class="hero__trust">
+          <li>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5l3 2"></path>
+            </svg>
+            Disponibles 24/7
+          </li>
+          <li>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 4.4-2.9 8.3-7 9.5C7.9 19.3 5 15.4 5 11V6l7-3z"></path>
+              <path d="M9.5 12l1.8 1.8 3.4-3.6"></path>
+            </svg>
+            Precio cerrado por teléfono
+          </li>
+        </ul>
       </div>
 
       <ul class="hero__facts">
@@ -55,19 +100,40 @@ import { SITE } from "../lib/config";
       </ul>
     </div>
 
-    <div class="hero__figure">
-      <img
-        src="/images/apertura-de-puertas-1536.webp"
-        alt={`Cerrajero abriendo una puerta en ${SITE.location}`}
-        width="1439"
-        height="959"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="hero__stamp">
-        <strong>Sin romper la puerta</strong>
-        <span>Ganzúa y descarrile, la cerradura sigue funcionando</span>
-      </div>
+    <div class="hero__cards">
+      {
+        cards.map((c) => (
+          <a href={c.href} class="hero__card">
+            <span class="hero__card-icon" style={`background: ${c.bg}`}>
+              {c.icon === "door" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 21V5a2 2 0 012-2h9a2 2 0 012 2v16" />
+                  <path d="M3 21h18" />
+                  <circle cx="14" cy="12" r="1" />
+                </svg>
+              )}
+              {c.icon === "lock" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="10" width="16" height="11" rx="2" />
+                  <path d="M8 10V7a4 4 0 018 0v3" />
+                </svg>
+              )}
+              {c.icon === "bolt" && (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+                </svg>
+              )}
+            </span>
+            <span>
+              <span class="hero__card-title">{c.title}</span>
+              <span class="hero__card-sub">{c.sub}</span>
+            </span>
+            <svg class="hero__card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

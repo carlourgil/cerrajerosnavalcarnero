@@ -3,7 +3,7 @@ import { zones } from "../data/zones";
 import { SITE } from "../lib/config";
 ---
 
-<section id="zonas" class="section band-muted">
+<section id="zonas" class="section band-dark">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Mapa de cobertura</span>
@@ -23,6 +23,10 @@ import { SITE } from "../lib/config";
                 data-zone={z.name}
                 data-href={`/zonas/${z.slug}/`}
               >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--c-orange)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
                 {z.name}
               </button>
             ))
@@ -65,10 +69,9 @@ import { SITE } from "../lib/config";
 
   .coverage__list {
     padding: 2.5rem;
-    background: var(--c-white);
-    border: 1px solid var(--c-gray-100);
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, .1);
     border-radius: var(--r-xl);
-    box-shadow: var(--sh-card);
   }
   .coverage__group {
     margin: 0 0 1rem;
@@ -83,18 +86,21 @@ import { SITE } from "../lib/config";
   .coverage__buttons:last-child { margin-bottom: 0; }
 
   .coverage__zone {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
     min-height: 48px;
-    padding: 0 1.25rem;
-    background: var(--c-gray-50);
-    border: 1px solid var(--c-gray-200);
-    border-radius: var(--r-pill);
+    padding: 0 1.1rem;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: var(--r-xs);
     font: inherit;
-    font-weight: var(--fw-bold);
-    color: var(--c-navy);
+    font-weight: 600;
+    color: #D7E0E9;
     cursor: pointer;
     transition: background var(--ease), color var(--ease), border-color var(--ease), transform var(--ease);
   }
-  .coverage__zone:hover { border-color: var(--c-orange); color: var(--c-orange); transform: translateY(-2px); }
+  .coverage__zone:hover { background: rgba(249,115,22,.16); border-color: rgba(249,115,22,.5); color: var(--c-white); transform: translateY(-2px); }
   .coverage__zone[aria-pressed="true"] {
     background: var(--c-orange);
     border-color: var(--c-orange);
@@ -104,10 +110,8 @@ import { SITE } from "../lib/config";
   .coverage__panel {
     padding: 2.5rem;
     background: var(--c-white);
-    border: 1px solid var(--c-gray-100);
-    border-top: 4px solid var(--c-orange);
     border-radius: var(--r-xl);
-    box-shadow: var(--sh-float);
+    box-shadow: 0 30px 60px -25px rgba(0, 0, 0, .55);
     min-height: 320px;
     display: flex;
     flex-direction: column;
