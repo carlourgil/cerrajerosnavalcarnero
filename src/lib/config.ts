@@ -3,10 +3,10 @@
 // Lo que ponga [PENDIENTE] se ve tal cual en la web, a propósito, para que no
 // se publique nada inventado.
 export const SITE = {
-  businessName: "CerraNexo Cerrajeros Navalcarnero",
-  brandFirst: "CERRA",
-  brandLast: "NEXO",
-  tagline: "Cerrajeros 24h en Navalcarnero",
+  // Nombre descriptivo provisional: CerraNexo es la marca de Alcorcón y
+  // Navalcarnero llevará la suya propia cuando esté creada.
+  businessName: "Cerrajeros Navalcarnero",
+  tagline: "Cerrajero urgente 24 h",
   description:
     "Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegamos en 20-30 minutos.",
 

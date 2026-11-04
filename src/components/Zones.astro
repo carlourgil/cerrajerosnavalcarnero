@@ -103,10 +103,11 @@ import { SITE } from "../lib/config";
 
   .coverage__panel {
     padding: 2.5rem;
-    background: var(--c-navy);
-    color: var(--c-white);
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-top: 4px solid var(--c-orange);
     border-radius: var(--r-xl);
-    box-shadow: var(--sh-2xl);
+    box-shadow: var(--sh-float);
     min-height: 320px;
     display: flex;
     flex-direction: column;
@@ -129,23 +130,23 @@ import { SITE } from "../lib/config";
     letter-spacing: .3em;
     color: var(--c-orange);
   }
-  .coverage__result-zone { margin: .5rem 0 1.5rem; color: var(--c-white); font-size: 2.25rem; }
+  .coverage__result-zone { margin: .5rem 0 1.25rem; font-size: 2rem; }
   .coverage__time {
     display: flex;
     align-items: center;
     gap: .75rem;
-    margin-bottom: 2rem;
-    font-weight: var(--fw-bold);
-    color: #CBD5E1;
+    margin-bottom: 1.75rem;
+    font-weight: 600;
+    color: var(--c-gray-600);
   }
-  .coverage__time strong { color: var(--c-white); }
+  .coverage__time strong { color: var(--c-ink); }
   .coverage__link {
     display: block;
     margin-top: 1rem;
     text-align: center;
     font-size: var(--fs-sm);
     font-weight: var(--fw-bold);
-    color: var(--c-gray-400);
+    color: var(--c-gray-500);
   }
 </style>
 
