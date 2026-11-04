@@ -17,9 +17,10 @@ export const SITE = {
 
   phone: "919932895",
   phoneDisplay: "919 93 28 95",
-  // Con prefijo y sin espacios (ej. 34600000000). Mientras esté pendiente, los
-  // botones de WhatsApp no se muestran, para no dejar enlaces muertos.
-  whatsapp: "[PENDIENTE: WhatsApp con prefijo]",
+  // Con prefijo y sin espacios. Mientras esté pendiente, los botones y el
+  // formulario de WhatsApp no se muestran, para no dejar enlaces muertos.
+  whatsapp: "34628022929",
+  whatsappDisplay: "628 02 29 29",
   email: "info@cerrajerosnavalcarnero.madrid",
   domain: "cerrajerosnavalcarnero.madrid",
 

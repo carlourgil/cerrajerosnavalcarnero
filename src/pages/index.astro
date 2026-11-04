@@ -6,6 +6,7 @@ import Process from "../components/Process.astro";
 import WhyUs from "../components/WhyUs.astro";
 import Zones from "../components/Zones.astro";
 import Cases from "../components/Cases.astro";
+import ContactForm from "../components/ContactForm.astro";
 import Testimonials from "../components/Testimonials.astro";
 import LocationSection from "../components/LocationSection.astro";
 import FAQ from "../components/FAQ.astro";
@@ -26,6 +27,7 @@ const hasReviews = testimonials.length > 0;
     <WhyUs />
     <Zones />
     {hasReviews ? <Testimonials /> : <Cases />}
+    <ContactForm />
     <LocationSection />
     <FAQ />
     <CTA />

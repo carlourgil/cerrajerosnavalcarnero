@@ -1,0 +1,137 @@
+---
+import { SITE } from "../lib/config";
+import { services } from "../data/services";
+import { zones } from "../data/zones";
+
+// Sin servidor: el formulario arma el mensaje y abre WhatsApp. Si todavía no
+// hay número, no se pinta, para no dejar un formulario que no lleva a ningún
+// sitio (misma regla que los botones de WhatsApp).
+const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
+---
+
+{
+  hasWhatsapp && (
+    <section id="contacto" class="section band-muted">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Cuéntanos qué pasa</span>
+          <h2>Te escribimos por <span class="accent">WhatsApp</span></h2>
+          <p class="subhead">
+            Rellena esto y se abre WhatsApp con el mensaje ya redactado. Si es urgente, mejor llama:
+            es más rápido.
+          </p>
+        </div>
+
+        <form class="form wa-form" data-wa-form>
+          <div class="form__field">
+            <label for="wa-nombre">Tu nombre</label>
+            <input id="wa-nombre" name="nombre" type="text" required autocomplete="name" />
+          </div>
+
+          <div class="form__field">
+            <label for="wa-telefono">Tu teléfono</label>
+            <input
+              id="wa-telefono"
+              name="telefono"
+              type="tel"
+              required
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="600 00 00 00"
+            />
+          </div>
+
+          <div class="form__field">
+            <label for="wa-servicio">Qué necesitas</label>
+            <select id="wa-servicio" name="servicio" required>
+              {services.map((s) => <option value={s.title}>{s.title}</option>)}
+            </select>
+          </div>
+
+          <div class="form__field">
+            <label for="wa-zona">En qué zona estás</label>
+            <select id="wa-zona" name="zona">
+              <option value="">Prefiero no decirlo aún</option>
+              {zones.map((z) => <option value={z.name}>{z.name}</option>)}
+            </select>
+          </div>
+
+          <div class="form__field form__field--full">
+            <label for="wa-detalle">Qué ha pasado (opcional)</label>
+            <textarea
+              id="wa-detalle"
+              name="detalle"
+              rows="3"
+              placeholder="Por ejemplo: se ha quedado la llave dentro y la puerta tiene bombín de seguridad."
+            />
+          </div>
+
+          <div class="form__field form__field--full wa-form__actions">
+            <button class="btn" type="submit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1121 11.5z" />
+              </svg>
+              Abrir WhatsApp con mi mensaje
+            </button>
+            <a class="btn btn--ghost" href={`tel:${SITE.phone}`}>
+              O llamar al {SITE.phoneDisplay}
+            </a>
+          </div>
+
+          <p class="wa-form__note form__field--full">
+            Al enviar se abre WhatsApp con el mensaje escrito; tú decides si lo mandas. Esta web no
+            guarda nada de lo que escribas aquí.
+          </p>
+        </form>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .wa-form {
+    max-width: 44rem;
+    margin-inline: auto;
+    padding: 2.5rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-xl);
+    box-shadow: var(--sh-card);
+  }
+  .wa-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: .5rem;
+  }
+  .wa-form__note {
+    margin: 1.25rem 0 0;
+    font-size: var(--fs-xs);
+    color: var(--c-gray-400);
+  }
+</style>
+
+<script is:inline define:vars={{ waNumber: SITE.whatsapp, ciudad: SITE.location }}>
+  const form = document.querySelector("[data-wa-form]");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const zona = data.get("zona");
+    const detalle = data.get("detalle");
+
+    const lineas = [
+      `Hola, soy ${data.get("nombre")}.`,
+      `Necesito: ${data.get("servicio")}.`,
+      zona ? `Estoy en ${zona} (${ciudad}).` : `Estoy en ${ciudad}.`,
+      `Mi teléfono: ${data.get("telefono")}.`,
+    ];
+    if (detalle) lineas.push("", String(detalle));
+
+    window.open(
+      `https://wa.me/${waNumber}?text=${encodeURIComponent(lineas.join("\n"))}`,
+      "_blank",
+      "noopener"
+    );
+  });
+</script>

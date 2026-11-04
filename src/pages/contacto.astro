@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
 import LocationSection from "../components/LocationSection.astro";
 import CTA from "../components/CTA.astro";
 import { SITE } from "../lib/config";
@@ -49,6 +50,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
       </div>
     </section>
 
+    <ContactForm />
     <LocationSection />
     <CTA />
   </main>

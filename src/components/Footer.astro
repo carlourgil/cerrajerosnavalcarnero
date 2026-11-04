@@ -30,7 +30,8 @@ import { services } from "../data/services";
           <li>{SITE.businessName}</li>
           <li>{SITE.addressStreet}</li>
           <li>{SITE.addressCity}</li>
-          <li>Teléfono / WhatsApp: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+          <li>Teléfono: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
+          <li>WhatsApp: <a href={`https://wa.me/${SITE.whatsapp}`}>{SITE.whatsappDisplay}</a></li>
           <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
         </ul>
       </div>
