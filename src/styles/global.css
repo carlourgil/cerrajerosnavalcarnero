@@ -38,8 +38,9 @@
   --bg-dark:  var(--c-navy);
   --bg-muted: var(--c-gray-50);
 
-  /* Tipografía: los mismos tipos del sistema que la web de Alcorcón. */
-  --font-display: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  /* Display con carácter para titulares y cifras; el cuerpo en tipos del
+     sistema, que cargan al instante. */
+  --font-display: "Outfit", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --font-body:    -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --fs-h1:   clamp(2.5rem, 1.4rem + 4.4vw, 4.4rem);

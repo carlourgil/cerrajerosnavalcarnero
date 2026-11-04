@@ -1,0 +1,151 @@
+---
+import { SITE } from "../lib/config";
+---
+
+<section id="tarifas" class="section band-muted">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tarifas</span>
+      <h2>El precio, <span class="accent">antes de llamar</span></h2>
+      <p class="subhead">
+        La apertura de puertas tiene precio cerrado según la hora. Te lo confirmamos por teléfono antes
+        de que salga el técnico, y es lo que pagas.
+      </p>
+    </div>
+
+    <div class="tarifas">
+      <article class="tarifa" data-rate="day">
+        <header class="tarifa__head">
+          <span class="tarifa__tag">Horario comercial</span>
+          <span class="tarifa__now" hidden>Tarifa de ahora</span>
+        </header>
+        <p class="tarifa__hours">De {SITE.dayStart}:00 a {SITE.dayEnd}:00, de lunes a domingo</p>
+        <p class="tarifa__price"><strong>{SITE.priceDay}</strong><span>€</span></p>
+        <p class="tarifa__what">Apertura de puerta sin daños</p>
+      </article>
+
+      <article class="tarifa" data-rate="night">
+        <header class="tarifa__head">
+          <span class="tarifa__tag tarifa__tag--night">Urgencia</span>
+          <span class="tarifa__now" hidden>Tarifa de ahora</span>
+        </header>
+        <p class="tarifa__hours">De {SITE.dayEnd}:00 a {SITE.dayStart}:00 y festivos</p>
+        <p class="tarifa__price"><strong>{SITE.priceNight}</strong><span>€</span></p>
+        <p class="tarifa__what">Apertura de puerta sin daños</p>
+      </article>
+
+      <article class="tarifa tarifa--quote">
+        <header class="tarifa__head">
+          <span class="tarifa__tag tarifa__tag--quote">Resto de servicios</span>
+        </header>
+        <p class="tarifa__hours">Cerraduras, bombines, amaestramientos, cajas fuertes…</p>
+        <p class="tarifa__price tarifa__price--text">Presupuesto cerrado</p>
+        <p class="tarifa__what">Depende de la cerradura; te lo decimos por teléfono</p>
+      </article>
+    </div>
+
+    <p class="tarifas__note">
+      Los precios de apertura son para puertas con cerradura en estado normal. Si la cerradura está
+      forzada o rota, te decimos qué cuesta repararla antes de tocarla.
+    </p>
+  </div>
+</section>
+
+<style>
+  .tarifas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+  .tarifa {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 2rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-200);
+    border-radius: var(--r-lg);
+    transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+  }
+  .tarifa[data-active] {
+    border-color: var(--c-orange);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, .15), var(--sh-float);
+    transform: translateY(-4px);
+  }
+  .tarifa__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+  .tarifa__tag {
+    display: inline-block;
+    padding: .3rem .8rem;
+    border-radius: var(--r-pill);
+    background: var(--t-green);
+    color: var(--t-green-ink);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .tarifa__tag--night { background: var(--t-violet); color: var(--t-violet-ink); }
+  .tarifa__tag--quote { background: var(--c-gray-100); color: var(--c-gray-600); }
+  .tarifa__now {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--c-orange-700);
+  }
+  .tarifa__now::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--c-orange);
+  }
+  .tarifa__hours { margin: 0; font-size: var(--fs-sm); color: var(--c-gray-500); }
+  .tarifa__price {
+    display: flex;
+    align-items: baseline;
+    gap: .15rem;
+    margin: .25rem 0 0;
+  }
+  .tarifa__price strong {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1;
+    color: var(--c-ink);
+  }
+  .tarifa__price span { font-size: 1.5rem; font-weight: 700; color: var(--c-gray-400); }
+  .tarifa__price--text {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--c-ink);
+  }
+  .tarifa__what { margin: 0; font-size: var(--fs-sm); color: var(--c-gray-600); font-weight: 600; }
+  .tarifas__note {
+    max-width: 46rem;
+    margin: 2rem auto 0;
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: var(--c-gray-400);
+  }
+</style>
+
+<script is:inline define:vars={{ start: SITE.dayStart, end: SITE.dayEnd }}>
+  // Resalta la tarifa que toca ahora mismo, en hora de Madrid.
+  const hour = Number(
+    new Intl.DateTimeFormat("es-ES", {
+      timeZone: "Europe/Madrid",
+      hour: "numeric",
+      hour12: false,
+    }).format(new Date())
+  );
+  const active = hour >= start && hour < end ? "day" : "night";
+  const card = document.querySelector(`.tarifa[data-rate="${active}"]`);
+  if (card) {
+    card.setAttribute("data-active", "");
+    const label = card.querySelector(".tarifa__now");
+    if (label) label.hidden = false;
+  }
+</script>
