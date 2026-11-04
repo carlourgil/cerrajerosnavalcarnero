@@ -2,7 +2,7 @@
 import { SITE } from "../lib/config";
 ---
 
-<section class="section band-light">
+<section id="tarifas" class="section band-light">
   <div class="container">
     <div class="cta-panel">
       <div class="cta-panel__bg" aria-hidden="true">
@@ -26,6 +26,15 @@ import { SITE } from "../lib/config";
             <span class="cta-panel__tile-value">Urgente 24h</span>
           </div>
         </div>
+
+        <p class="cta-panel__rates">
+          Apertura de puertas: <strong>{SITE.priceDay} €</strong> de {SITE.dayHoursLabel} ·{" "}
+          <strong>{SITE.priceNight} €</strong> {SITE.nightHoursLabel}.
+          <span>
+            Para cerraduras en estado normal. Si está forzada o rota, te decimos qué cuesta antes
+            de tocarla.
+          </span>
+        </p>
 
         <a href={`tel:${SITE.phone}`} class="cta-panel__phone">
           <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -127,6 +136,23 @@ import { SITE } from "../lib/config";
     text-transform: uppercase;
     line-height: 1;
     color: var(--c-white);
+  }
+
+  /* Las dos tarifas en texto: la tabla de tarjetas se quitó, pero el dato de
+     cuánto cuesta a cada hora tiene que seguir estando antes del teléfono. */
+  .cta-panel__rates {
+    max-width: 44rem;
+    margin: -1.5rem 0 3rem;
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+    color: var(--c-gray-400);
+  }
+  .cta-panel__rates strong { color: var(--c-white); font-weight: var(--fw-bold); }
+  .cta-panel__rates span {
+    display: block;
+    margin-top: .5rem;
+    font-size: var(--fs-xs);
+    color: #93A3B5;
   }
 
   .cta-panel__phone {
