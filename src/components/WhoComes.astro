@@ -17,7 +17,7 @@ const place = zoneName ?? SITE.location;
       <h2>Quién va a llamar a <span class="accent">tu puerta</span></h2>
       <p class="subhead">
         Cuando marcas ese número no te atiende un comercial que luego subcontrata el aviso. Hablas con
-        el cerrajero que se sube a la furgoneta.
+        {" "}{SITE.technicianName}, que es quien se sube a la furgoneta.
       </p>
     </div>
 
@@ -32,7 +32,7 @@ const place = zoneName ?? SITE.location;
           decoding="async"
         />
         <figcaption>
-          <span class="who__name">[PENDIENTE: nombre del técnico]</span>
+          <span class="who__name">{SITE.technicianName}</span>
           <span class="who__role">Cerrajero de guardia en {place}</span>
         </figcaption>
       </figure>

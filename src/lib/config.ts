@@ -37,6 +37,7 @@ export const SITE = {
   dayStart: 9,
   dayEnd: 20,
   foundedYear: 2000,
+  technicianName: "Carlos",
 
   gmbUrl: "[PENDIENTE: enlace a tu ficha de Google Business]",
 
