@@ -24,12 +24,12 @@
   --bg-dark:  var(--c-navy);
   --bg-muted: var(--c-gray-50);
 
-  /* Tipografía */
-  --font-display: "Montserrat", system-ui, -apple-system, sans-serif;
-  --font-body:    "Montserrat", system-ui, -apple-system, sans-serif;
+  /* Tipografía: los mismos tipos del sistema que la web de Alcorcón. */
+  --font-display: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body:    -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-  --fs-h1:   clamp(3rem, 1.6rem + 6vw, 6rem);
-  --fs-h2:   clamp(2.5rem, 1.5rem + 4vw, 3.75rem);
+  --fs-h1:   clamp(2.5rem, 1.4rem + 4.4vw, 4.4rem);
+  --fs-h2:   clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
   --fs-h3:   clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
   --fs-h4:   1.5rem;
   --fs-lead: clamp(1.15rem, 1rem + .7vw, 1.5rem);
@@ -93,15 +93,21 @@ body {
 
 h1, h2, h3, h4, .display {
   font-family: var(--font-display);
-  font-weight: var(--fw-black);
-  font-style: italic;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -.045em;
+  letter-spacing: -.03em;
   line-height: var(--lh-display);
   margin: 0 0 .5em;
   text-wrap: balance;
 }
-h1 { font-size: var(--fs-h1); }
+/* El titular principal va en caja normal, como en la web de Alcorcón: en
+   mayúsculas a este tamaño resulta agresivo y se lee peor. */
+h1 {
+  font-size: var(--fs-h1);
+  text-transform: none;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 h4 { font-size: var(--fs-h4); line-height: 1.1; }
@@ -249,14 +255,10 @@ a:hover { color: var(--c-orange); }
   gap: .75rem;
   flex-shrink: 0;
 }
-.wordmark__text {
-  font-family: var(--font-display);
-  font-size: 1.875rem;
-  font-weight: var(--fw-black);
-  font-style: italic;
-  letter-spacing: -.05em;
-  color: var(--c-navy);
-  line-height: 1;
+.wordmark__logo {
+  height: 46px;
+  width: auto;
+  display: block;
 }
 .wordmark__meta {
   display: flex;
@@ -376,12 +378,12 @@ a:hover { color: var(--c-orange); }
 .hero h1 { margin-bottom: 1.5rem; color: var(--c-white); }
 .hero__kicker {
   display: block;
-  font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
-  font-weight: 800;
-  font-style: normal;
+  font-size: clamp(1.15rem, 1rem + .8vw, 1.6rem);
+  font-weight: 700;
   color: var(--c-orange);
-  margin-bottom: 1rem;
-  letter-spacing: -.03em;
+  margin-bottom: .75rem;
+  letter-spacing: -.01em;
+  text-transform: none;
 }
 .hero__city { text-shadow: 0 10px 10px rgba(0, 0, 0, .5); }
 .hero .subhead { color: #E2E8F0; max-width: 42rem; font-weight: 500; }
@@ -444,7 +446,6 @@ a:hover { color: var(--c-orange); }
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: var(--fw-black);
-  font-style: italic;
   text-transform: uppercase;
   letter-spacing: -.04em;
   color: var(--c-white);

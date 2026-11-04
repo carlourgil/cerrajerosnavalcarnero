@@ -9,6 +9,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "apertura-de-puertas",
+    image: "apertura-de-puertas",
     title: "Apertura de puertas",
     short: "Sin romper tu puerta",
     description:
@@ -23,6 +24,7 @@ export const services: Service[] = [
   },
   {
     slug: "urgencias-24h",
+    image: "urgencias-24h",
     title: "Urgencias 24 horas",
     short: "Noches, fines de semana y festivos",
     description:
@@ -36,6 +38,7 @@ export const services: Service[] = [
   },
   {
     slug: "apertura-de-coches",
+    image: "apertura-de-coches",
     title: "Apertura de coches",
     short: "Llaves dentro del vehículo",
     description:
@@ -49,6 +52,7 @@ export const services: Service[] = [
   },
   {
     slug: "apertura-de-cajas-fuertes",
+    image: "apertura-de-cajas-fuertes",
     title: "Apertura de cajas fuertes",
     short: "Sin destruir el contenido",
     description:
@@ -62,6 +66,7 @@ export const services: Service[] = [
   },
   {
     slug: "cambio-de-cerraduras",
+    image: "cambio-de-cerraduras",
     title: "Cambio de cerraduras",
     short: "Instalación y sustitución",
     description:
@@ -75,6 +80,7 @@ export const services: Service[] = [
   },
   {
     slug: "bombines-antibumping",
+    image: "cambio-de-bombin",
     title: "Bombines antibumping",
     short: "Cilindros de alta seguridad",
     description:
@@ -88,6 +94,7 @@ export const services: Service[] = [
   },
   {
     slug: "amaestramiento",
+    image: "amaestramiento",
     title: "Amaestramientos",
     short: "Una llave para todas las puertas",
     description:
@@ -101,6 +108,7 @@ export const services: Service[] = [
   },
   {
     slug: "muelles-y-cierrapuertas",
+    image: "muelles-cierrapuertas",
     title: "Muelles y cierrapuertas",
     short: "Puertas de portal y de local",
     description:

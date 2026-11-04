@@ -27,7 +27,17 @@ const cards = [
 ---
 
 <section class="hero">
-  <div class="hero__bg"></div>
+  <div class="hero__bg">
+    <img
+      src="/images/apertura-de-puertas-1536.webp"
+      alt={`Cerrajero abriendo una puerta en ${SITE.location}`}
+      width="1439"
+      height="959"
+      fetchpriority="high"
+      decoding="async"
+      class="hero__media"
+    />
+  </div>
 
   <div class="container hero__inner">
     <div class="hero__grid">
@@ -39,8 +49,7 @@ const cards = [
 
         <h1>
           <span class="hero__kicker">¿Te has quedado fuera?</span>
-          Cerrajeros<br />
-          <span class="hero__city">{SITE.location}</span>
+          Cerrajeros en <span class="accent">{SITE.location}</span>, a cualquier hora
         </h1>
 
         <p class="subhead">

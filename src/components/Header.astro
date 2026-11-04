@@ -4,11 +4,17 @@ import { SITE } from "../lib/config";
 
 <header class="header">
   <div class="container header__inner">
-    <a href="/" class="wordmark">
-      <span class="wordmark__text">{SITE.brandFirst}<span class="accent">{SITE.brandLast}</span></span>
+    <a href="/" class="wordmark" aria-label={`${SITE.businessName} — inicio`}>
+      <img
+        src="/images/logo.png"
+        alt={SITE.businessName}
+        width="600"
+        height="205"
+        class="wordmark__logo"
+      />
       <span class="wordmark__meta">
         <span class="wordmark__title">Cerrajeros {SITE.location}</span>
-        <span class="wordmark__sub">24 h</span>
+        <span class="wordmark__sub">Urgencias 24 h</span>
       </span>
     </a>
 

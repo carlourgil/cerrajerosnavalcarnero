@@ -38,12 +38,8 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&display=swap"
-    />
+    <meta property="og:image" content={new URL("/images/apertura-de-puertas-1536.webp", Astro.site).toString()} />
+    <link rel="preload" as="image" href="/images/apertura-de-puertas-1536.webp" fetchpriority="high" />
     <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} />
   </head>
   <body>
