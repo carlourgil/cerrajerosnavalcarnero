@@ -183,6 +183,23 @@ a:hover { color: var(--c-orange); }
 
 .accent { color: var(--c-orange); }
 
+/* Degradado a 45 grados en la palabra destacada de los titulares. Solo se
+   recorta sobre el texto donde el navegador lo admite; si no, queda el
+   naranja plano. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  h2 .accent,
+  .hero h1 .accent {
+    background: linear-gradient(45deg, var(--c-orange-600) 10%, #FBA94C 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Sin esto, las tildes y la jota se recortan arriba y abajo. */
+    padding-block: .06em;
+    margin-block: -.06em;
+  }
+}
+
+
 /* ---------- 4. BOTONES ---------- */
 .btn {
   --btn-bg: var(--c-orange);
@@ -635,18 +652,40 @@ a:hover { color: var(--c-orange); }
   color: var(--c-gray-400);
 }
 
+/* Barra inferior fija en móvil: tres accesos del mismo peso, icono sobre
+   etiqueta. En urgencia el pulgar no busca, y esto siempre está ahí. */
 .sticky-bar { display: none; }
 @media (max-width: 767px) {
   .sticky-bar {
     display: grid;
     grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     position: fixed;
     inset-inline: 0;
     inset-block-end: 0;
-    z-index: 60;
+    z-index: 80;
+    background: var(--c-navy);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 -8px 24px -12px rgba(0, 0, 0, .5);
+    padding-bottom: env(safe-area-inset-bottom);
   }
-  .sticky-bar .btn { border-radius: 0; min-height: 60px; box-shadow: none; }
-  body { padding-bottom: 60px; }
+  .sticky-bar__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    min-height: 68px;
+    color: #C7D3DF;
+    font-size: .8125rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .sticky-bar__item:hover,
+  .sticky-bar__item:active { color: var(--c-white); }
+  .sticky-bar__item + .sticky-bar__item { border-left: 1px solid rgba(255, 255, 255, .1); }
+  .sticky-bar__item--call { background: var(--c-orange); color: var(--c-white); }
+  body { padding-bottom: 68px; }
 }
 
 /* ---------- 11. UTILIDADES ---------- */

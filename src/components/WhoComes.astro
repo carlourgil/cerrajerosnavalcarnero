@@ -1,0 +1,172 @@
+---
+import { SITE } from "../lib/config";
+import { zones } from "../data/zones";
+
+interface Props {
+  zoneName?: string;
+}
+
+const { zoneName } = Astro.props;
+const place = zoneName ?? SITE.location;
+---
+
+<section id="quien-viene" class="section band-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nada de centralitas</span>
+      <h2>Quién va a llamar a <span class="accent">tu puerta</span></h2>
+      <p class="subhead">
+        Cuando marcas ese número no te atiende un comercial que luego subcontrata el aviso. Hablas con
+        el cerrajero que se sube a la furgoneta.
+      </p>
+    </div>
+
+    <div class="who">
+      <figure class="who__card">
+        <img
+          src="/images/urgencias-24h-480.webp"
+          alt={`Cerrajero de guardia en ${SITE.location}`}
+          width="480"
+          height="320"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="who__name">[PENDIENTE: nombre del técnico]</span>
+          <span class="who__role">Cerrajero de guardia en {place}</span>
+        </figcaption>
+      </figure>
+
+      <ul class="who__facts">
+        <li>
+          <span class="who__icon" style="background: var(--c-orange)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z" />
+            </svg>
+          </span>
+          <div>
+            <strong>Hablas con quien viene</strong>
+            <p>Te coge el teléfono el propio técnico, no una centralita que reparte avisos.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="who__icon" style="background: var(--t-blue-ink)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 14l1.4-4.6A2 2 0 016.3 8h11.4a2 2 0 011.9 1.4L21 14v4h-2.5" />
+              <path d="M3 14v4h2.5M3 14h18" />
+              <circle cx="7" cy="17" r="1.5" />
+              <circle cx="17" cy="17" r="1.5" />
+            </svg>
+          </span>
+          <div>
+            <strong>Furgoneta rotulada</strong>
+            <p>Llega un vehículo identificado y un técnico con uniforme. Sabes a quién abres.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="who__icon" style="background: var(--t-violet-ink)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+          </span>
+          <div>
+            <strong>{SITE.arrivalTime} hasta {place}</strong>
+            <p>Es el tiempo medio desde que cuelgas. Si vamos a tardar más, te lo decimos al llamar.</p>
+          </div>
+        </li>
+
+        <li>
+          <span class="who__icon" style="background: var(--t-green-ink)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 4.4-2.9 8.3-7 9.5C7.9 19.3 5 15.4 5 11V6l7-3z" />
+              <path d="M9.5 12l1.8 1.8 3.4-3.6" />
+            </svg>
+          </span>
+          <div>
+            <strong>Precio cerrado y factura</strong>
+            <p>El importe se acuerda por teléfono antes de salir, y se factura lo acordado.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    {
+      !zoneName && (
+        <p class="who__zones">
+          Cubrimos {zones.map((z) => z.name).join(" · ")}
+        </p>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .who {
+    display: grid;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  @media (max-width: 899px) { .who { grid-template-columns: 1fr; } }
+
+  .who__card {
+    position: relative;
+    margin: 0;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .12);
+  }
+  .who__card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .who__card figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .who__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--c-white);
+  }
+  .who__role { font-size: var(--fs-sm); color: #93A3B5; }
+
+  .who__facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; }
+  .who__facts li { display: flex; gap: 1.1rem; align-items: flex-start; }
+  .who__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: var(--r-xs);
+    color: var(--c-white);
+  }
+  .who__facts strong {
+    display: block;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: .15rem;
+  }
+  .who__facts p { margin: 0; font-size: var(--fs-sm); color: #AEBDCD; max-width: 46ch; }
+
+  .who__zones {
+    margin: 3rem auto 0;
+    max-width: 54rem;
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: #7F90A3;
+  }
+</style>

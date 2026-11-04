@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CTA from "../../components/CTA.astro";
+import WhoComes from "../../components/WhoComes.astro";
 import { zones } from "../../data/zones";
 import { services } from "../../data/services";
 import { SITE } from "../../lib/config";
@@ -71,6 +72,7 @@ const place = `${zone.name}, ${SITE.location}`;
       </div>
     </section>
 
+    <WhoComes zoneName={zone.name} />
     <CTA />
   </main>
 </Layout>

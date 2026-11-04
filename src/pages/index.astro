@@ -10,6 +10,7 @@ import Cases from "../components/Cases.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Testimonials from "../components/Testimonials.astro";
 import LocationSection from "../components/LocationSection.astro";
+import WhoComes from "../components/WhoComes.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { SITE } from "../lib/config";
@@ -31,6 +32,7 @@ const hasReviews = testimonials.length > 0;
     {hasReviews ? <Testimonials /> : <Cases />}
     <ContactForm />
     <LocationSection />
+    <WhoComes />
     <FAQ />
     <CTA />
   </main>
