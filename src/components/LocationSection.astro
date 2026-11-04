@@ -16,24 +16,26 @@ import { SITE } from "../lib/config";
           <li><strong>Zona de servicio:</strong> {SITE.serviceArea}</li>
         </ul>
       </div>
-      <div class="map-placeholder">
-        [PENDIENTE: incrusta aquí el mapa de Google Maps con tu ubicación o zona de servicio]
-      </div>
+      <iframe
+        class="map"
+        src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.location}, Madrid`)}&output=embed`}
+        title={`Zona de servicio en ${SITE.location}`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
   </div>
 </section>
 
 <style>
-  .map-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  /* Mapa del municipio mientras no haya local propio: en cuanto exista la
+     ficha de Google Business, se cambia por su mapa. */
+  .map {
+    display: block;
+    width: 100%;
     aspect-ratio: 4 / 3;
-    padding: 2rem;
-    background: var(--c-gray-100);
-    border-radius: var(--r-2xl);
-    color: var(--c-gray-500);
-    font-weight: var(--fw-bold);
+    border: 1px solid var(--c-gray-200);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-card);
   }
 </style>

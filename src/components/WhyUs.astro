@@ -60,7 +60,15 @@ const features = [
       </div>
 
       <div class="whyus__media">
-        <div class="whyus__photo">[PENDIENTE: foto del técnico trabajando en {SITE.location}]</div>
+        <img
+          src="/images/urgencias-24h-1536.webp"
+          alt={`Cerrajero de guardia en ${SITE.location}`}
+          width="1536"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          class="whyus__photo"
+        />
         <div class="whyus__badge">
           <span class="whyus__badge-eyebrow">Confianza local</span>
           <span class="whyus__badge-value">+{yearsRounded} años</span>
@@ -114,18 +122,12 @@ const features = [
 
   .whyus__media { position: relative; }
   .whyus__photo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    display: block;
+    width: 100%;
     aspect-ratio: 4 / 5;
-    padding: 2rem;
-    border: 8px solid var(--c-white);
-    border-radius: var(--r-2xl);
-    background: var(--c-gray-100);
-    box-shadow: var(--sh-2xl);
-    color: var(--c-gray-500);
-    font-weight: var(--fw-bold);
+    object-fit: cover;
+    border-radius: var(--r-lg);
+    box-shadow: 0 30px 60px -25px rgba(17, 26, 36, .4);
   }
   .whyus__badge {
     position: absolute;
