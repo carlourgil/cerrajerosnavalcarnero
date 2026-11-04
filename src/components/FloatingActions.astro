@@ -70,10 +70,10 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     70%, 100% { transform: scale(1.75); opacity: 0; }
   }
 
-  /* En móvil manda la barra fija inferior: el flotante se sube para no taparla. */
+  /* En móvil manda la barra fija inferior, que ya ofrece los mismos accesos:
+     dos juegos de botones a la vez solo estorban. */
   @media (max-width: 767px) {
-    .fab { bottom: 5rem; right: 1rem; }
-    .fab__btn { width: 50px; height: 50px; }
+    .fab { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     .fab__pulse { animation: none; }
