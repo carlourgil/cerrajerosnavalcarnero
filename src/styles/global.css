@@ -332,15 +332,27 @@ a:hover { color: var(--c-orange); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: .4;
-  mix-blend-mode: overlay;
-  filter: grayscale(1);
+  object-position: center right;
 }
+/* El degradado oscurece la izquierda para que el texto se lea y deja ver la
+   foto a la derecha. Antes la foto iba al 40 % con mezcla "overlay" sobre el
+   azul oscuro, que la hacía invisible. */
 .hero__bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(41,50,65,.95) 0%, rgba(41,50,65,.8) 50%, rgba(41,50,65,0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(41, 50, 65, .97) 0%,
+    rgba(41, 50, 65, .94) 35%,
+    rgba(41, 50, 65, .62) 68%,
+    rgba(41, 50, 65, .38) 100%
+  );
+}
+@media (max-width: 1023px) {
+  .hero__bg::after {
+    background: linear-gradient(180deg, rgba(41, 50, 65, .9) 0%, rgba(41, 50, 65, .97) 55%);
+  }
 }
 .hero__inner { width: 100%; padding-block: 80px; }
 .hero__grid {
