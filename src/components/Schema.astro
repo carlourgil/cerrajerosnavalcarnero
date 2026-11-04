@@ -1,0 +1,128 @@
+---
+import { SITE } from "../lib/config";
+import { services } from "../data/services";
+import { faqs } from "../data/faqs";
+
+interface Props {
+  page?: "home" | "inner";
+  breadcrumbs?: { name: string; path: string }[];
+}
+
+const { page = "inner", breadcrumbs = [] } = Astro.props;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? `https://${SITE.domain}`;
+const businessId = `${site}/#cerrajeria`;
+const pending = (value: string) => value.startsWith("[PENDIENTE");
+
+const business: Record<string, unknown> = {
+  "@type": "Locksmith",
+  "@id": businessId,
+  name: SITE.businessName,
+  description: SITE.description,
+  url: `${site}/`,
+  telephone: `+34${SITE.phone}`,
+  email: SITE.email,
+  priceRange: `${SITE.priceDay}€-${SITE.priceNight}€`,
+  foundingDate: String(SITE.foundedYear),
+  currenciesAccepted: "EUR",
+  areaServed: {
+    "@type": "City",
+    name: SITE.location,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: SITE.location,
+      postalCode: SITE.postalCode,
+      addressRegion: "Madrid",
+      addressCountry: "ES",
+    },
+  },
+  // Navalcarnero, centro del municipio. Ajustar al local cuando haya dirección.
+  geo: { "@type": "GeoCoordinates", latitude: 40.2876, longitude: -4.0122 },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `Servicios de cerrajería en ${SITE.location}`,
+    itemListElement: services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.title,
+        description: s.description,
+        serviceType: s.title,
+        url: `${site}/servicios/${s.slug}/`,
+        areaServed: { "@type": "City", name: SITE.location },
+        provider: { "@id": businessId },
+      },
+      ...(s.slug === "apertura-de-puertas"
+        ? { price: String(SITE.priceDay), priceCurrency: "EUR" }
+        : {}),
+    })),
+  },
+};
+
+// Solo se publica la dirección cuando es real: una dirección a medias en el
+// schema es peor que ninguna, porque Google la cruza con la ficha de negocio.
+if (!pending(SITE.addressStreet)) {
+  business.address = {
+    "@type": "PostalAddress",
+    streetAddress: SITE.addressStreet,
+    addressLocality: SITE.location,
+    postalCode: SITE.postalCode,
+    addressRegion: "Madrid",
+    addressCountry: "ES",
+  };
+}
+
+const graph: Record<string, unknown>[] = [
+  business,
+  {
+    "@type": "WebSite",
+    "@id": `${site}/#web`,
+    url: `${site}/`,
+    name: SITE.businessName,
+    inLanguage: "es-ES",
+    publisher: { "@id": businessId },
+  },
+];
+
+if (page === "home") {
+  graph.push({
+    "@type": "FAQPage",
+    "@id": `${site}/#faq`,
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  });
+}
+
+if (breadcrumbs.length > 0) {
+  graph.push({
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Inicio", path: "/" }, ...breadcrumbs].map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: b.name,
+      item: `${site}${b.path}`,
+    })),
+  });
+}
+
+const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

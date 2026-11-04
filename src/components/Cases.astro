@@ -1,0 +1,131 @@
+---
+import { SITE } from "../lib/config";
+
+// Ejemplos ilustrativos del tipo de aviso que se atiende, NO reseñas: no hay
+// nombres de clientes ni valoraciones. Se avisa de ello en la propia sección,
+// para no hacer pasar por opinión lo que no lo es.
+const cases = [
+  {
+    zone: "Centro",
+    problem: "Llave partida dentro del bombín",
+    solution: "Extracción del trozo de llave y copia nueva en el momento. No hizo falta cambiar la cerradura.",
+    time: "25 min",
+  },
+  {
+    zone: "La Dehesa",
+    problem: "La puerta del portal no cerraba sola",
+    solution: "Ajuste del cierrapuertas y sustitución del muelle. Aviso de comunidad.",
+    time: "40 min",
+  },
+  {
+    zone: "Polígono Alparrache",
+    problem: "Llaves dentro de la furgoneta, con el motor en marcha",
+    solution: "Apertura sin tocar la junta ni la cerradura, tras acreditar el permiso de circulación.",
+    time: "20 min",
+  },
+  {
+    zone: "San Isidro",
+    problem: "Cerradura forzada al volver de vacaciones",
+    solution: "Cambio de cerradura por una de alta seguridad y bombín antibumping el mismo día.",
+    time: "1 h 15 min",
+  },
+  {
+    zone: "Navalcarnero Sur",
+    problem: "Caja fuerte de un local con el teclado muerto",
+    solution: "Apertura por manipulación, sin taladrar, y cambio de combinación después.",
+    time: "50 min",
+  },
+];
+---
+
+<section id="casos" class="section band-light">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Avisos de cada semana</span>
+      <h2>Qué nos encontramos en <span class="accent">{SITE.location}</span></h2>
+      <p class="subhead">
+        Ejemplos del tipo de aviso que atendemos y cuánto se suele tardar en resolverlo.
+      </p>
+    </div>
+
+    <div class="cases">
+      {
+        cases.map((c) => (
+          <article class="case">
+            <header class="case__head">
+              <span class="case__zone">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                {c.zone}
+              </span>
+              <span class="case__time">{c.time}</span>
+            </header>
+            <h3 class="case__problem">{c.problem}</h3>
+            <p class="case__solution">{c.solution}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="cases__note">
+      Son ejemplos ilustrativos del trabajo habitual, no opiniones de clientes ni encargos concretos.
+      Cuando tengamos reseñas reales de vecinos de {SITE.location}, las publicaremos aquí con su nombre.
+    </p>
+  </div>
+</section>
+
+<style>
+  .cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .case {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    padding: 2rem;
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-left: 3px solid var(--c-orange);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-card);
+    transition: transform var(--ease), box-shadow var(--ease);
+  }
+  .case:hover { transform: translateY(-6px); box-shadow: var(--sh-float); }
+  .case__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .case__zone {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-black);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--c-orange);
+  }
+  .case__time {
+    padding: .2rem .7rem;
+    background: var(--c-gray-50);
+    border-radius: var(--r-pill);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    color: var(--c-gray-500);
+  }
+  .case__problem { margin: 0; font-size: 1.25rem; color: var(--c-navy); }
+  .case__solution { margin: 0; color: var(--c-gray-500); font-weight: 500; font-size: var(--fs-sm); }
+  .cases__note {
+    max-width: 44rem;
+    margin: 2.5rem auto 0;
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: var(--c-gray-400);
+  }
+</style>

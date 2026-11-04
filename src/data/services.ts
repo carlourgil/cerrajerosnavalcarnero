@@ -100,6 +100,19 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "muelles-y-cierrapuertas",
+    title: "Muelles y cierrapuertas",
+    short: "Puertas de portal y de local",
+    description:
+      "Si la puerta del portal se queda abierta, da un portazo o roza al cerrar, el problema suele estar en el muelle. Ajustamos y sustituimos cierrapuertas de todas las marcas.",
+    bullets: [
+      "Ajuste de la velocidad y del golpe final",
+      "Sustitución de cierrapuertas aéreos y de suelo",
+      "Puertas de portal, de local y cortafuegos",
+      "Evita que el portal quede abierto por la noche",
+    ],
+  },
+  {
     slug: "mantenimiento",
     title: "Mantenimiento",
     short: "Comunidades y empresas",

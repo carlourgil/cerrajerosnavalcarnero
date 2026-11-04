@@ -19,6 +19,10 @@ const place = `${zone.name}, ${SITE.location}`;
 <Layout
   title={`Cerrajeros en ${place} | ${SITE.businessName}`}
   description={`Cerrajero urgente 24 h en ${place}. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegada media ${SITE.arrivalTime}.`}
+  breadcrumbs={[
+    { name: "Zonas", path: "/zonas/" },
+    { name: zone.name, path: `/zonas/${zone.slug}/` },
+  ]}
 >
   <main>
     <section class="page-hero">

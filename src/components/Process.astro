@@ -1,0 +1,74 @@
+---
+import { SITE } from "../lib/config";
+
+const steps = [
+  {
+    n: "01",
+    title: "Llamas y te decimos el precio",
+    desc: `Nos cuentas qué ha pasado y en qué parte de ${SITE.location} estás. Te damos el precio cerrado por teléfono, antes de que salga nadie.`,
+  },
+  {
+    n: "02",
+    title: "Salimos hacia tu puerta",
+    desc: `El técnico va de camino y llega en ${SITE.arrivalTime}. No hay centralita de por medio: hablas con quien va a venir.`,
+  },
+  {
+    n: "03",
+    title: "Abrimos y pagas lo acordado",
+    desc: "Ni un euro más de lo que te dijimos por teléfono. Con factura, y la cerradura funcionando como antes.",
+  },
+];
+---
+
+<section class="section band-muted">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Sin letra <span class="accent">pequeña</span></h2>
+      <p class="subhead">Tres pasos, y sabes lo que vas a pagar desde el primero.</p>
+    </div>
+
+    <div class="steps">
+      {
+        steps.map((s) => (
+          <div class="step">
+            <span class="step__n">{s.n}</span>
+            <h3 class="step__title">{s.title}</h3>
+            <p class="step__desc">{s.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .step {
+    position: relative;
+    padding: 2.5rem;
+    background: var(--c-gray-50);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-xl);
+  }
+  .step__n {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: var(--fw-black);
+    font-style: italic;
+    line-height: 1;
+    color: var(--c-orange);
+    margin-bottom: 1rem;
+  }
+  .step__title {
+    margin: 0 0 .5rem;
+    font-size: 1.375rem;
+    color: var(--c-navy);
+  }
+  .step__desc { margin: 0; color: var(--c-gray-500); font-weight: 500; }
+</style>

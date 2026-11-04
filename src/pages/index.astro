@@ -2,22 +2,30 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Services from "../components/Services.astro";
+import Process from "../components/Process.astro";
 import WhyUs from "../components/WhyUs.astro";
 import Zones from "../components/Zones.astro";
+import Cases from "../components/Cases.astro";
 import Testimonials from "../components/Testimonials.astro";
 import LocationSection from "../components/LocationSection.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import { SITE } from "../lib/config";
+import { testimonials } from "../data/testimonials";
+
+// Hasta que haya reseñas reales se muestran casos de ejemplo. En cuanto se
+// añada la primera opinión a data/testimonials.ts, la sección cambia sola.
+const hasReviews = testimonials.length > 0;
 ---
 
-<Layout title={`${SITE.businessName} | ${SITE.tagline}`}>
+<Layout title={`${SITE.businessName} | ${SITE.tagline}`} schemaPage="home">
   <main>
     <Hero />
     <Services />
+    <Process />
     <WhyUs />
     <Zones />
-    <Testimonials />
+    {hasReviews ? <Testimonials /> : <Cases />}
     <LocationSection />
     <FAQ />
     <CTA />

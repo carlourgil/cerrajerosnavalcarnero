@@ -1,27 +1,9 @@
 ---
 import { SITE } from "../lib/config";
-
-const faqs = [
-  {
-    q: `¿Llegáis rápido a cualquier zona de ${SITE.location}?`,
-    a: `Sí. Trabajamos en ${SITE.serviceArea} y la llegada media es de ${SITE.arrivalTime}, festivos incluidos.`,
-  },
-  {
-    q: "¿Cuánto cuesta la apertura de puertas?",
-    a: `La apertura cuesta ${SITE.priceDay} € de ${SITE.dayStart}:00 a ${SITE.dayEnd}:00 y ${SITE.priceNight} € en el resto de horas. Te lo confirmamos por teléfono antes de salir, así que no hay sorpresas al llegar.`,
-  },
-  {
-    q: "¿Hacéis cambios de bombín antibumping?",
-    a: "Es de lo que más hacemos. Instalamos bombines certificados contra bumping, ganzuado y taladro.",
-  },
-  {
-    q: "¿Atendéis urgencias de madrugada?",
-    a: `Sí, el servicio de urgencias está disponible ${SITE.hours}.`,
-  },
-];
+import { faqs } from "../data/faqs";
 ---
 
-<section id="faq" class="section band-muted">
+<section id="faq" class="section band-light">
   <div class="container">
     <div class="section-head">
       <h2>Preguntas <span class="accent">frecuentes</span></h2>
