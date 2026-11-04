@@ -34,12 +34,39 @@ export const SITE = {
 
   hours: "24 horas, todos los días",
   arrivalTime: "20-30 minutos",
-  // Tarifa de apertura de puertas. El precio mostrado cambia según la hora
-  // (hora de Madrid), calculado en el navegador.
+  // Tarifa de apertura de puertas. El precio que se ve en la web lo decide el
+  // navegador con la hora de Madrid, no la del móvil del visitante.
+  //
+  // Comercial: de lunes a viernes, de 8:00 a 21:00.
+  // Urgencia: noches, desde el viernes a las 21:00 hasta el lunes a las 8:00,
+  //           y festivos completos.
   priceDay: 80,
   priceNight: 120,
-  dayStart: 9,
-  dayEnd: 20,
+  dayStart: 8,
+  dayEnd: 21,
+  dayHoursLabel: "lunes a viernes, de 8:00 a 21:00",
+  nightHoursLabel: "noches, fines de semana y festivos",
+
+  // Festivos de tarifa de urgencia, en formato MM-DD: nacionales y de la
+  // Comunidad de Madrid. Jueves y Viernes Santo no van aquí porque cambian de
+  // fecha cada año: los calcula sola la web.
+  holidays: [
+    "01-01", // Año Nuevo
+    "01-06", // Reyes
+    "05-01", // Fiesta del Trabajo
+    "05-02", // Comunidad de Madrid
+    "07-25", // Santiago Apóstol
+    "08-15", // Asunción
+    "10-12", // Fiesta Nacional
+    "11-01", // Todos los Santos
+    "12-06", // Constitución
+    "12-08", // Inmaculada
+    "12-25", // Navidad
+  ],
+  // Fiestas locales de Navalcarnero y festivos trasladados de un año concreto,
+  // en formato YYYY-MM-DD (ej.: "2027-03-19"). Vacío hasta confirmarlos: un
+  // festivo inventado hace que la web cobre 120 € un día normal.
+  localHolidays: [],
   foundedYear: 2000,
   technicianName: "Carlos",
 

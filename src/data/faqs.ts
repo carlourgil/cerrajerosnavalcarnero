@@ -11,7 +11,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "¿Cuánto cuesta la apertura de puertas?",
-    a: `La apertura cuesta ${SITE.priceDay} € de ${SITE.dayStart}:00 a ${SITE.dayEnd}:00 y ${SITE.priceNight} € en el resto de horas. Te lo confirmamos por teléfono antes de salir, así que no hay sorpresas al llegar.`,
+    a: `La apertura cuesta ${SITE.priceDay} € de lunes a viernes, de ${SITE.dayStart}:00 a ${SITE.dayEnd}:00. El resto del tiempo —noches, desde el viernes a las ${SITE.dayEnd}:00 hasta el lunes a las ${SITE.dayStart}:00, y festivos— son ${SITE.priceNight} €. En la web verás siempre el precio que toca a esa hora, y te lo confirmamos por teléfono antes de salir.`,
   },
   {
     q: "¿Abrís la puerta sin romper la cerradura?",

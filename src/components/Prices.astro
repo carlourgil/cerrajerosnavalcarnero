@@ -17,9 +17,9 @@ import { SITE } from "../lib/config";
       <article class="tarifa" data-rate="day">
         <header class="tarifa__head">
           <span class="tarifa__tag">Horario comercial</span>
-          <span class="tarifa__now" hidden>Tarifa de ahora</span>
+          <span class="tarifa__now">Tarifa de ahora</span>
         </header>
-        <p class="tarifa__hours">De {SITE.dayStart}:00 a {SITE.dayEnd}:00, de lunes a domingo</p>
+        <p class="tarifa__hours">De lunes a viernes, de {SITE.dayStart}:00 a {SITE.dayEnd}:00</p>
         <p class="tarifa__price"><strong>{SITE.priceDay}</strong><span>€</span></p>
         <p class="tarifa__what">Apertura de puerta sin daños</p>
       </article>
@@ -27,9 +27,11 @@ import { SITE } from "../lib/config";
       <article class="tarifa" data-rate="night">
         <header class="tarifa__head">
           <span class="tarifa__tag tarifa__tag--night">Urgencia</span>
-          <span class="tarifa__now" hidden>Tarifa de ahora</span>
+          <span class="tarifa__now">Tarifa de ahora</span>
         </header>
-        <p class="tarifa__hours">De {SITE.dayEnd}:00 a {SITE.dayStart}:00 y festivos</p>
+        <p class="tarifa__hours">
+          Noches, del viernes a las {SITE.dayEnd}:00 al lunes a las {SITE.dayStart}:00 y festivos
+        </p>
         <p class="tarifa__price"><strong>{SITE.priceNight}</strong><span>€</span></p>
         <p class="tarifa__what">Apertura de puerta sin daños</p>
       </article>
@@ -67,7 +69,10 @@ import { SITE } from "../lib/config";
     border-radius: var(--r-lg);
     transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
   }
-  .tarifa[data-active] {
+  /* Qué tarifa está activa lo decide el script del layout, que marca el <html>
+     con data-rate-now. Así la hora se calcula una sola vez en toda la página. */
+  :global(html[data-rate-now="day"]) .tarifa[data-rate="day"],
+  :global(html[data-rate-now="night"]) .tarifa[data-rate="night"] {
     border-color: var(--c-orange);
     box-shadow: 0 0 0 3px rgba(249, 115, 22, .15), var(--sh-float);
     transform: translateY(-4px);
@@ -84,10 +89,11 @@ import { SITE } from "../lib/config";
   }
   .tarifa__tag--night { background: var(--t-violet); color: var(--t-violet-ink); }
   .tarifa__tag--quote { background: var(--c-gray-100); color: var(--c-gray-600); }
-  /* Sin esto el display de la clase gana al [hidden] del navegador y la
-     etiqueta sale en las dos tarjetas a la vez. */
-  .tarifa__now[hidden] { display: none; }
-  .tarifa__now {
+  /* Oculta por defecto: si el navegador no ejecuta el script, no se marca
+     ninguna tarifa en vez de marcar la equivocada. */
+  .tarifa__now { display: none; }
+  :global(html[data-rate-now="day"]) .tarifa[data-rate="day"] .tarifa__now,
+  :global(html[data-rate-now="night"]) .tarifa[data-rate="night"] .tarifa__now {
     display: inline-flex;
     align-items: center;
     gap: .35rem;
@@ -134,21 +140,3 @@ import { SITE } from "../lib/config";
     color: var(--c-gray-400);
   }
 </style>
-
-<script is:inline define:vars={{ start: SITE.dayStart, end: SITE.dayEnd }}>
-  // Resalta la tarifa que toca ahora mismo, en hora de Madrid.
-  const hour = Number(
-    new Intl.DateTimeFormat("es-ES", {
-      timeZone: "Europe/Madrid",
-      hour: "numeric",
-      hour12: false,
-    }).format(new Date())
-  );
-  const active = hour >= start && hour < end ? "day" : "night";
-  const card = document.querySelector(`.tarifa[data-rate="${active}"]`);
-  if (card) {
-    card.setAttribute("data-active", "");
-    const label = card.querySelector(".tarifa__now");
-    if (label) label.hidden = false;
-  }
-</script>

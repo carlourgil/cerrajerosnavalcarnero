@@ -108,23 +108,71 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
         night: SITE.priceNight,
         start: SITE.dayStart,
         end: SITE.dayEnd,
+        dayHours: SITE.dayHoursLabel,
+        nightHours: SITE.nightHoursLabel,
+        holidays: SITE.holidays,
+        localHolidays: SITE.localHolidays,
       }}
     >
-      // La web es estática: sin esto el precio se congelaría en la hora del build.
-      const hour = Number(
-        new Intl.DateTimeFormat("es-ES", {
-          timeZone: "Europe/Madrid",
-          hour: "numeric",
-          hour12: false,
-        }).format(new Date())
-      );
-      const isDayRate = hour >= start && hour < end;
+      // La web es estática: sin esto el precio se congelaría en la hora del
+      // build. Se usa siempre la hora de Madrid, no la del móvil del visitante,
+      // que puede estar de viaje o con el reloj mal puesto.
+      const parts = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/Madrid",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        hourCycle: "h23",
+      }).formatToParts(new Date());
+      const part = (type) => parts.find((p) => p.type === type).value;
 
+      const today = part("year") + "-" + part("month") + "-" + part("day");
+      const hour = Number(part("hour"));
+      // 0 domingo … 6 sábado, sacado de la fecha de Madrid.
+      const weekday = new Date(today + "T12:00:00Z").getUTCDay();
+
+      // Jueves y Viernes Santo caen en una fecha distinta cada año, así que se
+      // calcula el domingo de Pascua (algoritmo de Meeus) y se cuenta atrás.
+      const year = Number(part("year"));
+      const a = year % 19;
+      const b = Math.floor(year / 100);
+      const c = year % 100;
+      const d = Math.floor(b / 4);
+      const e = b % 4;
+      const f = Math.floor((b + 8) / 25);
+      const g = Math.floor((b - f + 1) / 3);
+      const h = (19 * a + b - d - g + 15) % 30;
+      const i = Math.floor(c / 4);
+      const k = c % 4;
+      const l = (32 + 2 * e + 2 * i - h - k) % 7;
+      const m = Math.floor((a + 11 * h + 22 * l) / 451);
+      const easterMonth = Math.floor((h + l - 7 * m + 114) / 31);
+      const easterDay = ((h + l - 7 * m + 114) % 31) + 1;
+      const easter = Date.UTC(year, easterMonth - 1, easterDay);
+
+      const asDate = (ms) => new Date(ms).toISOString().slice(0, 10);
+      const semanaSanta = [asDate(easter - 3 * 86400000), asDate(easter - 2 * 86400000)];
+
+      const isHoliday =
+        holidays.indexOf(today.slice(5)) !== -1 ||
+        localHolidays.indexOf(today) !== -1 ||
+        semanaSanta.indexOf(today) !== -1;
+
+      // Tarifa comercial solo de lunes a viernes laborables, en horario. Todo
+      // lo demás —noches, desde el viernes a las 21:00, y festivos— es urgencia.
+      const isDayRate =
+        weekday >= 1 && weekday <= 5 && !isHoliday && hour >= start && hour < end;
+
+      document.documentElement.setAttribute("data-rate-now", isDayRate ? "day" : "night");
       document.querySelectorAll("[data-price]").forEach((el) => {
         el.textContent = (isDayRate ? day : night) + "€";
       });
       document.querySelectorAll("[data-tariff]").forEach((el) => {
         el.textContent = isDayRate ? "Tarifa comercial" : "Tarifa urgencias";
+      });
+      document.querySelectorAll("[data-rate-hours]").forEach((el) => {
+        el.textContent = isDayRate ? dayHours : nightHours;
       });
     </script>
   </body>
