@@ -31,7 +31,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "¿Trabajáis con comunidades y con naves del Polígono Alparrache?",
-    a: `Sí. Además de viviendas, atendemos comunidades de propietarios, locales y naves industriales de ${SITE.location}: amaestramientos, cierrapuertas y mantenimiento de las cerraduras del portal y del garaje.`,
+    a: `Sí. Además de viviendas, atendemos comunidades de propietarios, locales y naves industriales de ${SITE.location}: aperturas, cambio de las cerraduras del portal o del garaje y bombines antibumping para los accesos comunes.`,
   },
   {
     q: "¿Qué necesito para que me abráis el coche o una caja fuerte?",

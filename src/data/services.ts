@@ -92,45 +92,4 @@ export const services: Service[] = [
       "No hace falta cambiar toda la cerradura",
     ],
   },
-  {
-    slug: "amaestramiento",
-    image: "amaestramiento",
-    title: "Amaestramientos",
-    short: "Una llave para todas las puertas",
-    description:
-      "Olvídate del llavero enorme. Diseñamos un sistema de llaves jerarquizado para comunidades, oficinas y naves: cada persona abre solo lo que le corresponde.",
-    bullets: [
-      "Portal, trastero y garaje con una sola llave",
-      "Accesos por niveles según quién sea",
-      "Ideal para comunidades y empresas",
-      "Control de las copias que se entregan",
-    ],
-  },
-  {
-    slug: "muelles-y-cierrapuertas",
-    image: "muelles-cierrapuertas",
-    title: "Muelles y cierrapuertas",
-    short: "Puertas de portal y de local",
-    description:
-      "Si la puerta del portal se queda abierta, da un portazo o roza al cerrar, el problema suele estar en el muelle. Ajustamos y sustituimos cierrapuertas de todas las marcas.",
-    bullets: [
-      "Ajuste de la velocidad y del golpe final",
-      "Sustitución de cierrapuertas aéreos y de suelo",
-      "Puertas de portal, de local y cortafuegos",
-      "Evita que el portal quede abierto por la noche",
-    ],
-  },
-  {
-    slug: "mantenimiento",
-    title: "Mantenimiento",
-    short: "Comunidades y empresas",
-    description:
-      "Revisión y ajuste periódico de puertas y cerraduras para comunidades de propietarios y negocios. Sale más barato mantener que reparar de urgencia.",
-    bullets: [
-      "Ajuste de muelles y cierrapuertas",
-      "Revisión de cerraduras de portal y garaje",
-      "Engrase y sustitución de piezas gastadas",
-      "Presupuesto anual para la comunidad",
-    ],
-  },
 ];
