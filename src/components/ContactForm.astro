@@ -45,6 +45,10 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
             <label for="wa-servicio">Qué necesitas</label>
             <select id="wa-servicio" name="servicio" required>
               {services.map((s) => <option value={s.title}>{s.title}</option>)}
+              {/* Para la avería que no está en la lista. El valor que se manda
+                  no es "Otros" para que el mensaje de WhatsApp siga leyéndose
+                  bien: "Necesito: otra avería." */}
+              <option value="otra avería">Otros</option>
             </select>
           </div>
 
