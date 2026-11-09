@@ -3,9 +3,10 @@
 // Lo que ponga [PENDIENTE] se ve tal cual en la web, a propósito, para que no
 // se publique nada inventado.
 export const SITE = {
-  // Nombre descriptivo provisional: CerraNexo es la marca de Alcorcón y
-  // Navalcarnero llevará la suya propia cuando esté creada.
-  businessName: "Cerrajeros Navalcarnero",
+  // La marca. El nombre descriptivo ("Cerrajeros en Navalcarnero") se usa en
+  // los títulos de las páginas, que es donde hace falta para buscar.
+  businessName: "NavaLlave",
+  seoName: "Cerrajeros en Navalcarnero",
   tagline: "Cerrajero urgente 24 h",
   description:
     "Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegamos en 20-30 minutos.",

@@ -6,15 +6,15 @@
   --c-navy-800:   #112640;
   --c-navy-700:   #17324F;
   --c-navy-soft:  #2F5173;
-  --c-orange:     #F97316;
-  --c-orange-600: #EA580C;
-  --c-orange-700: #C2410C;   /* texto pequeño sobre blanco: contraste AA */
-  --c-orange-50:  #FFF3EC;
-  --c-brick:      #C2410C;
+  --c-orange:     #F48801;   /* naranja del logo NavaLlave */
+  --c-orange-600: #DB7A01;
+  --c-orange-700: #A85C00;   /* texto pequeño sobre blanco: contraste AA */
+  --c-orange-50:  #FFF5E8;
+  --c-brick:      #A85C00;
   --c-white:      #FFFFFF;
 
   /* Tintes para las pastillas de icono: dan color sin ensuciar la paleta. */
-  --t-orange:     #FFF1E6;
+  --t-orange:     #FFF3E0;
   --t-blue:       #E8F0FE;
   --t-blue-ink:   #2563EB;
   --t-violet:     #F0EBFE;
@@ -189,7 +189,7 @@ a:hover { color: var(--c-orange); }
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   h2 .accent,
   .hero h1 .accent {
-    background: linear-gradient(45deg, var(--c-orange-600) 10%, #FBA94C 90%);
+    background: linear-gradient(45deg, var(--c-orange-600) 10%, #FBB03B 90%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -294,27 +294,34 @@ a:hover { color: var(--c-orange); }
   gap: .75rem;
   flex-shrink: 0;
 }
-/* Marca provisional: nombre descriptivo hasta que exista la de Navalcarnero. */
-.wordmark__mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+.wordmark__logo {
+  display: block;
+  width: auto;
+  height: 38px;
   flex-shrink: 0;
-  border-radius: var(--r-xs);
-  background: var(--c-orange);
-  color: var(--c-white);
 }
-.wordmark__meta {
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid var(--c-gray-100);
-  padding-left: .75rem;
+.wordmark__logo--mark { display: none; }
+@media (max-width: 639px) {
+  .wordmark__logo--full { display: none; }
+  .wordmark__logo--mark { display: block; height: 36px; }
 }
-.wordmark__title { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--c-navy); line-height: 1.2; }
-.wordmark__sub { font-size: var(--fs-2xs); color: var(--c-gray-500); text-transform: uppercase; letter-spacing: .2em; }
-@media (max-width: 639px) { .wordmark__meta { display: none; } }
+/* El descriptivo va al lado del logo: la marca dice quién, esto dice qué. */
+.wordmark__sub {
+  padding-left: .85rem;
+  border-left: 1px solid var(--c-gray-200);
+  font-size: var(--fs-2xs);
+  color: var(--c-gray-500);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  line-height: 1.35;
+  /* En rem, no en ch: el espaciado entre letras hace que ch se quede corto y
+     el texto cae a tres líneas. */
+  max-width: 8.5rem;
+}
+@media (max-width: 899px) {
+  .wordmark__sub { display: none; }
+  .wordmark__logo { height: 34px; }
+}
 
 .nav { display: flex; align-items: center; gap: .25rem; list-style: none; margin: 0; padding: 0; }
 .nav > li > a {
@@ -391,14 +398,14 @@ a:hover { color: var(--c-orange); }
   inset: 0;
   background:
     linear-gradient(90deg, var(--c-navy) 0%, var(--c-navy) 30%, rgba(12, 28, 46, .88) 45%, rgba(12, 28, 46, .35) 72%, rgba(12, 28, 46, .55) 100%),
-    radial-gradient(640px 320px at 18% 20%, rgba(249, 115, 22, .16), transparent 70%);
+    radial-gradient(640px 320px at 18% 20%, rgba(244, 136, 1, .16), transparent 70%);
 }
 @media (max-width: 979px) {
   .hero__bg img { width: 100%; }
   .hero__bg::after {
     background:
       linear-gradient(180deg, rgba(12, 28, 46, .82) 0%, rgba(12, 28, 46, .95) 55%, var(--c-navy) 100%),
-      radial-gradient(500px 260px at 20% 10%, rgba(249, 115, 22, .18), transparent 70%);
+      radial-gradient(500px 260px at 20% 10%, rgba(244, 136, 1, .18), transparent 70%);
   }
 }
 
@@ -418,8 +425,8 @@ a:hover { color: var(--c-orange); }
   padding: .45rem 1.1rem;
   margin-bottom: 1.5rem;
   border-radius: var(--r-pill);
-  background: rgba(249, 115, 22, .14);
-  border: 1px solid rgba(249, 115, 22, .4);
+  background: rgba(244, 136, 1, .14);
+  border: 1px solid rgba(244, 136, 1, .4);
   color: #FFC89B;
   font-size: var(--fs-xs);
   font-weight: 700;
@@ -487,7 +494,7 @@ a:hover { color: var(--c-orange); }
 }
 .hero__card:hover {
   background: rgba(23, 50, 79, .85);
-  border-color: rgba(249, 115, 22, .5);
+  border-color: rgba(244, 136, 1, .5);
   transform: translateX(6px);
 }
 .hero__card-icon {
@@ -643,6 +650,8 @@ a:hover { color: var(--c-orange); }
 .footer a:hover { color: var(--c-orange); }
 .footer__cols { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .footer__cols h4 { font-size: var(--fs-body); color: var(--c-white); letter-spacing: -.02em; }
+.footer__cols h4.footer__brand { font-size: 1.5rem; letter-spacing: -.035em; }
+.footer__brand span { color: var(--c-orange); }
 .footer__cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; font-size: var(--fs-sm); }
 .footer__legal {
   margin-top: var(--sp-block);

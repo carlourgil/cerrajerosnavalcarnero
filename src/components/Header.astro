@@ -5,16 +5,25 @@ import { SITE } from "../lib/config";
 <header class="header">
   <div class="container header__inner">
     <a href="/" class="wordmark" aria-label={`${SITE.businessName} — inicio`}>
-      <span class="wordmark__mark" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="10" r="5"></circle>
-          <path d="M13 13l7 7M17 17l2.5-2.5"></path>
-        </svg>
-      </span>
-      <span class="wordmark__meta">
-        <span class="wordmark__title">Cerrajeros {SITE.location}</span>
-        <span class="wordmark__sub">Urgencias 24 h</span>
-      </span>
+      <img
+        class="wordmark__logo wordmark__logo--full"
+        src="/images/navallave-logo.webp"
+        alt={`${SITE.businessName}, cerrajeros en ${SITE.location}`}
+        width="640"
+        height="113"
+        fetchpriority="high"
+      />
+      {/* En el móvil no cabe el logo entero sin aplastar el botón del
+          teléfono, así que ahí se queda solo el icono. */}
+      <img
+        class="wordmark__logo wordmark__logo--mark"
+        src="/images/navallave-icono.webp"
+        alt={`${SITE.businessName}, cerrajeros en ${SITE.location}`}
+        width="165"
+        height="120"
+        fetchpriority="high"
+      />
+      <span class="wordmark__sub">Cerrajeros en {SITE.location}</span>
     </a>
 
     <nav>
