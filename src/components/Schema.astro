@@ -177,6 +177,20 @@ if (service) {
         }
       : {}),
   });
+
+  // Las preguntas de la página del servicio también se declaran, que es lo que
+  // puede hacer que Google las enseñe desplegadas en el resultado.
+  if (service.faqs.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${site}/servicios/${service.slug}/#faq`,
+      mainEntity: service.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
 }
 
 if (breadcrumbs.length > 0) {

@@ -62,6 +62,49 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
       </div>
     </section>
 
+    <section class="section band-light">
+      <div class="container">
+        <div class="prose">
+          {service.intro.map((p) => <p class="prose__lead">{p}</p>)}
+
+          {
+            service.sections.map((block) => (
+              <div class="prose__block">
+                <h2>{block.title}</h2>
+                {block.body.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section band-muted">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Dudas frecuentes</span>
+          <h2>Sobre <span class="accent">{service.title.toLowerCase()}</span></h2>
+        </div>
+        <div class="faq-list">
+          {
+            service.faqs.map((f) => (
+              <details class="faq-item">
+                <summary>
+                  {f.q}
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <section class="section band-muted">
       <div class="container">
         <div class="section-head">
@@ -115,4 +158,62 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
     color: var(--c-navy);
   }
   .detail-list svg { color: var(--c-orange); flex-shrink: 0; }
+
+  /* Texto largo del servicio. Medida corta a propósito: pasado de 70 caracteres
+     por línea se pierde el renglón al volver. */
+  .prose { max-width: 44rem; margin-inline: auto; }
+  .prose__lead {
+    font-size: 1.1875rem;
+    line-height: 1.65;
+    color: var(--c-gray-600);
+  }
+  .prose__lead:first-child { color: var(--c-ink); }
+  .prose__block { margin-top: 3rem; }
+  .prose__block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--c-navy);
+  }
+  .prose__block p { color: var(--c-gray-600); }
+  .prose p + p { margin-top: 1rem; }
+
+  .faq-list {
+    max-width: 44rem;
+    margin-inline: auto;
+    display: grid;
+    gap: .75rem;
+  }
+  .faq-item {
+    background: var(--c-white);
+    border: 1px solid var(--c-gray-100);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.35rem 1.75rem;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--c-navy);
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary svg {
+    flex-shrink: 0;
+    color: var(--c-orange);
+    transition: transform var(--ease);
+  }
+  .faq-item[open] summary svg { transform: rotate(180deg); }
+  .faq-item[open] { border-color: var(--c-orange); }
+  .faq-item p {
+    margin: 0;
+    padding: 0 1.75rem 1.5rem;
+    color: var(--c-gray-600);
+    max-width: 62ch;
+  }
 </style>
