@@ -60,9 +60,9 @@
   --fw-bold:   700;
   --fw-black:  900;
 
-  --sp-section:    96px;
-  --sp-section-xl: 128px;
-  --sp-section-sm: 64px;
+  --sp-section:    80px;
+  --sp-section-xl: 104px;
+  --sp-section-sm: 56px;
   --sp-block:      32px;
   --gap:           32px;
 
@@ -90,7 +90,7 @@
 @media (min-width: 640px) { :root { --pad-x: 1.5rem; } }
 @media (min-width: 1024px) { :root { --pad-x: 2rem; } }
 @media (max-width: 1024px) {
-  :root { --sp-section: var(--sp-section-sm); --sp-section-xl: 80px; }
+  :root { --sp-section: var(--sp-section-sm); --sp-section-xl: 72px; }
 }
 
 /* ---------- 2. BASE ---------- */
@@ -160,6 +160,13 @@ a:hover { color: var(--c-orange); }
 .band-dark  { background: var(--bg-dark);  color: var(--c-white); }
 .band-muted { background: var(--bg-muted); color: var(--c-ink); }
 .band-light { background: var(--c-white);  color: var(--c-ink); }
+
+/* Dos bandas seguidas del mismo color no se distinguen una de otra, así que
+   sus dos márgenes se leen como un único hueco del doble de alto. Cuando no
+   hay cambio de color, el de arriba sobra. */
+.band-light + .band-light,
+.band-muted + .band-muted,
+.band-dark + .band-dark { padding-top: 0; }
 
 .band-dark .subhead { color: #AEBDCD; }
 /* Los titulares llevan color de tinta fijo, así que en banda oscura hay que
@@ -536,7 +543,7 @@ a:hover { color: var(--c-orange); }
   gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-.section-head { text-align: center; max-width: 48rem; margin: 0 auto 4rem; }
+.section-head { text-align: center; max-width: 48rem; margin: 0 auto 3rem; }
 .section-head h2 { margin-bottom: 1rem; }
 
 .card {
