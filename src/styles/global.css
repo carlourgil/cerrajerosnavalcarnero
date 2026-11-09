@@ -305,21 +305,7 @@ a:hover { color: var(--c-orange); }
   .wordmark__logo--full { display: none; }
   .wordmark__logo--mark { display: block; height: 36px; }
 }
-/* El descriptivo va al lado del logo: la marca dice quién, esto dice qué. */
-.wordmark__sub {
-  padding-left: .85rem;
-  border-left: 1px solid var(--c-gray-200);
-  font-size: var(--fs-2xs);
-  color: var(--c-gray-500);
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  line-height: 1.35;
-  /* En rem, no en ch: el espaciado entre letras hace que ch se quede corto y
-     el texto cae a tres líneas. */
-  max-width: 8.5rem;
-}
 @media (max-width: 899px) {
-  .wordmark__sub { display: none; }
   .wordmark__logo { height: 34px; }
 }
 
