@@ -61,10 +61,12 @@ const features = [
 
       <div class="whyus__media">
         <img
-          src="/images/urgencias-24h-1536.webp"
-          alt={`Cerrajero de guardia en ${SITE.location}`}
-          width="1536"
-          height="1024"
+          src="/images/furgoneta-navallave-1200.webp"
+          srcset="/images/furgoneta-navallave-760.webp 760w, /images/furgoneta-navallave-1200.webp 1200w"
+          sizes="(min-width: 900px) 40vw, 100vw"
+          alt={`Furgoneta rotulada de ${SITE.businessName}, cerrajeros en ${SITE.location}`}
+          width="1200"
+          height="800"
           loading="lazy"
           decoding="async"
           class="whyus__photo"
@@ -108,7 +110,7 @@ const features = [
     height: 64px;
     flex-shrink: 0;
     border-radius: var(--r-sm);
-    background: rgba(238, 108, 77, .1);
+    background: rgba(244, 136, 1, .1);
     color: var(--c-orange);
     transition: background var(--ease), color var(--ease);
   }
@@ -135,26 +137,35 @@ const features = [
   .whyus__photo {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    /* Sin esto manda el height="800" de la etiqueta y la proporción de abajo
+       no llega a aplicarse. */
+    height: auto;
+    /* Proporción de la foto, sin recortar: lo que se tiene que leer es la
+       rotulación de la furgoneta. */
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     border-radius: var(--r-lg);
     box-shadow: 0 30px 60px -25px rgba(17, 26, 36, .4);
   }
-  .whyus__badge {
+  /* Sello pegado sobre la foto, en la esquina del asfalto, que es la zona
+     lisa: encima de la furgoneta taparía la rotulación.
+     Va con el padre en el selector porque ".whyus__media > *" de arriba le
+     gana en prioridad y lo devolvería al flujo normal, debajo de la foto. */
+  .whyus__media > .whyus__badge {
     position: absolute;
-    right: -1rem;
-    bottom: -2.5rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .35rem;
-    padding: 2rem;
+    gap: .25rem;
+    padding: 1.1rem 1.6rem;
     background: var(--c-navy);
     color: var(--c-white);
-    border: 4px solid var(--c-orange);
-    border-radius: var(--r-lg);
+    border: 3px solid var(--c-orange);
+    border-radius: var(--r-md);
     box-shadow: var(--sh-2xl);
-    transform: rotate(3deg);
+    transform: rotate(-3deg);
   }
   .whyus__badge-eyebrow {
     font-size: var(--fs-2xs);
@@ -165,18 +176,24 @@ const features = [
   }
   .whyus__badge-value {
     font-family: var(--font-display);
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     font-weight: var(--fw-black);
     text-transform: uppercase;
     line-height: 1;
   }
   .whyus__badge-sub {
-    font-size: var(--fs-xs);
+    font-size: var(--fs-2xs);
     font-weight: var(--fw-bold);
     text-transform: uppercase;
+    letter-spacing: .04em;
     color: var(--c-gray-400);
   }
-  @media (max-width: 767px) {
-    .whyus__badge { position: static; transform: none; margin-top: 1.5rem; }
+  /* En pantallas pequeñas el sello se encoge, pero sigue pegado a la foto:
+     si se sale, deja de ser un sello. */
+  @media (max-width: 560px) {
+    .whyus__media > .whyus__badge { right: .75rem; bottom: .75rem; padding: .6rem .9rem; gap: .1rem; }
+    .whyus__badge-eyebrow { font-size: .55rem; letter-spacing: .16em; }
+    .whyus__badge-value { font-size: 1.2rem; }
+    .whyus__badge-sub { font-size: .55rem; }
   }
 </style>
