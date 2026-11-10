@@ -26,19 +26,32 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 >
   <main>
     <section class="page-hero">
-      <div class="container">
-        <span class="eyebrow">{SITE.location} · 24 horas</span>
-        <h1>{service.title}</h1>
-        <p class="subhead measure">{service.description}</p>
-        <a href={`tel:${SITE.phone}`} class="btn btn--accent">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
-          </svg>
-          <span class="btn__stack">
-            <span class="btn__eyebrow">Llama ahora</span>
-            <span>{SITE.phoneDisplay}</span>
-          </span>
-        </a>
+      <div class:list={["container", { "service-hero": service.image }]}>
+        <div>
+          <span class="eyebrow">{SITE.location} · 24 horas</span>
+          <h1>{service.title}</h1>
+          <p class="subhead measure">{service.description}</p>
+          <a href={`tel:${SITE.phone}`} class="btn btn--accent">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
+            </svg>
+            <span class="btn__stack">
+              <span class="btn__eyebrow">Llama ahora</span>
+              <span>{SITE.phoneDisplay}</span>
+            </span>
+          </a>
+        </div>
+        {service.image && (
+          <img
+            class="service-hero__photo"
+            src={`/images/${service.image}-480.webp`}
+            width="480"
+            height="320"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+          />
+        )}
       </div>
     </section>
 
@@ -137,6 +150,28 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 </Layout>
 
 <style>
+  .service-hero {
+    display: grid;
+    align-items: center;
+    gap: clamp(1.75rem, 4vw, 4rem);
+  }
+  .service-hero__photo {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-float);
+  }
+  @media (min-width: 900px) {
+    .service-hero {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    }
+    .service-hero__photo {
+      justify-self: end;
+    }
+  }
+
   .detail-list {
     list-style: none;
     margin: 0 auto;
