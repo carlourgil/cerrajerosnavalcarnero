@@ -13,8 +13,7 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const isEmergency = service.slug === "urgencias-24h";
-const showOpeningRates = isEmergency || service.slug === "apertura-de-puertas";
+const showOpeningRates = service.slug === "urgencias-24h" || service.slug === "apertura-de-puertas";
 const heading = service.slug === "cambio-de-cerraduras" ? "Cambio de cerradura" : service.title;
 const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 ---
@@ -123,7 +122,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
     </section>
 
     {showOpeningRates && <CTA />}
-    {!isEmergency && <ContactForm quote serviceSlug={service.slug} />}
+    {!showOpeningRates && <ContactForm quote serviceSlug={service.slug} />}
 
     <section class="section band-muted">
       <div class="container">
