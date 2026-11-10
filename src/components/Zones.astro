@@ -1,6 +1,8 @@
 ---
 import { zones } from "../data/zones";
 import { SITE } from "../lib/config";
+
+const defaultZone = zones.find((zone) => zone.slug === "centro") ?? zones[0];
 ---
 
 <section id="zonas" class="section band-dark">
@@ -20,6 +22,8 @@ import { SITE } from "../lib/config";
               <button
                 type="button"
                 class="coverage__zone"
+                aria-controls="coverage-result"
+                aria-pressed={z.slug === defaultZone.slug ? "true" : "false"}
                 data-zone={z.name}
                 data-href={`/zonas/${z.slug}/`}
               >
@@ -35,23 +39,17 @@ import { SITE } from "../lib/config";
       </div>
 
       <div class="coverage__panel">
-        <div class="coverage__empty" data-coverage-empty>
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <p>Selecciona tu zona para ver el tiempo de llegada</p>
-        </div>
-
-        <div class="coverage__result" data-coverage-result hidden>
+        <div id="coverage-result" class="coverage__result">
           <span class="coverage__result-label">Cerrajero en</span>
-          <h3 class="coverage__result-zone" data-coverage-zone></h3>
+          <h3 class="coverage__result-zone" aria-live="polite" data-coverage-zone>{defaultZone.name}</h3>
           <div class="coverage__time">
             <span class="ping ping--green"></span>
             Llegada estimada: <strong>{SITE.arrivalTime}</strong>
           </div>
           <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar ahora</a>
-          <a class="coverage__link" href="/zonas/" data-coverage-link>Ver la página de esta zona</a>
+          <a class="coverage__link" href={`/zonas/${defaultZone.slug}/`} data-coverage-link>
+            Ver la página de {defaultZone.name}
+          </a>
         </div>
       </div>
     </div>
@@ -117,16 +115,6 @@ import { SITE } from "../lib/config";
     flex-direction: column;
     justify-content: center;
   }
-  .coverage__empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-    color: var(--c-gray-400);
-  }
-  .coverage__empty p { margin: 0; font-weight: var(--fw-bold); }
-
   .coverage__result-label {
     font-size: var(--fs-2xs);
     font-weight: var(--fw-black);
@@ -150,26 +138,29 @@ import { SITE } from "../lib/config";
     text-align: center;
     font-size: var(--fs-sm);
     font-weight: var(--fw-bold);
-    color: var(--c-gray-500);
+    color: var(--c-navy);
+    text-decoration: underline;
+    text-underline-offset: .2em;
   }
+  .coverage__link:hover { color: var(--c-ink); }
 </style>
 
 <script>
-  const buttons = document.querySelectorAll(".coverage__zone");
-  const empty = document.querySelector("[data-coverage-empty]");
-  const result = document.querySelector("[data-coverage-result]");
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".coverage__zone");
   const zoneName = document.querySelector("[data-coverage-zone]");
-  const zoneLink = document.querySelector("[data-coverage-link]");
+  const zoneLink = document.querySelector<HTMLAnchorElement>("[data-coverage-link]");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
+      const { zone, href } = button.dataset;
+      if (!zoneName || !zoneLink || !zone || !href) return;
+
       buttons.forEach((b) => b.setAttribute("aria-pressed", "false"));
       button.setAttribute("aria-pressed", "true");
 
-      zoneName.textContent = button.dataset.zone;
-      zoneLink.setAttribute("href", button.dataset.href);
-      empty.hidden = true;
-      result.hidden = false;
+      zoneName.textContent = zone;
+      zoneLink.href = href;
+      zoneLink.textContent = `Ver la página de ${zone}`;
     });
   });
 </script>
