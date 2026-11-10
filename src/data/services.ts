@@ -4,6 +4,7 @@ export type Service = {
   slug: string;
   /** Basename de la foto en /public/images, sin el sufijo de tamaño. */
   image?: string;
+  imageAlt?: string;
   title: string;
   /** Una línea para las tarjetas. */
   short: string;
@@ -22,6 +23,7 @@ export const services: Service[] = [
   {
     slug: "apertura-de-puertas",
     image: "apertura-de-puertas",
+    imageAlt: "Cerrajero de NavaLlave comprobando el pomo de una puerta de madera abierta",
     title: "Apertura de puertas",
     short: "Sin romper tu puerta",
     description:
@@ -91,6 +93,7 @@ export const services: Service[] = [
   {
     slug: "urgencias-24h",
     image: "urgencias-24h",
+    imageAlt: "Cerrajero de NavaLlave llegando de noche a un portal con su maletín",
     title: "Urgencias 24 horas",
     short: "Noches, festivos y fines de semana",
     description:
@@ -148,6 +151,7 @@ export const services: Service[] = [
   {
     slug: "apertura-de-coches",
     image: "apertura-de-coches",
+    imageAlt: "Cerrajero revisando la manilla y el marco de la puerta de un coche",
     title: "Apertura de coches",
     short: "Llaves dentro, sin dañar la junta",
     description:
@@ -205,6 +209,7 @@ export const services: Service[] = [
   {
     slug: "apertura-de-cajas-fuertes",
     image: "apertura-de-cajas-fuertes",
+    imageAlt: "Cerrajero junto a una caja fuerte abierta",
     title: "Apertura de cajas fuertes",
     short: "Sin destruir el contenido",
     description:
@@ -270,6 +275,7 @@ export const services: Service[] = [
   {
     slug: "cambio-de-cerraduras",
     image: "cambio-de-cerraduras",
+    imageAlt: "Cerrajero revisando una cerradura recién instalada en una puerta de madera",
     title: "Cambio de cerraduras",
     short: "Instalación y sustitución",
     description:
@@ -340,6 +346,7 @@ export const services: Service[] = [
   {
     slug: "bombines-antibumping",
     image: "cambio-de-bombin",
+    imageAlt: "Cerrajero sujetando un bombín de seguridad frente a la cerradura de una puerta",
     title: "Bombines antibumping",
     short: "Cilindros de alta seguridad",
     description:

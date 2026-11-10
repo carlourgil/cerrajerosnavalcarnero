@@ -26,7 +26,7 @@ const place = zoneName ?? SITE.location;
       <figure class="who__card">
         <img
           src="/images/urgencias-24h-480.webp"
-          alt={`Cerrajero de guardia en ${SITE.location}`}
+          alt="Cerrajero de NavaLlave llegando de noche a un portal con su maletín"
           width="480"
           height="320"
           loading="lazy"
@@ -97,7 +97,13 @@ const place = zoneName ?? SITE.location;
     {
       !zoneName && (
         <p class="who__zones">
-          Cubrimos {zones.map((z) => z.name).join(" · ")}
+          Cubrimos{" "}
+          {zones.map((zone, i) => (
+            <>
+              {i > 0 && " · "}
+              <a href={`/zonas/${zone.slug}/`}>{zone.name}</a>
+            </>
+          ))}
         </p>
       )
     }
@@ -162,6 +168,13 @@ const place = zoneName ?? SITE.location;
     margin-bottom: .15rem;
   }
   .who__facts p { margin: 0; font-size: var(--fs-sm); color: #AEBDCD; max-width: 46ch; }
+
+  .who__zones a {
+    color: #AEBDCD;
+    text-decoration: underline;
+    text-underline-offset: .15em;
+  }
+  .who__zones a:hover { color: var(--c-orange); }
 
   .who__zones {
     margin: 3rem auto 0;

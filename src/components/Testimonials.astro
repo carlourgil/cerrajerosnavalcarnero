@@ -50,7 +50,7 @@ const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0)
             <div class="review">
               <div class="review__header">
                 <div>
-                  <h4 class="review__name">{t.name}</h4>
+                  <h3 class="review__name">{t.name}</h3>
                   <span class="review__zone">{t.zone}</span>
                 </div>
                 <div class="review__stars" aria-hidden="true">
@@ -68,7 +68,7 @@ const avgRating = count > 0 ? testimonials.reduce((sum, t) => sum + t.rating, 0)
           ))
         ) : (
           <div class="review review--empty">
-            <h4 class="review__name">Sé de los primeros en opinar</h4>
+            <h3 class="review__name">Sé de los primeros en opinar</h3>
             <p class="review__text">
               Cuando te atendamos, cuéntanos qué tal fue. Publicamos solo opiniones reales de clientes de
               {" "}{SITE.location}.

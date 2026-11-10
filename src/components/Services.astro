@@ -21,7 +21,7 @@ import { SITE } from "../lib/config";
               {s.image ? (
                 <img
                   src={`/images/${s.image}-480.webp`}
-                  alt={`${s.title} en ${SITE.location}`}
+                  alt={s.imageAlt ?? ""}
                   width="480"
                   height="320"
                   loading="lazy"

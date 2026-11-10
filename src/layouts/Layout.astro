@@ -22,6 +22,9 @@ const {
   breadcrumbs = [],
   service,
 } = Astro.props;
+const canonical = Astro.site && new URL(Astro.url.pathname, Astro.site).href;
+const socialImage = service?.image ? `/images/${service.image}-480.webp` : "/images/apertura-de-puertas-1536.webp";
+const socialImageAlt = service?.imageAlt ?? "Cerrajero de NavaLlave comprobando el pomo de una puerta de madera abierta";
 const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 ---
 
@@ -36,19 +39,24 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     <meta name="theme-color" content="#011D54" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />}
+    {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:locale" content="es_ES" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap"
     />
-    <meta property="og:image" content={new URL("/images/apertura-de-puertas-1536.webp", Astro.site).toString()} />
-    <link rel="preload" as="image" href="/images/apertura-de-puertas-1536.webp" fetchpriority="high" />
+    {Astro.site && <meta property="og:image" content={new URL(socialImage, Astro.site).href} />}
+    <meta property="og:image:alt" content={socialImageAlt} />
+    {schemaPage === "home" && (
+      <link rel="preload" as="image" href="/images/apertura-de-puertas-1536.webp" fetchpriority="high" />
+    )}
     <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} />
   </head>
   <body>

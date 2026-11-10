@@ -29,7 +29,7 @@ const place = `${zone.name}, ${SITE.location}`;
     <section class="page-hero">
       <div class="container">
         <span class="eyebrow">{SITE.location} · 24 horas</span>
-        <h1>Cerrajeros en {zone.name}</h1>
+        <h1>Cerrajeros en {zone.name}, {SITE.location}</h1>
         <p class="subhead measure">{zone.short}. Llegada estimada de {zone.arrivalTime} y precio cerrado por teléfono antes de salir.</p>
         <a href={`tel:${SITE.phone}`} class="btn btn--accent">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -92,7 +92,7 @@ const place = `${zone.name}, ${SITE.location}`;
             services.map((s) => (
               <a href={`/servicios/${s.slug}/`} class="card">
                 <div class="card__body">
-                  <h4>{s.title}</h4>
+                  <h3 class="card__subtitle">{s.title}</h3>
                   <p>{s.short}</p>
                   <span class="card__link">
                     Ver detalles

@@ -19,7 +19,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 ---
 
 <Layout
-  title={`${service.title} en ${SITE.location} | ${SITE.businessName}`}
+  title={`${heading} en ${SITE.location} | ${SITE.businessName}`}
   description={service.description}
   breadcrumbs={[
     { name: "Servicios", path: "/servicios/" },
@@ -50,7 +50,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
             src={`/images/${service.image}-480.webp`}
             width="480"
             height="320"
-            alt=""
+            alt={service.imageAlt ?? ""}
             fetchpriority="high"
             decoding="async"
           />
@@ -135,7 +135,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
             others.map((s) => (
               <a href={`/servicios/${s.slug}/`} class="card">
                 <div class="card__body">
-                  <h4>{s.title}</h4>
+                  <h3 class="card__subtitle">{s.title}</h3>
                   <p>{s.short}</p>
                   <span class="card__link">
                     Ver detalles

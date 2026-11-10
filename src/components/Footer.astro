@@ -9,12 +9,12 @@ import { services } from "../data/services";
       <div>
         {/* El logo es azul marino sobre blanco; aquí el fondo es azul marino,
             así que la marca se compone en texto con los dos colores. */}
-        <h4 class="display footer__brand">Nava<span>Llave</span></h4>
+        <p class="display footer__heading footer__brand">Nava<span>Llave</span></p>
         <p class="measure">{SITE.description}</p>
       </div>
 
       <div>
-        <h4 class="display">Servicios</h4>
+        <p class="display footer__heading">Servicios</p>
         <ul>
           {
             services.map((s) => (
@@ -27,7 +27,7 @@ import { services } from "../data/services";
       </div>
 
       <div>
-        <h4 class="display">Contacto</h4>
+        <p class="display footer__heading">Contacto</p>
         <ul>
           <li>{SITE.contactName}</li>
           <li>{SITE.streetAddress}</li>
@@ -38,7 +38,7 @@ import { services } from "../data/services";
       </div>
 
       <div>
-        <h4 class="display">Legal</h4>
+        <p class="display footer__heading">Legal</p>
         <ul>
           <li><a href="/aviso-legal/">Aviso Legal</a></li>
           <li><a href="/politica-privacidad/">Política de Privacidad</a></li>

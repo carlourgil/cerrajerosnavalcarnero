@@ -19,11 +19,11 @@ const business: Record<string, unknown> = {
   "@type": "Locksmith",
   "@id": businessId,
   name: SITE.businessName,
-  alternateName: `${SITE.seoName} ${SITE.businessName}`,
+  alternateName: SITE.contactName,
   description: SITE.description,
   url: `${site}/`,
   logo: `${site}/images/navallave-logo.png`,
-  image: `${site}/images/navallave-logo.png`,
+  image: `${site}/images/apertura-de-puertas-1536.webp`,
   telephone: `+34${SITE.phone}`,
   email: SITE.email,
   priceRange: `${SITE.priceDay}€-${SITE.priceNight}€`,
@@ -79,13 +79,6 @@ const business: Record<string, unknown> = {
     postalCode: SITE.postalCode,
     addressRegion: "Madrid",
     addressCountry: "ES",
-  },
-  // Centro de Navalcarnero: el punto desde el que se mide la zona de servicio.
-  geo: { "@type": "GeoCoordinates", latitude: 40.2876, longitude: -4.0122 },
-  serviceArea: {
-    "@type": "GeoCircle",
-    geoMidpoint: { "@type": "GeoCoordinates", latitude: 40.2876, longitude: -4.0122 },
-    geoRadius: "8000",
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
