@@ -24,12 +24,11 @@ const features = [
     <div class="zigzag">
       <div>
         <h2>
-          Tu vecino en la<br />
-          <span class="accent">{SITE.landmark}</span>
+          Tu vecino de <span class="accent">{SITE.location}</span>
         </h2>
         <p class="subhead measure">
-          En <strong>{SITE.businessName}</strong> no somos una centralita fría de internet. Somos cerrajeros
-          que trabajan en <strong class="whyus__mark">{SITE.location}</strong>.
+          En <strong>{SITE.businessName}</strong> atendemos avisos en todo {SITE.location}.
+          Cuando llamas, hablas directamente con el cerrajero que va a atenderte.
         </p>
 
         <div class="whyus__list">
@@ -82,14 +81,6 @@ const features = [
 </section>
 
 <style>
-  .whyus__mark {
-    color: var(--c-navy);
-    font-weight: var(--fw-black);
-    text-decoration: underline;
-    text-decoration-color: var(--c-orange);
-    text-decoration-thickness: 4px;
-    text-underline-offset: 4px;
-  }
   .whyus__list { display: grid; gap: 2rem; margin-top: 3rem; }
   .whyus__card {
     display: flex;
