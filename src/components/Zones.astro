@@ -25,6 +25,7 @@ const defaultZone = zones.find((zone) => zone.slug === "centro") ?? zones[0];
                 aria-controls="coverage-result"
                 aria-pressed={z.slug === defaultZone.slug ? "true" : "false"}
                 data-zone={z.name}
+                data-arrival={z.arrivalTime}
                 data-href={`/zonas/${z.slug}/`}
               >
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--c-orange)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -44,7 +45,7 @@ const defaultZone = zones.find((zone) => zone.slug === "centro") ?? zones[0];
           <h3 class="coverage__result-zone" aria-live="polite" data-coverage-zone>{defaultZone.name}</h3>
           <div class="coverage__time">
             <span class="ping ping--green"></span>
-            Llegada estimada: <strong>{SITE.arrivalTime}</strong>
+            Llegada estimada: <strong data-coverage-arrival>{defaultZone.arrivalTime}</strong>
           </div>
           <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar ahora</a>
           <a class="coverage__link" href={`/zonas/${defaultZone.slug}/`} data-coverage-link>
@@ -122,7 +123,7 @@ const defaultZone = zones.find((zone) => zone.slug === "centro") ?? zones[0];
     letter-spacing: .3em;
     color: var(--c-orange);
   }
-  .coverage__result-zone { margin: .5rem 0 1.25rem; font-size: 2rem; }
+  .coverage__result-zone { margin: .5rem 0 1.25rem; font-size: 2rem; color: var(--c-ink); }
   .coverage__time {
     display: flex;
     align-items: center;
@@ -148,17 +149,19 @@ const defaultZone = zones.find((zone) => zone.slug === "centro") ?? zones[0];
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>(".coverage__zone");
   const zoneName = document.querySelector("[data-coverage-zone]");
+  const arrivalTime = document.querySelector("[data-coverage-arrival]");
   const zoneLink = document.querySelector<HTMLAnchorElement>("[data-coverage-link]");
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      const { zone, href } = button.dataset;
-      if (!zoneName || !zoneLink || !zone || !href) return;
+      const { zone, href, arrival } = button.dataset;
+      if (!zoneName || !zoneLink || !arrivalTime || !zone || !href || !arrival) return;
 
       buttons.forEach((b) => b.setAttribute("aria-pressed", "false"));
       button.setAttribute("aria-pressed", "true");
 
       zoneName.textContent = zone;
+      arrivalTime.textContent = arrival;
       zoneLink.href = href;
       zoneLink.textContent = `Ver la página de ${zone}`;
     });

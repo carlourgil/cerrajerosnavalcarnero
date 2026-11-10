@@ -2,6 +2,8 @@
 // cámbialos aquí y se actualizan la home, las landings y las páginas legales.
 // Lo que ponga [PENDIENTE] se ve tal cual en la web, a propósito, para que no
 // se publique nada inventado.
+const arrivalTime = "10–25 minutos";
+
 export const SITE = {
   // La marca. El nombre descriptivo ("Cerrajeros en Navalcarnero") se usa en
   // los títulos de las páginas, que es donde hace falta para buscar.
@@ -10,7 +12,7 @@ export const SITE = {
   seoName: "Cerrajeros en Navalcarnero",
   tagline: "Cerrajero urgente 24 h",
   description:
-    "Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegamos en 20-30 minutos.",
+    `Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegada estimada de ${arrivalTime}, según la zona.`,
 
   location: "Navalcarnero",
   serviceArea: "todo Navalcarnero",
@@ -32,7 +34,7 @@ export const SITE = {
   addressNote: "Servicio a domicilio en todo Navalcarnero. Sin tienda abierta al público.",
 
   hours: "24 horas, todos los días",
-  arrivalTime: "20-30 minutos",
+  arrivalTime,
   // Tarifa de apertura de puertas. El precio que se ve en la web lo decide el
   // navegador con la hora de Madrid, no la del móvil del visitante.
   //

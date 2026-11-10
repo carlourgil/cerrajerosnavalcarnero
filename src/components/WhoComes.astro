@@ -4,9 +4,10 @@ import { zones } from "../data/zones";
 
 interface Props {
   zoneName?: string;
+  arrivalTime?: string;
 }
 
-const { zoneName } = Astro.props;
+const { zoneName, arrivalTime = SITE.arrivalTime } = Astro.props;
 const place = zoneName ?? SITE.location;
 ---
 
@@ -73,7 +74,7 @@ const place = zoneName ?? SITE.location;
             </svg>
           </span>
           <div>
-            <strong>{SITE.arrivalTime} hasta {place}</strong>
+            <strong>{arrivalTime} hasta {place}</strong>
             <p>Es el tiempo medio desde que cuelgas. Si vamos a tardar más, te lo decimos al llamar.</p>
           </div>
         </li>

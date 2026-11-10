@@ -19,7 +19,7 @@ const place = `${zone.name}, ${SITE.location}`;
 
 <Layout
   title={`Cerrajeros en ${place} | ${SITE.businessName}`}
-  description={`Cerrajero 24 h en ${place}. ${zone.short}. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegada media ${SITE.arrivalTime}.`}
+  description={`Cerrajero 24 h en ${place}. ${zone.short}. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegada estimada de ${zone.arrivalTime}.`}
   breadcrumbs={[
     { name: "Zonas", path: "/zonas/" },
     { name: zone.name, path: `/zonas/${zone.slug}/` },
@@ -30,7 +30,7 @@ const place = `${zone.name}, ${SITE.location}`;
       <div class="container">
         <span class="eyebrow">{SITE.location} · 24 horas</span>
         <h1>Cerrajeros en {zone.name}</h1>
-        <p class="subhead measure">{zone.short}. Llegada media de {SITE.arrivalTime} y precio cerrado por teléfono antes de salir.</p>
+        <p class="subhead measure">{zone.short}. Llegada estimada de {zone.arrivalTime} y precio cerrado por teléfono antes de salir.</p>
         <a href={`tel:${SITE.phone}`} class="btn btn--accent">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.2 2 2 0 016.5 3z"></path>
@@ -108,7 +108,7 @@ const place = `${zone.name}, ${SITE.location}`;
       </div>
     </section>
 
-    <WhoComes zoneName={zone.name} />
+    <WhoComes zoneName={zone.name} arrivalTime={zone.arrivalTime} />
     <CTA />
   </main>
 </Layout>

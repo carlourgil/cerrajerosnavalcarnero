@@ -14,6 +14,7 @@
 export type Zone = {
   slug: string;
   name: string;
+  arrivalTime: string;
   /** Una línea, para las tarjetas del mapa de cobertura. */
   short: string;
   /** Párrafos de entrada de la landing del barrio. */
@@ -27,6 +28,7 @@ export type Zone = {
 export const zones: Zone[] = [
   {
     slug: "centro",
+    arrivalTime: "10–15 minutos",
     name: "Centro",
     short: "El casco antiguo, alrededor de la Plaza de Segovia",
     intro: [
@@ -59,6 +61,7 @@ export const zones: Zone[] = [
 
   {
     slug: "el-pinar",
+    arrivalTime: "20–25 minutos",
     name: "El Pinar",
     short: "Vivienda nueva y urbanizaciones con zonas comunes",
     intro: [
@@ -91,6 +94,7 @@ export const zones: Zone[] = [
 
   {
     slug: "la-dehesa",
+    arrivalTime: "15–20 minutos",
     name: "La Dehesa",
     short: "Zona residencial de crecimiento reciente",
     intro: [
@@ -123,6 +127,7 @@ export const zones: Zone[] = [
 
   {
     slug: "san-andres",
+    arrivalTime: "15–20 minutos",
     name: "San Andrés",
     short: "Residencial, junto a la zona de El Pinar",
     intro: [
@@ -155,6 +160,7 @@ export const zones: Zone[] = [
 
   {
     slug: "san-isidro",
+    arrivalTime: "15–20 minutos",
     name: "San Isidro",
     short: "Promoción reciente, en el sector de Alparrache",
     intro: [
@@ -187,6 +193,7 @@ export const zones: Zone[] = [
 
   {
     slug: "el-pijorro",
+    arrivalTime: "15–20 minutos",
     name: "El Pijorro",
     short: "Urbanización de vivienda unifamiliar",
     intro: [
@@ -219,6 +226,7 @@ export const zones: Zone[] = [
 
   {
     slug: "los-manzanos",
+    arrivalTime: "15–20 minutos",
     name: "Los Manzanos",
     short: "Urbanización residencial, con casas con parcela",
     intro: [
@@ -251,6 +259,7 @@ export const zones: Zone[] = [
 
   {
     slug: "poligono-alparrache",
+    arrivalTime: "20–25 minutos",
     name: "Polígono Alparrache",
     short: "Naves, locales y oficinas",
     intro: [

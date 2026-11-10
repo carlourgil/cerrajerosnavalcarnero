@@ -4,7 +4,7 @@ import { SITE } from "../lib/config";
 const cards = [
   {
     title: "Apertura de puertas",
-    sub: `Sin daños · llegada en ${SITE.arrivalTime}`,
+    sub: `Sin daños · llegada estimada en ${SITE.arrivalTime}`,
     href: "/servicios/apertura-de-puertas/",
     bg: "var(--c-orange)",
     icon: "door",
@@ -51,8 +51,8 @@ const cards = [
       </h1>
 
       <p class="subhead">
-        Cerrajeros en <strong>{SITE.location}</strong>. Llegamos en
-        {" "}<span class="accent">{SITE.arrivalTime}</span>. Sin daños, sin sorpresas.
+        Cerrajeros en <strong>{SITE.location}</strong>. Llegada estimada de
+        {" "}<span class="accent">{SITE.arrivalTime}</span> según la zona. Sin daños, sin sorpresas.
       </p>
 
       <div class="hero__cta">
@@ -91,7 +91,7 @@ const cards = [
         </li>
         <li>
           <strong>{SITE.arrivalTime}</strong>
-          <span>llegada media</span>
+          <span>llegada estimada</span>
         </li>
         <li>
           <strong>24/365</strong>

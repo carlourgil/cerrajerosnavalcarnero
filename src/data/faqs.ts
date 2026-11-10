@@ -7,7 +7,7 @@ export type Faq = { q: string; a: string };
 export const faqs: Faq[] = [
   {
     q: `¿Llegáis rápido a cualquier zona de ${SITE.location}?`,
-    a: `Sí. Trabajamos en ${SITE.serviceArea}, del Centro al Polígono Alparrache, y la llegada media es de ${SITE.arrivalTime}, festivos incluidos.`,
+    a: `Sí. Trabajamos en ${SITE.serviceArea}, del Centro al Polígono Alparrache, y estimamos la llegada en ${SITE.arrivalTime}, según la zona, también en festivos.`,
   },
   {
     q: "¿Cuánto cuesta la apertura de puertas?",

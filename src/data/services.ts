@@ -75,7 +75,7 @@ export const services: Service[] = [
       },
       {
         q: "¿Cuánto tardáis en llegar?",
-        a: `La llegada media en ${SITE.serviceArea} es de ${SITE.arrivalTime}. Si en ese momento vamos a tardar más, te lo decimos al teléfono, no cuando ya estás esperando.`,
+        a: `La llegada estimada en ${SITE.serviceArea} es de ${SITE.arrivalTime}, según la zona. Si en ese momento vamos a tardar más, te lo decimos al teléfono, no cuando ya estás esperando.`,
       },
       {
         q: "¿Cuánto cuesta abrir una puerta?",
@@ -94,10 +94,10 @@ export const services: Service[] = [
     title: "Urgencias 24 horas",
     short: "Noches, festivos y fines de semana",
     description:
-      "Servicio de guardia a cualquier hora, también en festivos y de madrugada. Llegada media de 20-30 minutos y precio acordado antes de salir.",
+      `Servicio de guardia a cualquier hora, también en festivos y de madrugada. Llegada estimada de ${SITE.arrivalTime} según la zona y precio acordado antes de salir.`,
     bullets: [
       "Guardia real a cualquier hora, también en festivos",
-      `Llegada media de ${SITE.arrivalTime}`,
+      `Llegada estimada de ${SITE.arrivalTime}, según la zona`,
       "Hablas con el técnico, no con una centralita",
       "Precio acordado por teléfono antes de salir",
       "Avisos con menores o mascotas dentro, los primeros",
