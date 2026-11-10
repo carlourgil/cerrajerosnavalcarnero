@@ -26,15 +26,7 @@ export const faqs: Faq[] = [
     a: `Sí, el servicio de urgencias está disponible ${SITE.hours}. De noche y en festivos se aplica la tarifa de urgencias, que también te decimos por teléfono antes de ir.`,
   },
   {
-    q: `¿Tenéis tienda abierta en ${SITE.location}?`,
-    a: `No, y es a propósito: trabajamos solo a domicilio en ${SITE.serviceArea}. El taller va en la furgoneta, así que en lugar de pedirte que te acerques a un local con la puerta bloqueada, vamos nosotros a tu portal. Si hace falta una cerradura o un bombín concreto, lo llevamos al aviso.`,
-  },
-  {
-    q: "¿Trabajáis con comunidades y con naves del Polígono Alparrache?",
-    a: `Sí. Además de viviendas, atendemos comunidades de propietarios, locales y naves industriales de ${SITE.location}: aperturas, cambio de las cerraduras del portal o del garaje y bombines antibumping para los accesos comunes.`,
-  },
-  {
-    q: "¿Qué necesito para que me abráis el coche o una caja fuerte?",
-    a: "Que puedas acreditar que son tuyos: el permiso de circulación en el caso del coche, o una factura o documento de la caja fuerte. Es el procedimiento legal y protege a todo el mundo, también a ti.",
+    q: "¿Qué pasa si me he dejado el DNI dentro de casa?",
+    a: "Dínoslo cuando llames. Para abrir la puerta tenemos que comprobar que vives allí o que tienes autorización. Si el DNI está dentro, podemos valorar otras formas de comprobarlo, como un contrato de alquiler, una factura a tu nombre o la confirmación de un vecino.",
   },
 ];
