@@ -6,6 +6,7 @@ import { zones } from "../data/zones";
 // Sin servidor: el formulario arma el mensaje y abre WhatsApp. Si todavía no
 // hay número, no se pinta, para no dejar un formulario que no lleva a ningún
 // sitio (misma regla que los botones de WhatsApp).
+const { quote = false, serviceSlug } = Astro.props;
 const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 ---
 
@@ -15,7 +16,9 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Cuéntanos qué pasa</span>
-          <h2>Te escribimos por <span class="accent">WhatsApp</span></h2>
+          <h2>
+            {quote ? "Pide presupuesto por " : "Te escribimos por "}<span class="accent">WhatsApp</span>
+          </h2>
           <p class="subhead">
             Rellena esto y se abre WhatsApp con el mensaje ya redactado. Si es urgente, mejor llama:
             es más rápido.
@@ -44,7 +47,9 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
           <div class="form__field">
             <label for="wa-servicio">Qué necesitas</label>
             <select id="wa-servicio" name="servicio" required>
-              {services.map((s) => <option value={s.title}>{s.title}</option>)}
+              {services.map((s) => (
+                <option value={s.title} selected={s.slug === serviceSlug}>{s.title}</option>
+              ))}
               {/* Para la avería que no está en la lista. El valor que se manda
                   no es "Otros" para que el mensaje de WhatsApp siga leyéndose
                   bien: "Necesito: otra avería." */}
@@ -66,7 +71,9 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
               id="wa-detalle"
               name="detalle"
               rows="3"
-              placeholder="Por ejemplo: se ha quedado la llave dentro y la puerta tiene bombín de seguridad."
+              placeholder={quote
+                ? "Cuéntanos qué necesitas para que podamos darte un presupuesto."
+                : "Por ejemplo: se ha quedado la llave dentro y la puerta tiene bombín de seguridad."}
             />
           </div>
 

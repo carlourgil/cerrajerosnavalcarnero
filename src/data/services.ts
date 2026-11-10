@@ -117,7 +117,7 @@ export const services: Service[] = [
       {
         title: "Por la noche y en festivos se paga más, y se dice antes",
         body: [
-          `La tarifa de urgencia es de ${SITE.priceNight} € frente a los ${SITE.priceDay} € del horario comercial, y se aplica por las noches, desde el viernes a las ${SITE.dayEnd}:00 hasta el lunes a las ${SITE.dayStart}:00, y los festivos completos.`,
+          `Para abrir una puerta de vivienda con la cerradura en estado normal, la tarifa es de ${SITE.priceDay} € de ${SITE.dayHoursLabel} y de ${SITE.priceNight} € ${SITE.nightHoursLabel}. Para otros avisos, te confirmamos el precio por teléfono antes de salir.`,
           "En la web se ve siempre la tarifa que toca a esa hora, sin tener que calcular nada. Y se confirma por teléfono antes de que salga el técnico.",
         ],
       },
