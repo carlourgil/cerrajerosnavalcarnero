@@ -6,6 +6,7 @@ export const SITE = {
   // La marca. El nombre descriptivo ("Cerrajeros en Navalcarnero") se usa en
   // los títulos de las páginas, que es donde hace falta para buscar.
   businessName: "NavaLlave",
+  contactName: "NavaLlave cerrajeros Navalcarnero",
   seoName: "Cerrajeros en Navalcarnero",
   tagline: "Cerrajero urgente 24 h",
   description:
@@ -22,15 +23,12 @@ export const SITE = {
   // formulario de WhatsApp no se muestran, para no dejar enlaces muertos.
   whatsapp: "34628022929",
   whatsappDisplay: "628 02 29 29",
-  email: "info@cerrajerosnavalcarnero.madrid",
+  email: "navallave@gmail.com",
   domain: "cerrajerosnavalcarnero.madrid",
 
-  // Negocio que trabaja solo a domicilio: no hay local abierto al público, así
-  // que no se publica calle ni número. Google lo llama "negocio con área de
-  // servicio" (SAB) y la ficha de Google Business hay que crearla igual, con
-  // Navalcarnero como zona y la dirección oculta. Poner una calle que no sea
-  // una tienda real es motivo de suspensión de la ficha.
-  addressCity: "28600 Navalcarnero, Madrid",
+  // Dirección de contacto del pie de página para el servicio a domicilio.
+  streetAddress: "C. del Río Tajo, 11",
+  addressCity: "Navalcarnero, Madrid",
   addressNote: "Servicio a domicilio en todo Navalcarnero. Sin tienda abierta al público.",
 
   hours: "24 horas, todos los días",

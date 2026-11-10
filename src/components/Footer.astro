@@ -29,12 +29,12 @@ import { services } from "../data/services";
       <div>
         <h4 class="display">Contacto</h4>
         <ul>
-          <li>{SITE.businessName}</li>
-          <li>{SITE.addressNote}</li>
-          <li>{SITE.addressCity}</li>
+          <li>{SITE.contactName}</li>
+          <li>{SITE.streetAddress}</li>
+          <li>{SITE.postalCode}, {SITE.addressCity}</li>
           <li>Teléfono: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
-          <li>WhatsApp: <a href={`https://wa.me/${SITE.whatsapp}`}>{SITE.whatsappDisplay}</a></li>
           <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li><a href={`https://${SITE.domain}`}>https://{SITE.domain}</a></li>
         </ul>
       </div>
 
