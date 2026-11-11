@@ -41,7 +41,7 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Cómo se abre una puerta sin romperla",
+        title: "Apertura de puertas sin dañar la cerradura",
         body: [
           "Si la puerta está simplemente cerrada de golpe, sin vuelta de llave, se abre con una radiografía o una lámina por el resbalón: es cuestión de minutos y no se toca nada.",
           "Si está cerrada con llave, se trabaja sobre el bombín. El ganzuado mueve los pitones uno a uno hasta alinearlos, igual que haría la llave. En bombines viejos o de baja calidad también vale el método de impresión. En ambos casos la cerradura queda intacta.",
@@ -49,21 +49,21 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "Llave partida dentro del bombín",
+        title: "Extracción de llaves rotas dentro del bombín",
         body: [
           "Es más común de lo que parece, sobre todo en invierno y en cerraduras que llevan tiempo costando girar. El trozo de llave se extrae con un extractor, sin desmontar la cerradura.",
           "Una vez fuera, lo importante es por qué se partió. Si la llave estaba desgastada, se saca una copia nueva; si lo que está forzado es el mecanismo, lo normal es que vuelva a pasar, y ahí sí conviene cambiar el bombín.",
         ],
       },
       {
-        title: "Puertas blindadas y acorazadas",
+        title: "Apertura de puertas blindadas y acorazadas",
         body: [
           "Una puerta blindada es una puerta normal reforzada con chapa: se abre igual que cualquier otra, por el bombín. Una acorazada es un bloque de acero con marco propio y varios puntos de anclaje, y ahí la paciencia cuenta más que la fuerza.",
           "En las dos, forzar es el camino caro: romper una acorazada puede costar más que la puerta. Por eso se trabaja siempre por la cerradura.",
         ],
       },
       {
-        title: "Qué necesitas tener a mano",
+        title: "Documentación para solicitar una apertura de puerta",
         body: [
           "Algo que acredite que vives ahí: el DNI con esa dirección, un contrato de alquiler, una factura a tu nombre o un vecino que te conozca. No es manía nuestra, es lo que nos protege a los dos.",
           "Si no tienes nada encima porque está todo dentro de casa, se busca la forma: con el portero, con la comunidad o con el propietario. Lo hablamos al llamar.",
@@ -111,21 +111,21 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Qué entra en una urgencia",
+        title: "Urgencias de cerrajería para viviendas y negocios",
         body: [
           "Quedarse fuera de casa, con o sin llaves dentro. Una llave partida en el bombín. Una cerradura que ya no gira. Una puerta que no cierra y deja la casa abierta. Un intento de robo que ha dejado la cerradura destrozada.",
           "También las puertas de local y de portal: un negocio que no puede abrir por la mañana, o un portal que se queda abierto toda la noche, son urgencias aunque no lo parezcan.",
         ],
       },
       {
-        title: "Por la noche y en festivos se paga más, y se dice antes",
+        title: "Precios de apertura de puertas por la noche y en festivos",
         body: [
           `Para abrir una puerta de vivienda con la cerradura en estado normal, la tarifa es de ${SITE.priceDay} € de ${SITE.dayHoursLabel} y de ${SITE.priceNight} € ${SITE.nightHoursLabel}. Para otros avisos, te confirmamos el precio por teléfono antes de salir.`,
           "En la web se ve siempre la tarifa que toca a esa hora, sin tener que calcular nada. Y se confirma por teléfono antes de que salga el técnico.",
         ],
       },
       {
-        title: "Después de un intento de robo",
+        title: "Reparación urgente de cerraduras tras un intento de robo",
         body: [
           "Si te han forzado la puerta, lo primero es poder cerrar esa misma noche. Se sustituye la cerradura o el bombín en el momento y la vivienda queda asegurada.",
           "Guarda la cerradura vieja y haz fotos antes de que la cambiemos: al seguro y a la denuncia les sirven. Te damos factura con el detalle de lo sustituido, que es lo que te van a pedir.",
@@ -169,21 +169,21 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Cómo se abre sin dejar marca",
+        title: "Apertura de coches sin dañar la puerta",
         body: [
           "Se trabaja desde el hueco de la puerta, separando lo justo para pasar una varilla hasta el tirador o el botón del seguro. La junta se protege con una cuña de aire que reparte la presión en vez de concentrarla en un punto.",
           "En vehículos con el cierre centralizado electrónico se actúa sobre el mando interior, no sobre la cerradura de la puerta. La llave original sigue funcionando igual después.",
         ],
       },
       {
-        title: "Con el motor en marcha o alguien dentro",
+        title: "Apertura urgente de coches con las llaves dentro",
         body: [
           "Pasa más de lo que parece: se cierra el coche con el motor encendido y las llaves puestas. Es un aviso urgente, por el gasto de combustible y porque algunos modelos bloquean todo al detectar movimiento.",
           "Si lo que ha quedado dentro es un niño o un animal, dilo nada más llamar: va por delante de cualquier otro aviso. Si ves riesgo inmediato, llama antes al 112.",
         ],
       },
       {
-        title: "Lo que la ley pide antes de abrir",
+        title: "Documentación necesaria para abrir un coche",
         body: [
           "Hay que acreditar que el vehículo es tuyo o que lo tienes legítimamente: permiso de circulación, ficha técnica, contrato de alquiler o seguro a tu nombre. Con el DNI coincidiendo basta.",
           "Si la documentación está dentro del coche, se busca otra vía: la aseguradora, el concesionario o la empresa de alquiler pueden confirmarlo. Lo hablamos al llamar, pero sin acreditar nada no se abre ningún vehículo.",
@@ -227,7 +227,7 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Lo que suele fallar, y casi nunca es la caja",
+        title: "Caja fuerte bloqueada por batería, teclado o mecanismo",
         body: [
           "En las electrónicas, lo más común son las pilas. Un teclado que no se enciende o que pita raro suele ser eso, y se resuelve alimentando la caja desde fuera, sin abrir nada por la fuerza.",
           "En las mecánicas, el problema está en el disco o en el relé: la combinación es correcta pero la caja no reconoce el punto exacto. También se arregla por manipulación.",
@@ -235,21 +235,21 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "Manipulación antes que taladro",
+        title: "Apertura de cajas fuertes y diagnóstico de la avería",
         body: [
           "Se intenta siempre abrir sin dañar: manipulando el mecanismo, recuperando la combinación o alimentando la electrónica. Una caja abierta así sigue sirviendo al día siguiente.",
           "Cuando no hay otra vía, el taladro se hace en el punto previsto por el fabricante para eso, no a lo bruto: se perfora, se abre y después se repara y se vuelve a dejar operativa. Si una caja no va a poder repararse, se te dice antes de empezar.",
         ],
       },
       {
-        title: "Después de abrir, combinación nueva",
+        title: "Cambio de combinación después de abrir la caja fuerte",
         body: [
           "Una caja que se ha abierto porque nadie sabía la combinación se queda sin dueño hasta que se le pone una nueva. Se cambia en el momento y te explicamos cómo cambiarla tú en adelante.",
           "Si la caja venía con el local o con la casa, este es el momento de cambiarla sí o sí: no sabes cuánta gente conoce la anterior.",
         ],
       },
       {
-        title: "Qué hay que acreditar",
+        title: "Documentación necesaria para abrir una caja fuerte",
         body: [
           "Que la caja es tuya: factura de compra, contrato del local o de la vivienda donde está, o escritura. Para cajas de empresa, la autorización de quien pueda darla.",
           "Es el mismo criterio que con los coches y las viviendas. Una caja fuerte guarda precisamente lo que alguien querría abrir sin permiso.",
@@ -293,7 +293,7 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Cerradura entera o solo el bombín",
+        title: "Cuándo cambiar la cerradura o el bombín",
         body: [
           "El bombín es la pieza donde entra la llave. La cerradura es todo el mecanismo que mueve los puntos de cierre. Si lo que falla es la seguridad o quieres que las llaves viejas dejen de abrir, basta con el bombín.",
           "Hay que cambiar la cerradura completa cuando el mecanismo está forzado, cuando los pestillos no salen bien, cuando la puerta ha trabajado y el desgaste está dentro, o cuando quieres subir de nivel de seguridad y la carcasa actual no admite un bombín mejor.",
@@ -301,7 +301,7 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "Después de un robo o un intento",
+        title: "Cambio de cerraduras después de un robo",
         body: [
           "Una cerradura forzada no se arregla: por dentro queda tocada aunque siga girando, y la próxima vez cede antes. Se sustituye.",
           "Se hace el mismo día, para que no tengas que dormir con la casa abierta. Y se aprovecha para revisar el resto: el marco, los puntos de anclaje y la cerradura del portal, que es por donde suelen entrar.",
@@ -309,14 +309,14 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "Portales, locales y garajes",
+        title: "Sustitución de cerraduras en portales, locales y garajes",
         body: [
           "En una comunidad el problema no es el robo, es el control: llaves de vecinos que se fueron, copias hechas sin permiso y portales que acaban abriéndose con cualquier cosa.",
           "Se cambia la cerradura del portal y se entregan las copias que haga falta, con registro de cuántas se han dado. En locales, lo habitual es cambiar al entrar al alquiler: nunca sabes cuántas llaves hay del anterior inquilino.",
         ],
       },
       {
-        title: "Qué cerradura se pone",
+        title: "Elección de cerraduras de seguridad",
         body: [
           "La que encaje con tu puerta y con lo que necesitas, no la más cara del catálogo. Una puerta de madera en un primero interior no pide lo mismo que un bajo con ventana a la calle.",
           "Se trabaja con marcas de recambio habitual, para que dentro de unos años se pueda sustituir una pieza sin cambiar la puerta entera.",
@@ -364,7 +364,7 @@ export const services: Service[] = [
     ],
     sections: [
       {
-        title: "Qué hace distinto a un bombín antibumping",
+        title: "Bombines antibumping para reforzar la seguridad de la puerta",
         body: [
           "Lleva pitones de formas y materiales distintos dentro del mismo cilindro, de modo que el golpe no los alinea todos a la vez. Eso es lo que anula el bumping.",
           "Añade elementos antiganzúa, que hacen que el tanteo no encuentre el punto, e inserciones de acero templado contra el taladro y el arrancamiento.",
@@ -372,14 +372,14 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "La tarjeta de propiedad",
+        title: "Llaves de seguridad con tarjeta de propiedad",
         body: [
           "Estos bombines vienen con una tarjeta codificada. Sin ella nadie puede sacar una copia de tu llave, ni en una ferretería ni en un servicio técnico.",
           "Esa tarjeta es el bombín. Guárdala donde guardas las escrituras, no en el cajón de la entrada ni colgada del llavero.",
         ],
       },
       {
-        title: "Se cambia solo el bombín, no la puerta",
+        title: "Instalación de bombines de seguridad en la puerta existente",
         body: [
           "El cilindro se saca quitando un tornillo del canto de la puerta. Es media hora de trabajo, sin obra, sin polvo y sin tocar la carpintería.",
           "Desde ese momento las llaves antiguas dejan de abrir. Por eso es la solución cuando se va un inquilino, cuando has perdido un juego o cuando han entrado en el portal.",
@@ -387,7 +387,7 @@ export const services: Service[] = [
         ],
       },
       {
-        title: "Qué más mirar además del bombín",
+        title: "Escudos protectores y refuerzos para la cerradura",
         body: [
           "Un escudo protector es lo que impide que agarren el cilindro por fuera y lo arranquen. Un bombín de alta seguridad sin escudo deja la mitad del trabajo hecho.",
           "Y el cerradero, que es la pieza del marco: en muchas puertas antiguas la cerradura aguanta y lo que cede es el marco. Se revisa en la misma visita.",

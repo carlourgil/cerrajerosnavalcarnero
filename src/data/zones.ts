@@ -37,14 +37,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Puertas antiguas, cerraduras antiguas",
+        title: "Apertura de puertas y cerraduras antiguas en el Centro",
         body: [
           "En portales de obra antigua es habitual encontrar cerraduras de borja o de gorja, de las de llave larga, y bombines de perfil europeo de primera generación. Las dos se abren sin romper nada, pero piden maña y paciencia.",
           "Son también las más fáciles de abrir para quien no debe. Si vives en el casco y tu bombín es el original, cambiarlo por uno antibumping es la mejora de seguridad más barata que puedes hacer.",
         ],
       },
       {
-        title: "Aparcar no es un problema nuestro",
+        title: "Llegada del cerrajero al casco antiguo de Navalcarnero",
         body: [
           "Las calles del centro son estrechas y muchas peatonales, y eso retrasa a cualquiera. Lo tenemos en cuenta al darte el tiempo de llegada: si hay que dejar la furgoneta lejos y subir con las herramientas, se cuenta.",
           "Lo que no cambia es el precio. La tarifa es la misma en el centro que en cualquier otro punto del municipio.",
@@ -70,14 +70,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Puertas blindadas de serie",
+        title: "Cambio de bombines en puertas blindadas de El Pinar",
         body: [
           "La vivienda de esta época sale de fábrica con puerta blindada y bombín de perfil europeo. Eso es bueno para la seguridad y neutro para la apertura: se sigue trabajando por el cilindro, sin tocar la hoja.",
           "Lo que sí conviene mirar es si el bombín que trae la puerta es el básico que pone la promotora. Muchas veces lo es, y subirlo a uno certificado es cuestión de media hora.",
         ],
       },
       {
-        title: "Urbanizaciones con accesos comunes",
+        title: "Cerrajería para comunidades y urbanizaciones de El Pinar",
         body: [
           "Portal, garaje, piscina y trastero multiplican las llaves por vivienda, y con los años acaban circulando copias que ya nadie controla.",
           "Cuando una comunidad decide poner orden, lo que se cambia es la cerradura de los accesos comunes y se reparten juegos nuevos con registro de cuántos se entregan. Se puede hacer por fases para repartir el gasto.",
@@ -103,14 +103,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "En vivienda unifamiliar, la puerta no es el único acceso",
+        title: "Cerraduras para puertas y accesos de chalets en La Dehesa",
         body: [
           "En un chalé o un adosado, la puerta de entrada suele ser la parte más protegida. Lo que falla es la de atrás, la del garaje o la del jardín, que muchas veces llevan una cerradura mucho más sencilla.",
           "Merece la pena revisarlas todas a la vez: una puerta trasera con un bombín de supermercado deja sin sentido la principal.",
         ],
       },
       {
-        title: "Después de las vacaciones",
+        title: "Revisión de cerraduras tras las vacaciones en La Dehesa",
         body: [
           "En zonas residenciales los intentos de robo se concentran cuando las casas se quedan vacías. Si vuelves y encuentras la cerradura tocada, no fuerces: puede quedar inservible justo cuando más la necesitas.",
           "Se sustituye el mismo día para que la casa quede cerrada esa noche, y la factura detalla lo instalado, que es lo que pide el seguro.",
@@ -136,14 +136,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Quedarse fuera es el aviso de siempre",
+        title: "Apertura de puertas urgente en San Andrés",
         body: [
           "La puerta que se cierra de golpe, la bolsa de la compra en el suelo y las llaves en la encimera. Pasa a todo el mundo y casi siempre se resuelve sin tocar la cerradura.",
           "Si la puerta está solo encajada, sin vuelta de llave, son minutos. Si está cerrada con llave, se trabaja el bombín y después sigue abriendo igual que antes.",
         ],
       },
       {
-        title: "Cuando cambia alguien de casa",
+        title: "Cambio de cerraduras al mudarse a San Andrés",
         body: [
           "Mudanza, alquiler nuevo o una reforma con gente entrando y saliendo: en los tres casos hay llaves de tu puerta que no sabes dónde están.",
           "No hace falta cambiar la cerradura entera. Cambiando el cilindro, las llaves antiguas dejan de abrir en el momento y te cuesta bastante menos.",
@@ -169,14 +169,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Todas las puertas, el mismo bombín",
+        title: "Sustitución de bombines de obra en San Isidro",
         body: [
           "Cuando una promoción entera monta el mismo cilindro básico, quien conoce ese modelo lo conoce para todo el bloque. Es el argumento más claro para subir a un bombín certificado, aunque la puerta sea nueva.",
           "La ventaja es que el recambio es el mismo para todos los vecinos: si varios lo cambiáis a la vez, el trabajo se organiza en una sola visita.",
         ],
       },
       {
-        title: "Comunidades jóvenes, llaves ya descontroladas",
+        title: "Cambio de cerraduras en comunidades de San Isidro",
         body: [
           "No hace falta que un edificio tenga cuarenta años para que las llaves del portal se hayan multiplicado. Basta con unas cuantas mudanzas y algún juego perdido.",
           "Cambiar la cerradura del portal y repartir copias con registro es un gasto pequeño repartido entre vecinos, y es lo que de verdad cierra el edificio.",
@@ -202,14 +202,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "La puerta de entrada no es la única",
+        title: "Seguridad de puertas y accesos en El Pijorro",
         body: [
           "Puerta principal, puerta de servicio, garaje, caseta y cancela. Cada una tiene su cerradura, y casi siempre la más débil es la que menos se usa.",
           "Lo razonable es revisarlas en una sola visita y reforzar las que lo pidan, en vez de poner una cerradura cara en la entrada y dejar la de atrás con un bombín de tres euros.",
         ],
       },
       {
-        title: "Lejos del centro, misma tarifa",
+        title: "Precio de apertura de puertas en El Pijorro",
         body: [
           "Estar en una urbanización no encarece el servicio: la tarifa de apertura es la misma que en el casco. Lo que puede cambiar es el tiempo de llegada, y eso se dice al teléfono, no al llegar.",
           "Si la urbanización tiene control de acceso, dilo al llamar para dejarlo resuelto antes y no perder minutos en la entrada.",
@@ -235,14 +235,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Casas que se quedan solas",
+        title: "Revisión de cerraduras en viviendas de Los Manzanos",
         body: [
           "Una vivienda vacía entre semana o fuera de temporada es un objetivo cómodo, porque nadie nota la puerta forzada hasta que vuelve el dueño.",
           "Ahí lo que cuenta no es solo el bombín, es el escudo que impide arrancarlo y el cerradero del marco, que es la pieza que suele ceder antes que la cerradura.",
         ],
       },
       {
-        title: "Si te han forzado la puerta",
+        title: "Cerrajero urgente tras un robo en Los Manzanos",
         body: [
           "No la fuerces tú para entrar: una cerradura ya tocada puede quedar bloqueada del todo y complicar la apertura.",
           "Haz fotos antes de que cambiemos nada y guarda la cerradura vieja; al seguro y a la denuncia les sirve. Se sustituye el mismo día para que la casa quede cerrada esa noche.",
@@ -268,14 +268,14 @@ export const zones: Zone[] = [
     ],
     sections: [
       {
-        title: "Cierres metálicos y puertas de nave",
+        title: "Cerrajería para cierres y puertas de naves en Alparrache",
         body: [
           "Persianas y cierres enrollables, puertas peatonales de chapa, portones correderos. No se parecen a una puerta de casa: las cerraduras son más grandes, llevan más recorrido y sufren mucho más uso.",
           "Lo que más falla es lo que más se mueve: el bombín del cierre, la cerradura de la puerta peatonal y la guía de la persiana. Se puede abrir y reparar sin cortar la chapa.",
         ],
       },
       {
-        title: "Un negocio que no abre pierde dinero cada hora",
+        title: "Apertura urgente de locales y naves en Alparrache",
         body: [
           "Un aviso en el polígono a las siete de la mañana no admite esperar al día siguiente. El servicio es de 24 horas también aquí, y la tarifa de urgencia se dice por teléfono antes de salir.",
           "Para empresas se factura con todos los datos y el detalle de lo instalado, para que entre sin problema en la contabilidad.",
