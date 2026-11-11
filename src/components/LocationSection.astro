@@ -16,24 +16,19 @@ import { SITE } from "../lib/config";
 
         <ul class="ticks">
           <li><strong>Zona:</strong> {SITE.serviceArea} y sus barrios ({SITE.postalCode})</li>
-          <li><strong>Referencia:</strong> salimos desde la zona de {SITE.landmark}</li>
+          <li><strong>Dirección:</strong> {SITE.streetAddress}, {SITE.postalCode}, {SITE.addressCity}</li>
           <li><strong>Llegada estimada:</strong> {SITE.arrivalTime}</li>
           <li><strong>Horario:</strong> {SITE.hours}</li>
           <li><strong>Teléfono:</strong> <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></li>
-          <li><strong>WhatsApp:</strong> <a href={`https://wa.me/${SITE.whatsapp}`}>{SITE.whatsappDisplay}</a></li>
           <li><strong>Email:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
         </ul>
 
-        <p class="zona__nota">
-          Si buscas una dirección física para recoger una llave o una cerradura, dínoslo al
-          llamar y lo resolvemos sin que te muevas de casa.
-        </p>
       </div>
 
       <iframe
         class="map"
-        src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.location}, Madrid`)}&output=embed`}
-        title={`Zona de servicio en ${SITE.location}`}
+        src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.streetAddress}, ${SITE.postalCode}, ${SITE.addressCity}`)}&output=embed`}
+        title={`Dirección de ${SITE.businessName}: ${SITE.streetAddress}, ${SITE.location}`}
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
@@ -42,8 +37,6 @@ import { SITE } from "../lib/config";
 </section>
 
 <style>
-  /* Mapa del municipio: al ser servicio a domicilio no hay local que señalar,
-     lo que se marca es la zona que se cubre. */
   .map {
     display: block;
     width: 100%;
@@ -51,13 +44,5 @@ import { SITE } from "../lib/config";
     border: 1px solid var(--c-gray-200);
     border-radius: var(--r-lg);
     box-shadow: var(--sh-card);
-  }
-  .zona__nota {
-    margin-top: 1.75rem;
-    padding-left: 1rem;
-    border-left: 3px solid var(--c-orange);
-    font-size: var(--fs-sm);
-    color: var(--c-gray-600);
-    max-width: 44ch;
   }
 </style>
