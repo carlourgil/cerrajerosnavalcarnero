@@ -17,6 +17,7 @@ export type Zone = {
   arrivalTime: string;
   /** Una línea, para las tarjetas del mapa de cobertura. */
   short: string;
+  metaDescription?: string;
   /** Párrafos de entrada de la landing del barrio. */
   intro: string[];
   /** Bloques con su titular. */
@@ -28,6 +29,7 @@ export type Zone = {
 export const zones: Zone[] = [
   {
     slug: "centro",
+    metaDescription: "Cerrajeros en el Centro de Navalcarnero. Apertura de puertas, cambio de cerraduras y urgencias 24 horas. Llegada estimada de 10–15 minutos. NavaLlave.",
     arrivalTime: "10–15 minutos",
     name: "Centro",
     short: "El casco antiguo, alrededor de la Plaza de Segovia",
@@ -61,6 +63,7 @@ export const zones: Zone[] = [
 
   {
     slug: "el-pinar",
+    metaDescription: "Cerrajeros en El Pinar, Navalcarnero. Aperturas, bombines de seguridad y cerraduras para comunidades. Atención 24 horas y llegada estimada de 20–25 minutos.",
     arrivalTime: "20–25 minutos",
     name: "El Pinar",
     short: "Vivienda nueva y urbanizaciones con zonas comunes",
@@ -94,6 +97,7 @@ export const zones: Zone[] = [
 
   {
     slug: "la-dehesa",
+    metaDescription: "Cerrajeros en La Dehesa, Navalcarnero. Apertura de puertas y cerraduras para viviendas y chalets. Urgencias 24 horas. Llegada estimada de 15–20 minutos.",
     arrivalTime: "15–20 minutos",
     name: "La Dehesa",
     short: "Zona residencial de crecimiento reciente",
@@ -127,6 +131,7 @@ export const zones: Zone[] = [
 
   {
     slug: "san-andres",
+    metaDescription: "Cerrajeros en San Andrés, Navalcarnero. Apertura de puertas y cambio de cerraduras con presupuesto previo. Servicio 24 horas. Llegada estimada de 15–20 minutos.",
     arrivalTime: "15–20 minutos",
     name: "San Andrés",
     short: "Residencial, junto a la zona de El Pinar",
@@ -160,6 +165,7 @@ export const zones: Zone[] = [
 
   {
     slug: "san-isidro",
+    metaDescription: "Cerrajeros en San Isidro, Navalcarnero. Cambio de bombines, cerraduras para comunidades y aperturas urgentes. Atención 24 horas y llegada estimada de 15–20 minutos.",
     arrivalTime: "15–20 minutos",
     name: "San Isidro",
     short: "Promoción reciente, en el sector de Alparrache",
@@ -193,6 +199,7 @@ export const zones: Zone[] = [
 
   {
     slug: "el-pijorro",
+    metaDescription: "Cerrajeros en El Pijorro, Navalcarnero. Apertura de puertas y refuerzo de cerraduras para viviendas. Servicio 24 horas y llegada estimada de 15–20 minutos.",
     arrivalTime: "15–20 minutos",
     name: "El Pijorro",
     short: "Urbanización de vivienda unifamiliar",
@@ -226,6 +233,7 @@ export const zones: Zone[] = [
 
   {
     slug: "los-manzanos",
+    metaDescription: "Cerrajeros en Los Manzanos, Navalcarnero. Urgencias, apertura de puertas y reparación de cerraduras tras un robo. Llegada estimada de 15–20 minutos.",
     arrivalTime: "15–20 minutos",
     name: "Los Manzanos",
     short: "Urbanización residencial, con casas con parcela",
@@ -259,6 +267,7 @@ export const zones: Zone[] = [
 
   {
     slug: "poligono-alparrache",
+    metaDescription: "Cerrajeros en el Polígono Alparrache de Navalcarnero. Apertura de locales y cerraduras para naves y oficinas. Servicio 24 horas. Llegada estimada de 20–25 minutos.",
     arrivalTime: "20–25 minutos",
     name: "Polígono Alparrache",
     short: "Naves, locales y oficinas",

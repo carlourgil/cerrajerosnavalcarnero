@@ -8,12 +8,33 @@ interface Props {
   page?: "home" | "inner";
   breadcrumbs?: { name: string; path: string }[];
   service?: Service;
+  title: string;
+  description: string;
 }
 
-const { page = "inner", breadcrumbs = [], service } = Astro.props;
+const { page = "inner", breadcrumbs = [], service, title, description } = Astro.props;
 
 const site = Astro.site?.toString().replace(/\/$/, "") ?? `https://${SITE.domain}`;
 const businessId = `${site}/#cerrajeria`;
+const pageUrl = new URL(Astro.url.pathname, `${site}/`).href;
+const openingOffers = [
+  {
+    "@type": "Offer",
+    name: "Apertura de puertas de vivienda en horario comercial",
+    description: `Para cerraduras en estado normal, de ${SITE.dayHoursLabel}. Precio confirmado antes de salir.`,
+    price: String(SITE.priceDay),
+    priceCurrency: "EUR",
+    url: `${site}/servicios/apertura-de-puertas/`,
+  },
+  {
+    "@type": "Offer",
+    name: "Apertura de puertas de vivienda en horario de urgencia",
+    description: `Para cerraduras en estado normal, ${SITE.nightHoursLabel}. Precio confirmado antes de salir.`,
+    price: String(SITE.priceNight),
+    priceCurrency: "EUR",
+    url: `${site}/servicios/apertura-de-puertas/`,
+  },
+];
 
 const business: Record<string, unknown> = {
   "@type": "Locksmith",
@@ -26,7 +47,6 @@ const business: Record<string, unknown> = {
   image: `${site}/images/apertura-de-puertas-1536.webp`,
   telephone: `+34${SITE.phone}`,
   email: SITE.email,
-  priceRange: `${SITE.priceDay}€-${SITE.priceNight}€`,
   foundingDate: String(SITE.foundedYear),
   currenciesAccepted: "EUR",
   // El municipio primero y luego cada barrio: es la señal de que se cubre
@@ -70,11 +90,10 @@ const business: Record<string, unknown> = {
       closes: "23:59",
     },
   },
-  // Negocio a domicilio: la dirección se declara a nivel de municipio, sin
-  // calle. Es lo que Google espera de un negocio con área de servicio y deja
-  // igual de claro que la localidad es Navalcarnero.
+  // Datos de contacto que también se muestran en la web.
   address: {
     "@type": "PostalAddress",
+    streetAddress: SITE.streetAddress,
     addressLocality: SITE.location,
     postalCode: SITE.postalCode,
     addressRegion: "Madrid",
@@ -107,16 +126,24 @@ const business: Record<string, unknown> = {
         url: `${site}/servicios/${s.slug}/`,
         areaServed: { "@type": "City", name: SITE.location },
         provider: { "@id": businessId },
+        ...(s.slug === "apertura-de-puertas" ? { offers: openingOffers } : {}),
       },
-      ...(s.slug === "apertura-de-puertas"
-        ? { price: String(SITE.priceDay), priceCurrency: "EUR" }
-        : {}),
     })),
   },
 };
 
 const graph: Record<string, unknown>[] = [
   business,
+  {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#pagina`,
+    url: pageUrl,
+    name: title,
+    description,
+    inLanguage: "es-ES",
+    isPartOf: { "@id": `${site}/#web` },
+    about: { "@id": businessId },
+  },
   {
     "@type": "WebSite",
     "@id": `${site}/#web`,
@@ -151,28 +178,14 @@ if (service) {
     url: `${site}/servicios/${service.slug}/`,
     provider: { "@id": businessId },
     areaServed: { "@type": "City", name: SITE.location },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: service.title,
-      itemListElement: service.bullets.map((b) => ({
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: b },
-      })),
-    },
     ...(service.slug === "apertura-de-puertas"
       ? {
-          offers: {
-            "@type": "Offer",
-            price: String(SITE.priceDay),
-            priceCurrency: "EUR",
-            availability: "https://schema.org/InStock",
-          },
+          offers: openingOffers,
         }
       : {}),
   });
 
-  // Las preguntas de la página del servicio también se declaran, que es lo que
-  // puede hacer que Google las enseñe desplegadas en el resultado.
+  // Las preguntas estructuradas coinciden con las respuestas visibles del servicio.
   if (service.faqs.length > 0) {
     graph.push({
       "@type": "FAQPage",

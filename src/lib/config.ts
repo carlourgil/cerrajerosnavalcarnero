@@ -12,7 +12,7 @@ export const SITE = {
   seoName: "Cerrajeros en Navalcarnero",
   tagline: "Cerrajero urgente 24 h",
   description:
-    `Cerrajeros 24 horas en Navalcarnero. Apertura de puertas sin daños, cambio de cerraduras y bombines antibumping. Llegada estimada de ${arrivalTime}, según la zona.`,
+    `Cerrajeros 24 horas en Navalcarnero. Apertura de puertas, cambio de cerraduras y bombines de seguridad. Llegada estimada de ${arrivalTime} y presupuesto previo.`,
 
   location: "Navalcarnero",
   serviceArea: "todo Navalcarnero",

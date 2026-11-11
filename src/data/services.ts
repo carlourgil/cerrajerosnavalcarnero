@@ -10,6 +10,7 @@ export type Service = {
   short: string;
   /** Resumen de dos frases: se usa de subtítulo y de meta description. */
   description: string;
+  metaDescription?: string;
   bullets: string[];
   /** Párrafos de entrada de la página del servicio. */
   intro: string[];
@@ -22,6 +23,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "apertura-de-puertas",
+    metaDescription: "Apertura de puertas en Navalcarnero sin daños siempre que la cerradura lo permita. Servicio 24 horas y precio confirmado antes de salir. Llama a NavaLlave.",
     image: "apertura-de-puertas",
     imageAlt: "Cerrajero de NavaLlave comprobando el pomo de una puerta de madera abierta",
     title: "Apertura de puertas",
@@ -92,6 +94,7 @@ export const services: Service[] = [
 
   {
     slug: "urgencias-24h",
+    metaDescription: "Cerrajero urgente en Navalcarnero las 24 horas, también noches y festivos. Llegada estimada de 10–25 minutos según la zona y precio confirmado por teléfono.",
     image: "urgencias-24h",
     imageAlt: "Cerrajero de NavaLlave llegando de noche a un portal con su maletín",
     title: "Urgencias 24 horas",
@@ -150,6 +153,7 @@ export const services: Service[] = [
 
   {
     slug: "apertura-de-coches",
+    metaDescription: "¿Las llaves se han quedado dentro del coche? NavaLlave abre vehículos en Navalcarnero cuidando la puerta y las juntas. Consulta disponibilidad y presupuesto.",
     image: "apertura-de-coches",
     imageAlt: "Cerrajero revisando la manilla y el marco de la puerta de un coche",
     title: "Apertura de coches",
@@ -208,6 +212,7 @@ export const services: Service[] = [
 
   {
     slug: "apertura-de-cajas-fuertes",
+    metaDescription: "Apertura de cajas fuertes bloqueadas en Navalcarnero. Revisamos la avería y acordamos el presupuesto antes de intervenir. Contacta con NavaLlave.",
     image: "apertura-de-cajas-fuertes",
     imageAlt: "Cerrajero junto a una caja fuerte abierta",
     title: "Apertura de cajas fuertes",
@@ -274,6 +279,7 @@ export const services: Service[] = [
 
   {
     slug: "cambio-de-cerraduras",
+    metaDescription: "Cambio de cerraduras en Navalcarnero para viviendas, portales, locales y garajes. Te explicamos las opciones y confirmamos el presupuesto antes del trabajo.",
     image: "cambio-de-cerraduras",
     imageAlt: "Cerrajero revisando una cerradura recién instalada en una puerta de madera",
     title: "Cambio de cerraduras",
@@ -345,6 +351,7 @@ export const services: Service[] = [
 
   {
     slug: "bombines-antibumping",
+    metaDescription: "Instalación de bombines antibumping en Navalcarnero. Refuerza la seguridad de tu puerta con llaves protegidas y presupuesto previo. Consulta a NavaLlave.",
     image: "cambio-de-bombin",
     imageAlt: "Cerrajero sujetando un bombín de seguridad frente a la cerradura de una puerta",
     title: "Bombines antibumping",

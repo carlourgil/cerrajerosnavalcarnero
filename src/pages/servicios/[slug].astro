@@ -20,7 +20,7 @@ const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
 <Layout
   title={`${heading} en ${SITE.location} | ${SITE.businessName}`}
-  description={service.description}
+  description={service.metaDescription ?? service.description}
   breadcrumbs={[
     { name: "Servicios", path: "/servicios/" },
     { name: service.title, path: `/servicios/${service.slug}/` },

@@ -10,6 +10,7 @@ import type { Service } from "../data/services";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
   schemaPage?: "home" | "inner";
   breadcrumbs?: { name: string; path: string }[];
   service?: Service;
@@ -18,6 +19,7 @@ interface Props {
 const {
   title,
   description = SITE.description,
+  noindex = false,
   schemaPage = "inner",
   breadcrumbs = [],
   service,
@@ -39,6 +41,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     <meta name="theme-color" content="#011D54" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     {canonical && <link rel="canonical" href={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -57,7 +60,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     {schemaPage === "home" && (
       <link rel="preload" as="image" href="/images/apertura-de-puertas-1536.webp" fetchpriority="high" />
     )}
-    <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} />
+    <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} title={title} description={description} />
   </head>
   <body>
     <div class="topbar">
