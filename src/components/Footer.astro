@@ -43,6 +43,7 @@ import { services } from "../data/services";
           <li><a href="/aviso-legal/">Aviso Legal</a></li>
           <li><a href="/politica-privacidad/">Política de Privacidad</a></li>
           <li><a href="/politica-cookies/">Política de Cookies</a></li>
+          <li><button type="button" class="footer__cookie-settings" data-cookie-settings>Configurar cookies</button></li>
         </ul>
       </div>
     </div>
@@ -52,3 +53,9 @@ import { services } from "../data/services";
     </div>
   </div>
 </footer>
+
+<style>
+  .footer__cookie-settings { color: inherit; background: transparent; border: 0; padding: 0; font: inherit; text-align: left; cursor: pointer; }
+  .footer__cookie-settings:hover { text-decoration: underline; }
+  .footer__cookie-settings:focus-visible { outline: 2px solid var(--c-orange); outline-offset: 4px; }
+</style>

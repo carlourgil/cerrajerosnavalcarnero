@@ -1,0 +1,201 @@
+---
+import { SITE } from "../lib/config";
+---
+<aside class="cookie-banner" data-cookie-banner aria-labelledby="cookie-banner-title" hidden>
+  <div class="cookie-banner__copy">
+    <p id="cookie-banner-title"><strong>Tu privacidad, tú decides</strong></p>
+    <p>Con tu permiso usamos Google Analytics para medir las visitas y los clics de contacto. Puedes rechazarlo y seguir usando la web. <a href="/politica-cookies/">Política de cookies</a>.</p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button type="button" data-cookie-choice="reject">Rechazar</button>
+    <button type="button" data-cookie-choice="accept">Aceptar analíticas</button>
+  </div>
+</aside>
+<script is:inline define:vars={{ measurementId: SITE.analyticsMeasurementId }}>
+(() => {
+  if (!/^G-[A-Z0-9]+$/.test(measurementId)) return;
+
+  const consentKey = "navallave_analytics_consent_v1";
+  const consentLifetime = 180 * 24 * 60 * 60 * 1000;
+  const banner = document.querySelector("[data-cookie-banner]");
+  let analyticsAllowed = false;
+  let tagStarted = false;
+  let settingsTrigger = null;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () {
+    window.dataLayer.push(arguments);
+  };
+  window["ga-disable-" + measurementId] = true;
+  window.gtag("consent", "default", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+
+  function readChoice() {
+    try {
+      const choice = JSON.parse(localStorage.getItem(consentKey));
+      const age = Date.now() - choice?.updatedAt;
+      if (choice?.version === 1 && typeof choice.analytics === "boolean"
+          && age >= 0 && age < consentLifetime) return choice;
+    } catch {}
+    return null;
+  }
+
+  function expireAnalyticsCookies() {
+    document.cookie.split(";").forEach((entry) => {
+      const name = entry.trim().split("=")[0];
+      if (!/^_ga(?:_|$)/.test(name)) return;
+      const expired = name + "=; Max-Age=0; path=/; SameSite=Lax";
+      document.cookie = expired;
+      document.cookie = expired + "; domain=" + location.hostname;
+      document.cookie = expired + "; domain=." + location.hostname;
+    });
+  }
+
+  function safeReferrer() {
+    try {
+      const referrer = new URL(document.referrer);
+      return referrer.origin + referrer.pathname;
+    } catch {
+      return "";
+    }
+  }
+
+  function track(name, parameters = {}) {
+    if (!analyticsAllowed) return;
+    window.gtag("event", name, {
+      send_to: measurementId,
+      transport_type: "beacon",
+      ...parameters,
+    });
+  }
+
+  function applyConsent(allowed) {
+    const previouslyAllowed = analyticsAllowed;
+    analyticsAllowed = allowed;
+    window["ga-disable-" + measurementId] = !allowed;
+    window.gtag("consent", "update", {
+      analytics_storage: allowed ? "granted" : "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+
+    if (!allowed) {
+      expireAnalyticsCookies();
+      return;
+    }
+
+    if (!tagStarted) {
+      tagStarted = true;
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId, {
+        send_page_view: false,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+        cookie_expires: consentLifetime / 1000,
+        cookie_update: false,
+        page_location: location.origin + location.pathname,
+        page_referrer: safeReferrer(),
+      });
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+    }
+
+    if (!previouslyAllowed) {
+      track("page_view", {
+        page_location: location.origin + location.pathname,
+        page_referrer: safeReferrer(),
+        page_title: document.title,
+      });
+    }
+  }
+
+  document.querySelectorAll("[data-cookie-choice]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const allowed = button.dataset.cookieChoice === "accept";
+      try {
+        localStorage.setItem(consentKey, JSON.stringify({
+          version: 1,
+          analytics: allowed,
+          updatedAt: Date.now(),
+        }));
+      } catch {}
+      applyConsent(allowed);
+      if (banner) banner.hidden = true;
+      settingsTrigger?.focus();
+      settingsTrigger = null;
+    });
+  });
+
+  document.querySelectorAll("[data-cookie-settings]").forEach((button) => {
+    button.addEventListener("click", () => {
+      settingsTrigger = button;
+      if (banner) banner.hidden = false;
+      document.querySelector("[data-cookie-choice='reject']")?.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const link = event.target?.closest?.("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (href.startsWith("tel:")) {
+      track("click_phone");
+      return;
+    }
+    try {
+      const url = new URL(href, location.origin);
+      if (["wa.me", "api.whatsapp.com", "web.whatsapp.com"].includes(url.hostname)) {
+        track("click_whatsapp");
+      }
+    } catch {}
+  });
+
+  document.addEventListener("navallave:quote-request", () => {
+    track("request_quote", { form_name: "presupuesto_whatsapp" });
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== consentKey && event.key !== null) return;
+    const choice = readChoice();
+    applyConsent(choice?.analytics === true);
+    if (banner) banner.hidden = choice !== null;
+  });
+
+  const choice = readChoice();
+  applyConsent(choice?.analytics === true);
+  if (banner) banner.hidden = choice !== null;
+})();
+</script>
+<style>
+  .cookie-banner[hidden] { display: none; }
+  .cookie-banner {
+    position: fixed; z-index: 120; left: 1rem; right: 1rem; bottom: 1rem;
+    max-width: 64rem; margin-inline: auto; padding: 1.25rem;
+    display: flex; align-items: center; gap: 1.5rem;
+    background: #fff; color: #101d2b; border: 1px solid #d9e0e7;
+    border-radius: 1rem; box-shadow: 0 8px 40px #0003;
+    max-height: 70dvh; overflow-y: auto;
+  }
+  .cookie-banner__copy { flex: 1; }
+  .cookie-banner p { margin: 0; font-size: .95rem; line-height: 1.5; }
+  .cookie-banner p + p { margin-top: .35rem; }
+  .cookie-banner a { color: #101d2b; text-decoration: underline; }
+  .cookie-banner__actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .cookie-banner button {
+    flex: 1; border: 2px solid #101d2b; border-radius: .5rem;
+    background: #101d2b; color: #fff; padding: .7rem 1rem;
+    font: inherit; font-weight: 700; cursor: pointer; white-space: nowrap; min-height: 44px;
+  }
+  .cookie-banner button:hover { background: #263c50; }
+  .cookie-banner button:focus-visible { outline: 3px solid #f58a00; outline-offset: 3px; }
+  @media (max-width: 767px) {
+    .cookie-banner { bottom: calc(5rem + env(safe-area-inset-bottom)); flex-direction: column; align-items: stretch; gap: 1rem; }
+  }
+</style>

@@ -1,49 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { SITE } from "../lib/config";
-
-const browsers = [
-  { name: "Google Chrome", url: "https://support.google.com/chrome/answer/95647" },
-  {
-    name: "Mozilla Firefox",
-    url: "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web",
-  },
-  { name: "Safari", url: "https://support.apple.com/es-es/guide/safari/sfri11471/mac" },
-  { name: "Internet Explorer", url: "https://support.microsoft.com/es-es/help/278835" },
-];
-
-const types = [
-  { name: "Cookies técnicas", desc: "permiten la navegación y el uso de servicios básicos del sitio web." },
-  {
-    name: "Cookies de personalización",
-    desc: "permiten acceder con características personalizadas, como el idioma.",
-  },
-  { name: "Cookies de seguridad", desc: "ayudan a prevenir o dificultar ataques contra la web." },
-  {
-    name: "Cookies de análisis",
-    desc: "permiten analizar el comportamiento de los usuarios en el sitio web.",
-  },
-  { name: "Cookies publicitarias", desc: "permiten gestionar los espacios publicitarios." },
-  {
-    name: "Cookies de publicidad comportamental",
-    desc: "permiten mostrar publicidad personalizada en función del comportamiento del usuario.",
-  },
-  {
-    name: "Cookies de redes sociales",
-    desc: "permiten compartir contenidos en redes sociales mediante plugins.",
-  },
-  {
-    name: "Cookies de geolocalización",
-    desc: "permiten conocer la ubicación del usuario para ofrecer servicios adaptados.",
-  },
-];
 ---
-
-<Layout
-  noindex
-  title={`Política de cookies | ${SITE.businessName}`}
-  description={`Cookies que utiliza ${SITE.domain} y cómo configurarlas.`}
->
+<Layout noindex title={`Política de cookies | ${SITE.businessName}`} description={`Cookies utilizadas por ${SITE.businessName} y cómo aceptar, rechazar o cambiar tu elección.`}>
   <main>
     <section class="page-hero page-hero--sm">
       <div class="container">
@@ -51,107 +10,44 @@ const types = [
         <h1>Política de cookies</h1>
       </div>
     </section>
-
     <section class="section band-light">
       <div class="container legal">
-        <p>
-          En cumplimiento con el deber de información recogido en el artículo 22.2 de la Ley 34/2002, de 11
-          de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la
-          presente Política de Cookies tiene por finalidad informarle de manera clara y precisa sobre las
-          cookies que se utilizan en la página web de {SITE.legalName}.
-        </p>
-
-        <h2>¿Qué son las cookies?</h2>
-        <p>
-          Una cookie es un fichero de pequeño tamaño que los sitios web envían al navegador y se descargan
-          en su dispositivo. Las cookies permiten que la página web almacene y recupere información sobre
-          su visita, como su idioma preferido y otras opciones, con el fin de mejorar los servicios
-          ofrecidos y facilitar una mejor experiencia de navegación para el usuario.
-        </p>
-
-        <h2>Autorización para el uso de cookies</h2>
-        <p>
-          De conformidad con el aviso de cookies que aparece en el sitio web, el usuario acepta que, al
-          navegar por el mismo, consiente expresamente el uso de cookies según la descripción que se
-          detalla a continuación, sin perjuicio de que pueda modificar la configuración de su navegador
-          para rechazar su uso.
-        </p>
-
-        <h2>Cookies utilizadas en la web</h2>
-        <p>En el sitio web se utilizan diferentes tipos de cookies con distintas finalidades:</p>
-
-        <h3>En función de la entidad que las gestione</h3>
-        <ul class="ticks">
-          <li>
-            <strong>Cookies propias:</strong> enviadas desde un dominio gestionado por el propio titular de
-            la web.
-          </li>
-          <li><strong>Cookies de terceros:</strong> enviadas desde un dominio gestionado por otra entidad.</li>
-        </ul>
-
-        <h3>En función del tiempo que permanecen activas</h3>
-        <ul class="ticks">
-          <li><strong>Cookies de sesión:</strong> se eliminan al cerrar el navegador.</li>
-          <li><strong>Cookies persistentes:</strong> permanecen almacenadas durante un periodo determinado.</li>
-        </ul>
-
-        <h3>En función de su finalidad</h3>
-        <ul class="ticks">
-          {types.map((t) => (
-            <li>
-              <strong>{t.name}:</strong> {t.desc}
-            </li>
-          ))}
-        </ul>
-
-        <h2>Cookies concretas utilizadas</h2>
-        <p>
-          Este sitio web puede utilizar servicios de terceros que recopilan información con fines
-          estadísticos y de uso de la web por parte del usuario, tales como:
-        </p>
-        <ul class="ticks">
-          <li>Google Analytics (análisis del tráfico web)</li>
-          <li>Google Ads (publicidad)</li>
-        </ul>
-        <p>
-          Estas herramientas pueden instalar cookies que permiten analizar el comportamiento de los
-          usuarios en la web.
-        </p>
-
-        <h2>Cómo modificar la configuración de las cookies</h2>
-        <p>
-          El usuario puede restringir, bloquear o eliminar las cookies mediante la configuración de su
-          navegador. A continuación, se facilitan enlaces con información para los principales navegadores:
-        </p>
-        <ul class="ticks">
-          {
-            browsers.map((b) => (
-              <li>
-                <strong>{b.name}:</strong>{" "}
-                <a href={b.url} target="_blank" rel="noopener noreferrer">
-                  {b.url}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <p>La desactivación de cookies puede afectar al correcto funcionamiento del sitio web.</p>
-
-        <h2>Modificación de la política de cookies</h2>
-        <p>
-          {SITE.legalName} se reserva el derecho a modificar la presente Política de Cookies en cualquier
-          momento. Se recomienda al usuario revisar esta política periódicamente.
-        </p>
+        <p>El responsable de esta web es {SITE.legalName}, con NIF {SITE.nif} y domicilio en {SITE.legalAddress}. Puedes contactar en <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+        <h2>Qué guardamos en tu navegador</h2>
+        <p>Las cookies son pequeños archivos que permiten recordar información entre visitas. Esta web también utiliza almacenamiento local para recordar tu decisión sobre las cookies de análisis.</p>
+        <h2>Google Analytics: solo si lo aceptas</h2>
+        <p>Con tu consentimiento utilizamos Google Analytics 4 para medir visitas, páginas consultadas y clics en teléfono, WhatsApp y solicitudes de presupuesto. El evento de presupuesto indica que has iniciado la solicitud; no confirma que hayas enviado un mensaje o contratado un servicio.</p>
+        <p>El código de Analytics no se descarga ni se envían eventos de medición antes de aceptar. Rechazar no impide navegar, llamar ni solicitar un presupuesto. No activamos Google Signals ni la personalización publicitaria.</p>
+        <p>No enviamos a Analytics los nombres, teléfonos ni mensajes escritos en el formulario. La medición que configura esta web elimina los parámetros y fragmentos de las direcciones de página y de referencia.</p>
+        <h2>Cookies y almacenamiento utilizados para esta medición</h2>
+        <div class="cookie-table">
+          <table>
+            <thead><tr><th>Nombre</th><th>Quién lo utiliza</th><th>Finalidad</th><th>Duración</th></tr></thead>
+            <tbody>
+              <tr><td><code>navallave_analytics_consent_v1</code></td><td>{SITE.businessName}</td><td>Almacenamiento local necesario para recordar si aceptas o rechazas las analíticas.</td><td>La elección caduca a los 180 días. El registro puede permanecer hasta que se sustituya o borres los datos del sitio.</td></tr>
+              <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Distinguir navegadores con un identificador para elaborar estadísticas. Solo con aceptación.</td><td>Hasta 180 días.</td></tr>
+              <tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>Conservar el estado de las sesiones de medición. Solo con aceptación.</td><td>Hasta 180 días.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>Cómo aceptar, rechazar o retirar el consentimiento</h2>
+        <p>En el aviso inicial puedes elegir «Aceptar analíticas» o «Rechazar». Seguir navegando no significa aceptar. Puedes cambiar tu decisión en cualquier momento mediante «Configurar cookies», en el pie de página.</p>
+        <p>Si retiras el consentimiento, se detiene la medición de Analytics en esta web y se eliminan sus cookies accesibles desde este dominio. Esto no elimina las estadísticas que se hubieran recogido antes de retirar el permiso.</p>
+        <p>También puedes borrar las cookies y el almacenamiento local desde la configuración de tu navegador. Si eliminas tu elección, volveremos a preguntarte.</p>
+        <h2>Proveedor de las analíticas y tratamiento de datos</h2>
+        <p>Google Ireland Limited presta el servicio de Analytics para usuarios del Espacio Económico Europeo. Google puede tratar datos fuera de este espacio según las condiciones y garantías descritas en su documentación: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">política de privacidad de Google</a> y <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener noreferrer">condiciones de tratamiento de datos</a>.</p>
+        <h2>Mapa y enlaces a servicios externos</h2>
+        <p>La web incluye un mapa de Google Maps y enlaces a WhatsApp. El mapa establece conexiones con Google al mostrarse y los enlaces abren servicios externos cuando los utilizas. Estos servicios tienen sus propias políticas. La elección de analíticas de esta web controla Google Analytics, no las preferencias de tu cuenta de Google o WhatsApp.</p>
+        <p>Más información sobre el tratamiento de tus datos y tus derechos en nuestra <a href="/politica-privacidad/">política de privacidad</a>.</p>
+        <h2>Actualizaciones</h2>
+        <p>Actualizaremos esta información si cambiamos las herramientas o los usos descritos. Última actualización: 13 de noviembre de 2026.</p>
       </div>
     </section>
   </main>
 </Layout>
-
 <style>
-  .legal h3 {
-    margin: 2rem 0 .75rem;
-    font-size: 1.125rem;
-    color: var(--c-navy);
-  }
-  .legal .ticks a { word-break: break-all; }
+  .cookie-table { overflow-x: auto; margin-block: 1.5rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #d9e0e7; text-align: left; vertical-align: top; padding: .75rem; }
+  code { overflow-wrap: anywhere; }
 </style>

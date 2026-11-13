@@ -27,6 +27,7 @@ export const SITE = {
   whatsappDisplay: "628 02 29 29",
   email: "navallave@gmail.com",
   domain: "cerrajerosnavalcarnero.madrid",
+  analyticsMeasurementId: "G-KR8E0F84VJ",
 
   // Dirección de contacto del pie de página para el servicio a domicilio.
   streetAddress: "C. del Río Tajo, 11",

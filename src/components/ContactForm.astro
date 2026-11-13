@@ -127,6 +127,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
 
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
+    document.dispatchEvent(new CustomEvent("navallave:quote-request"));
     const data = new FormData(form);
     const zona = data.get("zona");
     const detalle = data.get("detalle");
