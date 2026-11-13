@@ -45,7 +45,7 @@ const steps = [
 <style>
   .steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 2rem;
   }
   .step {
@@ -61,7 +61,7 @@ const steps = [
     font-size: 3rem;
     font-weight: var(--fw-black);
     line-height: 1;
-    color: var(--c-orange);
+    color: var(--c-orange-700);
     margin-bottom: 1rem;
   }
   .step__title {

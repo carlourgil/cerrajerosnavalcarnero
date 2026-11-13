@@ -81,7 +81,7 @@ const cases = [
 <style>
   .cases {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 1.5rem;
   }
   .case {
@@ -98,6 +98,7 @@ const cases = [
   }
   .case:hover { transform: translateY(-6px); box-shadow: var(--sh-float); }
   .case__head {
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,7 +112,7 @@ const cases = [
     font-weight: var(--fw-black);
     text-transform: uppercase;
     letter-spacing: .12em;
-    color: var(--c-orange);
+    color: var(--c-orange-700);
   }
   .case__time {
     padding: .2rem .7rem;
