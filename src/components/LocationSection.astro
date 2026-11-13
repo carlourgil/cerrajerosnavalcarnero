@@ -25,24 +25,55 @@ import { SITE } from "../lib/config";
 
       </div>
 
-      <iframe
-        class="map"
-        src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.streetAddress}, ${SITE.postalCode}, ${SITE.addressCity}`)}&output=embed`}
-        title={`Dirección de ${SITE.businessName}: ${SITE.streetAddress}, ${SITE.location}`}
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <div class="map" data-map-container>
+        <div class="map__placeholder" data-map-placeholder>
+          <p><strong>{SITE.streetAddress}</strong><br />{SITE.postalCode}, {SITE.addressCity}</p>
+          <p class="map__notice">El mapa de Google se carga solo si lo solicitas. Al cargarlo, compartes datos de conexión con Google.</p>
+          <button class="btn btn--dark" type="button" data-load-map disabled>Cargar mapa de Google</button>
+          <a class="map__link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${SITE.streetAddress}, ${SITE.postalCode}, ${SITE.addressCity}`)}`} target="_blank" rel="noopener noreferrer">Abrir la dirección en Google Maps</a>
+        </div>
+        <iframe
+          data-map-frame
+          data-src={`https://www.google.com/maps?q=${encodeURIComponent(`${SITE.streetAddress}, ${SITE.postalCode}, ${SITE.addressCity}`)}&output=embed`}
+          title={`Dirección de ${SITE.businessName}: ${SITE.streetAddress}, ${SITE.location}`}
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          hidden
+        ></iframe>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .map {
-    display: block;
+    overflow: hidden;
     width: 100%;
     aspect-ratio: 4 / 3;
+    min-height: 360px;
     border: 1px solid var(--c-gray-200);
     border-radius: var(--r-lg);
     box-shadow: var(--sh-card);
   }
+  .map__placeholder { height: 100%; min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; text-align: center; padding: clamp(1rem, 4vw, 2rem); background: var(--c-gray-50); }
+  .map__placeholder p { margin: 0; }
+  .map__notice { font-size: var(--fs-xs); color: var(--c-gray-600); }
+  .map__link { font-size: var(--fs-sm); text-decoration: underline; }
+  .map iframe { display: block; width: 100%; height: 100%; min-height: 300px; border: 0; }
+  .map [hidden] { display: none; }
 </style>
+<script>
+  document.querySelectorAll<HTMLElement>("[data-map-container]").forEach((container) => {
+    const button = container.querySelector<HTMLButtonElement>("[data-load-map]");
+    const frame = container.querySelector<HTMLIFrameElement>("[data-map-frame]");
+    const placeholder = container.querySelector<HTMLElement>("[data-map-placeholder]");
+    if (button) button.disabled = false;
+    button?.addEventListener("click", () => {
+      if (!frame?.dataset.src) return;
+      frame.src = frame.dataset.src;
+      frame.hidden = false;
+      if (placeholder) placeholder.hidden = true;
+      frame.focus();
+    }, { once: true });
+  });
+</script>

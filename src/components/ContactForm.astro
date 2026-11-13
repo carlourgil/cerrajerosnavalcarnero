@@ -25,10 +25,12 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
           </p>
         </div>
 
+        <noscript><style is:inline>.wa-form { display: none; }</style><p class="measure">Para pedir presupuesto, <a href={`tel:${SITE.phone}`}>llama al {SITE.phoneDisplay}</a>. El formulario necesita JavaScript para abrir WhatsApp.</p></noscript>
         <form class="form wa-form" data-wa-form>
+          <fieldset class="wa-form__fields" data-wa-fields disabled>
           <div class="form__field">
             <label for="wa-nombre">Tu nombre</label>
-            <input id="wa-nombre" name="nombre" type="text" required autocomplete="name" />
+            <input id="wa-nombre" name="nombre" type="text" required maxlength="100" autocomplete="name" />
           </div>
 
           <div class="form__field">
@@ -38,6 +40,8 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
               name="telefono"
               type="tel"
               required
+              minlength="9"
+              maxlength="25"
               inputmode="tel"
               autocomplete="tel"
               placeholder="600 00 00 00"
@@ -71,6 +75,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
               id="wa-detalle"
               name="detalle"
               rows="3"
+              maxlength="2000"
               placeholder={quote
                 ? "Cuéntanos qué necesitas para que podamos darte un presupuesto."
                 : "Por ejemplo: se ha quedado la llave dentro y la puerta tiene bombín de seguridad."}
@@ -90,9 +95,9 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
           </div>
 
           <p class="wa-form__note form__field--full">
-            Al enviar se abre WhatsApp con el mensaje escrito; tú decides si lo mandas. Esta web no
-            guarda nada de lo que escribas aquí.
+            {SITE.legalName} utilizará tus datos para atender tu solicitud de presupuesto, como medida previa a la contratación. Se abre WhatsApp y tú decides si envías el mensaje; la web no guarda lo escrito. Puedes ejercer tus derechos en {SITE.email}. Consulta los destinatarios, las transferencias y el resto de información en la <a href="/politica-privacidad/">política de privacidad</a>.
           </p>
+          </fieldset>
         </form>
       </div>
     </section>
@@ -103,12 +108,14 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
   .wa-form {
     max-width: 44rem;
     margin-inline: auto;
-    padding: 2.5rem;
+    padding: clamp(1rem, 5vw, 2.5rem);
     background: var(--c-white);
     border: 1px solid var(--c-gray-100);
     border-radius: var(--r-xl);
     box-shadow: var(--sh-card);
   }
+  .wa-form__fields { display: grid; grid-template-columns: inherit; gap: 1rem; border: 0; padding: 0; margin: 0; min-width: 0; grid-column: 1 / -1; }
+  .wa-form__note a { text-decoration: underline; color: var(--c-navy); }
   .wa-form__actions {
     display: flex;
     flex-wrap: wrap;
@@ -118,15 +125,24 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
   .wa-form__note {
     margin: 1.25rem 0 0;
     font-size: var(--fs-xs);
-    color: var(--c-gray-400);
+    color: var(--c-gray-600);
   }
 </style>
 
 <script is:inline define:vars={{ waNumber: SITE.whatsapp, ciudad: SITE.location }}>
   const form = document.querySelector("[data-wa-form]");
+  const phoneInput = form?.querySelector("[name='telefono']");
+  phoneInput?.addEventListener("input", () => phoneInput.setCustomValidity(""));
 
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
+    const digits = phoneInput.value.replace(/\D/g, "");
+    if (digits.length < 9 || digits.length > 15) {
+      phoneInput.setCustomValidity("Introduce un teléfono válido de entre 9 y 15 cifras.");
+      phoneInput.reportValidity();
+      return;
+    }
+    phoneInput.setCustomValidity("");
     document.dispatchEvent(new CustomEvent("navallave:quote-request"));
     const data = new FormData(form);
     const zona = data.get("zona");
@@ -146,4 +162,6 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
       "noopener"
     );
   });
+  const fields = form?.querySelector("[data-wa-fields]");
+  if (fields) fields.disabled = false;
 </script>

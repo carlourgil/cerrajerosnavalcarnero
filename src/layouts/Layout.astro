@@ -65,6 +65,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     <Schema page={schemaPage} breadcrumbs={breadcrumbs} service={service} title={title} description={description} />
   </head>
   <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div class="topbar">
       <div class="container topbar__inner">
         <span class="topbar__item">
@@ -85,7 +86,7 @@ const hasWhatsapp = !SITE.whatsapp.startsWith("[PENDIENTE");
     </div>
 
     <Header />
-    <slot />
+    <div id="contenido" tabindex="-1"><slot /></div>
     <Footer />
     <FloatingActions />
 

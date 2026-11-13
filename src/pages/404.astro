@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../lib/config";
+---
+<Layout noindex title={`Página no encontrada | ${SITE.businessName}`} description="La página que buscas no existe. Accede a los servicios de NavaLlave o llama para recibir ayuda.">
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Error 404</span>
+        <h1>No encontramos esta página</h1>
+        <p class="subhead">Puedes volver al inicio o consultar nuestros servicios de cerrajería en Navalcarnero.</p>
+        <p><a class="btn" href="/">Volver al inicio</a></p>
+        <p><a href="/servicios/">Ver los servicios</a> · <a href={`tel:${SITE.phone}`}>Llamar al {SITE.phoneDisplay}</a></p>
+      </div>
+    </section>
+  </main>
+</Layout>

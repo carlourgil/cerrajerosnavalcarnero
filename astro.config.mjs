@@ -8,6 +8,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => ![
+        "/404",
         "/aviso-legal",
         "/politica-privacidad",
         "/politica-cookies",

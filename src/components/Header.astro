@@ -25,7 +25,7 @@ import { SITE } from "../lib/config";
       />
     </a>
 
-    <nav>
+    <nav aria-label="Navegación principal">
       <ul class="nav">
         <li><a href="/">Inicio</a></li>
         <li><a href="/servicios/">Servicios</a></li>
@@ -47,7 +47,7 @@ import { SITE } from "../lib/config";
         {SITE.phoneDisplay}
       </a>
 
-      <button class="header__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle>
+      <button class="header__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil" data-menu-toggle>
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
@@ -55,7 +55,7 @@ import { SITE } from "../lib/config";
     </div>
   </div>
 
-  <div class="mobile-menu" data-mobile-menu hidden>
+  <nav id="menu-movil" class="mobile-menu" aria-label="Navegación móvil" data-mobile-menu hidden>
     <div class="container mobile-menu__inner">
       <p class="mobile-menu__label">Navegación</p>
       <a href="/">Inicio</a>
@@ -68,7 +68,7 @@ import { SITE } from "../lib/config";
         <a class="btn btn--block" href={`tel:${SITE.phone}`}>Llamar ahora</a>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
 
 <style>
@@ -129,13 +129,29 @@ import { SITE } from "../lib/config";
 </style>
 
 <script>
-  const toggle = document.querySelector("[data-menu-toggle]");
-  const menu = document.querySelector("[data-mobile-menu]");
-
+  const toggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  function closeMenu() {
+    if (!menu || !toggle) return;
+    menu.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Abrir menú");
+  }
   toggle?.addEventListener("click", () => {
+    if (!menu) return;
     const open = menu.hidden;
     menu.hidden = !open;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu && !menu.hidden) {
+      closeMenu();
+      toggle?.focus();
+    }
+  });
+  menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+  window.matchMedia("(min-width: 1024px)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
   });
 </script>

@@ -210,7 +210,7 @@ a:hover { color: var(--c-orange); }
 /* ---------- 4. BOTONES ---------- */
 .btn {
   --btn-bg: var(--c-orange);
-  --btn-fg: var(--c-white);
+  --btn-fg: var(--c-navy);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -238,7 +238,7 @@ a:hover { color: var(--c-orange); }
 }
 .btn--accent:hover { transform: translateY(-8px); }
 
-.btn--dark { --btn-bg: var(--c-navy); }
+.btn--dark { --btn-bg: var(--c-navy); --btn-fg: var(--c-white); }
 .btn--dark:hover { --btn-bg: #1E2733; }
 
 .btn--ghost {
@@ -541,7 +541,7 @@ a:hover { color: var(--c-orange); }
 .grid {
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 .section-head { text-align: center; max-width: 48rem; margin: 0 auto 3rem; }
 .section-head h2 { margin-bottom: 1rem; }
@@ -584,13 +584,13 @@ a:hover { color: var(--c-orange); }
   font-weight: var(--fw-black);
   text-transform: uppercase;
   letter-spacing: .05em;
-  color: var(--c-orange);
+  color: var(--c-orange-700);
 }
 
 /* ---------- 8. ZIGZAG ---------- */
 .zigzag {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   align-items: center;
   gap: clamp(32px, 5vw, 80px);
 }
@@ -611,7 +611,7 @@ a:hover { color: var(--c-orange); }
 }
 
 /* ---------- 9. FORMULARIO ---------- */
-.form { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.form { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
 .form__field { display: grid; gap: .35rem; }
 .form__field--full { grid-column: 1 / -1; }
 .form label {
@@ -688,7 +688,7 @@ a:hover { color: var(--c-orange); }
   .sticky-bar__item:active { color: var(--c-white); }
   .sticky-bar__item + .sticky-bar__item { border-left: 1px solid rgba(255, 255, 255, .1); }
   .sticky-bar__item--call { background: var(--c-orange); color: var(--c-white); }
-  body { padding-bottom: 68px; }
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
 }
 
 /* ---------- 11. UTILIDADES ---------- */
@@ -711,3 +711,13 @@ a:hover { color: var(--c-orange); }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .card:hover, .hero__card:hover { transform: none; }
 }
+
+/* Acceso con teclado, contraste y pantallas estrechas. */
+.skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 200; padding: .75rem 1rem; background: var(--c-white); color: var(--c-navy); border: 2px solid var(--c-navy); border-radius: .5rem; transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+#contenido { scroll-margin-top: 96px; }
+.band-light .eyebrow, .band-muted .eyebrow, .page-hero .eyebrow { color: var(--c-orange-700); }
+.band-light h2 .accent, .band-muted h2 .accent { color: var(--c-orange-700); background: none; }
+.btn--ghost:hover, .btn--phone:hover { --btn-fg: var(--c-navy); color: var(--c-navy); }
+.sticky-bar__item--call, .sticky-bar__item--call:hover, .sticky-bar__item--call:active { color: var(--c-navy); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

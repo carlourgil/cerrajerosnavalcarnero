@@ -182,6 +182,7 @@ const features = [
   /* En pantallas pequeñas el sello se encoge, pero sigue pegado a la foto:
      si se sale, deja de ser un sello. */
   @media (max-width: 560px) {
+    .whyus__media::before { inset: .75rem -.25rem -.75rem .75rem; }
     .whyus__media > .whyus__badge { right: .75rem; bottom: .75rem; padding: .6rem .9rem; gap: .1rem; }
     .whyus__badge-eyebrow { font-size: .55rem; letter-spacing: .16em; }
     .whyus__badge-value { font-size: 1.2rem; }

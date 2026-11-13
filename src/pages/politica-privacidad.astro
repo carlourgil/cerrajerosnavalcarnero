@@ -25,12 +25,11 @@ import { SITE } from "../lib/config";
 
           <dt>Finalidad</dt>
           <dd>
-            Prestación de servicios online. Gestión de usuarios web. Comunicaciones comerciales
-            relacionadas con nuestros servicios.
+            Atender consultas y presupuestos, gestionar servicios de cerrajería y medir el uso de la web solo si aceptas las analíticas.
           </dd>
 
           <dt>Legitimación</dt>
-          <dd>Consentimiento expreso e interés legítimo.</dd>
+          <dd>Medidas precontractuales y ejecución del contrato para consultas y servicios; obligaciones legales; consentimiento para las analíticas opcionales.</dd>
 
           <dt>Destinatarios</dt>
           <dd>Proveedores necesarios para prestar el servicio, Google Analytics si aceptas las analíticas y autoridades cuando lo exija la ley.</dd>
@@ -49,8 +48,8 @@ import { SITE } from "../lib/config";
         </p>
         <p>
           Por ello, y a efectos de lo previsto en el Reglamento (UE) 2016/679 (RGPD) y la Ley 34/2002
-          (LSSI), {SITE.legalName} informa al usuario que, como responsable del tratamiento, incorporará
-          los datos de carácter personal facilitados por los usuarios en un fichero automatizado.
+          (LSSI), {SITE.legalName} informa al usuario que, como responsable del tratamiento, tratará
+          los datos personales que se faciliten al contactar, únicamente para las finalidades descritas en esta política.
         </p>
 
         <h2>¿Quién es el responsable del tratamiento de sus datos personales?</h2>
@@ -82,16 +81,16 @@ import { SITE } from "../lib/config";
           <li>Gestionar servicios contratados</li>
           <li>Atender solicitudes de información</li>
           <li>Mantener la relación comercial</li>
-          <li>Realizar acciones comerciales y marketing</li>
-          <li>Personalizar la experiencia del usuario</li>
-          <li>Gestionar promociones o sorteos</li>
+          
+          <li>Obtener estadísticas de uso y clics de contacto, solo con tu consentimiento para Google Analytics</li>
+          
           <li>Cumplir obligaciones legales</li>
         </ul>
 
         <h2>¿Cuál es la legitimación para el tratamiento de tus datos?</h2>
         <ul class="ticks">
-          <li>Consentimiento del interesado</li>
-          <li>Interés legítimo</li>
+          <li>Consentimiento del interesado para las analíticas opcionales</li>
+          <li>Medidas previas a la contratación solicitadas por ti y ejecución de los servicios contratados</li>
           <li>Cumplimiento de obligaciones legales</li>
         </ul>
 
@@ -104,11 +103,11 @@ import { SITE } from "../lib/config";
         <h2>¿A qué destinatarios se comunican tus datos?</h2>
         <p>{SITE.legalName} podrá comunicar datos:</p>
         <ul class="ticks">
-          <li>A proveedores necesarios para prestar el servicio</li>
+          <li>A proveedores necesarios para prestar el servicio, incluido el alojamiento web en Vercel. Si eliges contactar por WhatsApp, interviene ese proveedor conforme a su política de privacidad.</li>
           <li>A autoridades cuando sea obligatorio por ley</li>
           <li>A Google Ireland Limited para la medición con Google Analytics, únicamente si aceptas las analíticas.</li>
         </ul>
-        <p>Nunca se venderán datos a terceros.</p>
+        <p>Nunca se venderán datos a terceros. Google Maps solo se carga cuando lo solicitas con el botón correspondiente. La web utiliza fuentes de Google Fonts; al cargarse pueden comunicarse a Google datos de conexión, como la dirección IP y el navegador. Consulta también la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">política de privacidad de Google</a>.</p>
 
         <h2>¿Dónde se almacenan tus datos?</h2>
         <p>Los proveedores tecnológicos pueden tratar datos dentro y fuera del Espacio Económico Europeo. Para Google Analytics se aplican las <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener noreferrer">condiciones de tratamiento de datos de Google</a>, que describen los mecanismos aplicables a las transferencias internacionales.</p>
@@ -126,9 +125,9 @@ import { SITE } from "../lib/config";
           <li>Limitación del tratamiento</li>
           <li>Oposición</li>
           <li>Portabilidad</li>
-          <li>No ser objeto de decisiones automatizadas</li>
+          <li>No ser objeto de decisiones automatizadas. No utilizamos tus solicitudes para decisiones automatizadas con efectos jurídicos.</li>
         </ul>
-        <p>También puedes reclamar ante la Agencia Española de Protección de Datos.</p>
+        <p>Puedes retirar el consentimiento de las analíticas desde «Configurar cookies», sin afectar al tratamiento anterior. También puedes reclamar ante la <a href="https://www.aepd.es/" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos</a>.</p>
 
         <h2>Exactitud de los datos</h2>
         <p>
@@ -183,7 +182,7 @@ import { SITE } from "../lib/config";
     font-weight: var(--fw-black);
     text-transform: uppercase;
     letter-spacing: .15em;
-    color: var(--c-orange);
+    color: var(--c-orange-700);
   }
   .legal-basics dd {
     margin: .35rem 0 1.25rem;
